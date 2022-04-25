@@ -125,6 +125,20 @@ Database& Database::Instance()
 }
 
 /******************************************
+ * Function: Execute sql code
+ * Parameters: 0
+ * Return: execution state
+ *****************************************/
+int Database::ExecuteSql(std::string sql)
+{
+    if(mysql_query(this->connection, "select * from Users")){
+		std::cout << "Query Error:" << mysql_error(connection) << std::endl;
+        return -1;
+	}
+    return 0;
+}
+
+/******************************************
  * Function: Check player login
  * Parameters: 2
  * user_name: login user name
@@ -133,7 +147,28 @@ Database& Database::Instance()
  *****************************************/
 int Database::PlayerLogin(std::string user_name, char password_md5[LENGTH_MD5])
 {
-    
+    // Check user name and password are matched
+    std::string sql = "select user_n"
+
+    this->result = mysql_use_result(connection); // 获取结果集
+		// mysql_field_count()返回connection查询的列数
+		for(int i=0; i < mysql_field_count(connection); ++i)
+		{
+			// 获取下一行
+			this->row = mysql_fetch_row(this->result);
+			if(this->row <= 0)
+			{
+				break;
+			}
+			// mysql_num_fields()返回结果集中的字段数
+			for(int j=0; j < mysql_num_fields(this->result); ++j)
+			{
+				std::cout << this->row[j] << " ";
+			}
+			std::cout << std::endl;
+		}
+		// 释放结果集的内存
+		mysql_free_result(this->result);
     return 0;
 }
 
