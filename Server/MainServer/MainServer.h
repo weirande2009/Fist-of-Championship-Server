@@ -58,7 +58,7 @@ public:
     void ProcessExitRoom(MainClient& client);
     void ProcessCreateRoom(MainClient& client);
     void ProcessAddFriend(MainClient& client);
-
+    void ProcessReplyFriend(MainClient& client);
 };
 
 

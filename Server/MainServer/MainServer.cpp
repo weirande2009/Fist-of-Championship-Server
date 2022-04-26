@@ -46,7 +46,9 @@ MainServer::MainServer(std::string _ip, int _port) : Server()
     this->process_function_pool.push_back(&MainServer::ProcessExitLogin);
     this->process_function_pool.push_back(&MainServer::ProcessQuit);
     this->process_function_pool.push_back(&MainServer::ProcessExitRoom);
-    this->process_function_pool.push_back(&MainServer::CreateRoom);
+    this->process_function_pool.push_back(&MainServer::ProcessCreateRoom);
+    this->process_function_pool.push_back(&MainServer::ProcessAddFriend);
+    this->process_function_pool.push_back(&MainServer::ProcessReplyFriend);
 }
 
 /******************************************
@@ -319,6 +321,13 @@ void MainServer::ProcessFriend(MainClient& client)
     delete s_friend;
     // Send data and delete in type of delete[]
     this->SendData(client.client_fd, new_data, sizeof(S_Friend)+friends_name.size()*sizeof(FriendInfo), 1);
+    // Send Other Add Friend
+    std::vector<std::string> wait_friends_names = Database::Instance().QueryWaitFriendName(client.player.player_id);
+    for(int i=0; i<wait_friends_names.size(); i++){
+        S_OtherAddFriend *s_other_add_friend = new S_OtherAddFriend;
+        strcpy(s_other_add_friend->friend_info.friend_name, wait_friends_names[i].c_str());
+        this->SendData(client.client_fd, (char*)s_other_add_friend, sizeof(S_OtherAddFriend));
+    }
 }
 
 /******************************************
@@ -596,10 +605,46 @@ void MainServer::ProcessAddFriend(MainClient& client)
             strcpy(s_other_add_friend->friend_info.friend_name, client.player.player_name.c_str());
             this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_add_friend->friend_name]].client_fd, (char*)s_other_add_friend, sizeof(S_OtherAddFriend));
         }
-        s_add_friend->state = 1;
+        s_add_friend->state = SEND_FRIEND_OK;
     }
     else{
-        s_add_friend->state = 0;
+        s_add_friend->state = SEND_FRIEND_FAIL;
+    }
+    this->SendData(client.client_fd, (char*)s_add_friend, sizeof(S_AddFriend));
+}
+
+/******************************************
+ * Function: Process Reply Friend
+ * Parameters: 1
+ * client: client
+ * Return: None
+ *****************************************/
+void MainServer::ProcessReplyFriend(MainClient& client)
+{
+    C_ReplyFriend *c_reply_friend = (C_ReplyFriend*)client.received_data;
+    S_AddFriend *s_add_friend = new S_AddFriend;
+    if(c_reply_friend->state == REPLY_FRIEND_OK){
+        Database::Instance().InsertFriend(Database::Instance().GetUserId(c_reply_friend->friend_name), client.player.player_id);
+        Database::Instance().DeleteWaitFriend(Database::Instance().GetUserId(c_reply_friend->friend_name), client.player.player_id);
+        // if online, send
+        if(this->client_pool.CheckOnline(c_reply_friend->friend_name)){
+            s_add_friend->state = REPLY_FRIEND_OK;
+            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend->friend_name]].client_fd, (char*)s_add_friend, sizeof(S_AddFriend), 2);
+            S_FriendUpdate *s_friend_update = new S_FriendUpdate;
+            strcpy(s_friend_update->friend_info.player_name, client.player.player_name.c_str());
+            s_friend_update->friend_info.state = PLAYER_ONLINE;
+            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend->friend_name]].client_fd, (char*)s_friend_update, sizeof(S_FriendUpdate));
+        }
+        s_add_friend->state = SEND_FRIEND_OK;
+    }
+    else{
+        Database::Instance().DeleteWaitFriend(Database::Instance().GetUserId(c_reply_friend->friend_name), client.player.player_id);
+        // if online, send
+        if(this->client_pool.CheckOnline(c_reply_friend->friend_name)){
+            s_add_friend->state = REPLY_FRIEND_FAIL;
+            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend->friend_name]].client_fd, (char*)s_add_friend, sizeof(S_AddFriend), 2);
+        }
+        s_add_friend->state = SEND_FRIEND_OK;
     }
     this->SendData(client.client_fd, (char*)s_add_friend, sizeof(S_AddFriend));
 }
@@ -622,4 +667,6 @@ void MainServer::FillPlayerInfo(PlayerInfo& player_info,const Player& player)
         player_info.owner = PLAYER_NO_READY;
     }
 }
+
+
 

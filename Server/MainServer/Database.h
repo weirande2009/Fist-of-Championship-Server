@@ -3,14 +3,20 @@
 #include <mysql/mysql.h>
 #include "../common/common.h"
 #include "Protocols.h"
+#include "Tables.h"
 
 class Database
 {
 // Variables
-private:
-    static Database instance;     // single instance
+private:    
+    static Database instance;       // single instance
+    struct UserTable user_table;
+    struct FriendsTable friends_table;
+    struct WaitFriendsTable wait_friends_table;
 
-public:
+    MYSQL *connection;                 // Mysql object
+    MYSQL_RES *result;
+	MYSQL_ROW row;
     
     std::string user;           // user id
     int port;                   // database port
@@ -18,9 +24,9 @@ public:
     std::string database_name;  // database name
     std::string host_name;      // host name
     std::string config_file_name = "../Server/config/database.cfg";
-    MYSQL *connection;                 // Mysql object
-    MYSQL_RES *result;
-	MYSQL_ROW row;
+    
+
+public:
     
 public:
     static Database& Instance();  // get instance of Database
@@ -34,8 +40,13 @@ public:
     Database();
     ~Database();
 
+    /* Basic Database Functions */
+    int ExecuteSql(std::string sql);
+    std::string GenerateNewUserId();
+
     /* General Functions */
     std::string GetUserId(std::string user_name);
+    std::string GetUserName(std::string user_id);
     int CheckUserName(std::string user_name);
     
     /* functions for login */
@@ -47,7 +58,7 @@ public:
     int InsertFriend(std::string user1_id, std::string user2_id);
     std::vector<std::string> QueryWaitFriendName(std::string user_id);
     int InsertWaitFriend(std::string user1_id, std::string user2_id);
-
+    int DeleteWaitFriend(std::string user1_id, std::string user2_id);
 };
 
 

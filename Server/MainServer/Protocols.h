@@ -38,6 +38,7 @@
 #define C_EXIT_ROOM 13          // Apply to exit room
 #define C_CREATE_ROOM 14        // Apply to create a new room
 #define C_ADD_FRIEND 15         // Apply to add friend
+#define C_REPLY_FRIEND 16       // Reply to add friend
 
 /* Other macro definition */
 /* Room */
@@ -78,6 +79,17 @@
 #define GAME_START 1                // State of game start
 #define GAME_NO_START 0             // State of game no start
 #define GAME_OVER 2                 // State of game over
+/* Database */
+#define EXE_ERROR -4                // SQL Execute error
+#define INSERT_OK 1                 // State of insert ok
+#define INSERT_FAIL -1              // State of insert fail
+#define DELETE_OK 1                 // State of insert ok
+#define DELETE_FAIL -1              // State of insert fail
+/* Friend */
+#define SEND_FRIEND_OK 1            // State of send msg to friend ok
+#define SEND_FRIEND_FAIL -1         // State of send msg to friend fail
+#define REPLY_FRIEND_OK 2           // State of replying from friend ok
+#define REPLY_FRIEND_FAIL -2        // State of replying from friend fail
 
 
 /* Structures of various functions */
@@ -458,6 +470,18 @@ struct C_AddFriend{
     int length = sizeof(C_AddFriend);
     char friend_name[MAX_PLAYER_NAME_LENGTH];           // room name
 };
+
+/*
+ * Function: Reply to add friend
+ * Info:
+ */
+struct C_ReplyFriend{
+    int cmd = C_REPLY_FRIEND;
+    int length = sizeof(C_ReplyFriend);
+    char friend_name[MAX_PLAYER_NAME_LENGTH];           // room name
+    int state;                                          // state of the reply
+};
+
 
 
 #endif
