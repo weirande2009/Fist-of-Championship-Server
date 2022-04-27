@@ -50,8 +50,8 @@ public:
     int CheckUserName(std::string user_name);
     
     /* functions for login */
-    int PlayerLogin(std::string user_name, char password_md5[LENGTH_MD5]);
-    int PlayerRegister(std::string user_name, char password_md5[LENGTH_MD5]);
+    int PlayerLogin(std::string user_name, std::string password_md5);
+    int PlayerRegister(std::string user_name, std::string password_md5);
 
     /* functions for friends */
     std::vector<std::string> QueryFriendName(std::string user_id);

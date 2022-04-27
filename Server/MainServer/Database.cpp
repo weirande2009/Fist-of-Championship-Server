@@ -145,7 +145,7 @@ int Database::ExecuteSql(std::string sql)
  * password: login password, md5 form
  * Return: 0->success, -1->fail
  *****************************************/
-int Database::PlayerLogin(std::string user_name, char password_md5[LENGTH_MD5])
+int Database::PlayerLogin(std::string user_name, std::string password_md5)
 {
     // Check user name and password are matched
     std::string sql = "select ";
@@ -172,7 +172,7 @@ int Database::PlayerLogin(std::string user_name, char password_md5[LENGTH_MD5])
             this->row = mysql_fetch_row(result);
             if(!this->row) 
                 break;
-            if(!memcmp(this->row[1], password_md5, LENGTH_MD5)){
+            if(!memcmp(this->row[1], password_md5.c_str(), LENGTH_MD5)){
                 mysql_free_result(this->result);
                 return LOGIN_SUCCESS;
             }
@@ -197,7 +197,7 @@ int Database::PlayerLogin(std::string user_name, char password_md5[LENGTH_MD5])
  * password: login password, md5 form
  * Return: 0->success, -1->fail
  *****************************************/
-int Database::PlayerRegister(std::string user_name, char password_md5[LENGTH_MD5])
+int Database::PlayerRegister(std::string user_name, std::string password_md5)
 {
     // Check whether already has the user_name
     std::string sql = "select ";
@@ -229,7 +229,7 @@ int Database::PlayerRegister(std::string user_name, char password_md5[LENGTH_MD5
     sql += this->user_table.table+" value (";
     sql += "\'"+this->GenerateNewUserId()+"\', ";
     sql += "\'"+user_name+"\', ";
-    sql += "\'"+this->GenerateNewUserId()+"\');";
+    sql += "\'"+password_md5+"\');";
     // Execute
     int ret = this->ExecuteSql(sql);
     if(ret == EXE_ERROR){

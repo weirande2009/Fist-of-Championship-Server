@@ -6,6 +6,9 @@
 #include "ClientPool.h"
 #include "Lobby.h"
 #include "Database.h"
+#include "../Protobuf/ClientToServer.pb.h"
+#include "../Protobuf/ServerToClient.pb.h"
+
 
 class MainServer: public Server
 {
@@ -38,9 +41,9 @@ public:
     void Start();  // Start listening and wait for connecting
     void MainLoop();  // Main listening loop
     void ProcessData(char* data, int length);  // Process data received from clients
-    void SendData(int fd, char* data, int length, int delete_type=0);  // Send data to clients
+    void SendData(int fd, const char* data, int length, int cmd);  // Send data to clients
     void ReadData(int fd);  // Send data to clients
-    void FillPlayerInfo(PlayerInfo& player_info,const Player& player);  // Fill the struct of PlayerInfo
+    void FillPlayerInfo(CF::PlayerInfo& player_info, const Player& player);  // Fill the struct of PlayerInfo
 
     /* Various functions for processing received data */
     void ProcessLogin(MainClient& client);

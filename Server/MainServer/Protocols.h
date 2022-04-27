@@ -11,7 +11,7 @@
 #define S_ENTER_ROOM 6          // Enter room
 #define S_ROOM_INFO 7           // Room info
 #define S_EXIT_ROOM 8           // Exit room
-#define S_UPDATE_ROOM 9         // Others enter room
+#define S_UPDATE_ROOM 9         // Others enter room, modify character, get ready
 #define S_MODIFY_CHAR 10        // Modify character
 #define S_READY 11              // Get ready for the game
 #define S_CANCEL_READY 12       // Cancel ready
@@ -67,6 +67,7 @@
 #define PACKAGE_HEAD_LENGTH 8       // Length of package head
 #define S_CMD_NUM 18                // Server command number
 #define C_CMD_NUM 14                // Client command number
+#define ChampionFist CF
 /* Client */
 #define CLIENT_NO_LOGIN 0            // Client no login
 #define CLIENT_LOGIN 1               // Client login
@@ -93,6 +94,11 @@
 
 
 /* Structures of various functions */
+
+struct PackageHead{
+    int cmd;
+    int length;
+};
 
 /*
  * Function: Login info from server to client

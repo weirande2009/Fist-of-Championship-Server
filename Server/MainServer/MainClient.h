@@ -14,11 +14,12 @@ private:
 
 public:
     Player player;
-    int read_length;        // Length of waiting data
-    char* received_data;    // received data
-    int received_length;    // received length
-    bool rd_head;           // whether read head
-    int client_state;       // client state
+    int read_length;                // Length of waiting data
+    char* received_data;            // received data
+    std::string received_string;    // received string
+    int received_length;            // received length
+    bool rd_head;                   // whether read head
+    int client_state;               // client state
 
 // Functions
 private:
