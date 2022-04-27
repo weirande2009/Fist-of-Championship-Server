@@ -167,6 +167,8 @@ void MainServer::ReadData(int fd)
             int package_cmd = int(client.received_data);
             // if receive all the data needed
             if(client.received_length == package_length){
+                // Generate received string
+                client.received_string.assign(client.received_data+PACKAGE_HEAD_LENGTH, package_length-PACKAGE_HEAD_LENGTH);
                 // Start processing
                 (this->*process_function_pool[package_cmd])(client);
                 // Set data buffer and received length
@@ -196,18 +198,21 @@ void MainServer::ReadData(int fd)
  * Function: Send data to specific handle
  * Parameters: 4
  * fd: handle number
- * data: sent data
- * length: sent data length
- * delete_type: 0->delete, 1->delete[], default 0, 2->no delete
+ * data: data from Protobuf
+ * length: Protobuf data length
+ * cmd: command no.
  * Return: None
  *****************************************/
-void MainServer::SendData(int fd, char* data, int length, int delete_type)
+void MainServer::SendData(int fd, const char* data, int length, int cmd)
 {
-    int len = send(fd, data, length, 0);
-    if(delete_type == 0)
-        delete data;
-    else if(delete_type == 1)
-        delete[] data;
+    PackageHead package_head;
+    package_head.cmd = cmd;
+    package_head.length = length+8;
+    char* sent_data = new char[package_head.length];
+    memcpy(sent_data, (const char*)&package_head, sizeof(PackageHead));
+    memcpy(sent_data+sizeof(PackageHead), data, length);
+    int len = send(fd, sent_data, package_head.length, 0);
+    delete[] sent_data;
 }
 
 /******************************************
@@ -218,29 +223,34 @@ void MainServer::SendData(int fd, char* data, int length, int delete_type)
  *****************************************/
 void MainServer::ProcessLogin(MainClient& client)
 {
-    C_Login *c_login = (C_Login*)client.received_data;
-    std::string user_name = c_login->name;
-    int ret = Database::Instance().PlayerLogin(user_name, c_login->password_md5);
+    std::string send_string;
+    CF::C_Login c_login;
+    c_login.ParseFromString(client.received_string);
+    int ret = Database::Instance().PlayerLogin(c_login.name(), c_login.password_md5());
     if(ret == LOGIN_SUCCESS){
         // Set Client State
         client.client_state = CLIENT_LOGIN;
         // Instantiate Player
-        client.InstantiatePlayer(user_name);
+        client.InstantiatePlayer(c_login.name());
         // Add fd and user name map
-        this->client_pool.name_fd_map[user_name] = client.client_fd;
+        this->client_pool.name_fd_map[c_login.name()] = client.client_fd;
         // Send online info to friends
         std::vector<int> friends_fd = this->client_pool.GetOnlineFriendFd(client);
         std::vector<std::string> friends_name = this->client_pool.GetOnlineFriendName(client);
         for(int i=0; i<friends_fd.size(); i++){
-            S_FriendUpdate *s_friend_update = new S_FriendUpdate;
-            strcpy(s_friend_update->friend_info.player_name, friends_name[i].c_str());
-            s_friend_update->friend_info.state = PLAYER_ONLINE;
-            this->SendData(friends_fd[i], (char*)s_friend_update, sizeof(S_FriendUpdate));
+            CF::S_FriendUpdate s_friend_update = CF::S_FriendUpdate();
+            CF::FriendInfo friend_info = CF::FriendInfo();
+            friend_info.set_player_name(friends_name[i]);
+            friend_info.set_state(PLAYER_ONLINE);
+            s_friend_update.set_allocated_friend_info(&friend_info);
+            s_friend_update.SerializeToString(&send_string);
+            this->SendData(friends_fd[i], send_string.c_str(), send_string.length(), S_FRIEND_UPDATE);
         }
     }
-    S_Login *s_login = new S_Login;
-    s_login->state = ret;
-    this->SendData(client.client_fd, (char*)s_login, sizeof(S_Login));
+    CF::S_Login s_login = CF::S_Login();
+    s_login.set_state(ret);
+    s_login.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_LOGIN);
 }
 
 /******************************************
@@ -251,12 +261,14 @@ void MainServer::ProcessLogin(MainClient& client)
  *****************************************/
 void MainServer::ProcessRegister(MainClient& client)
 {
-    C_Register *c_register = (C_Register*)client.received_data;
-    std::string user_name = c_register->name;
-    int ret = Database::Instance().PlayerRegister(user_name, c_register->password_md5);
-    S_Register *s_register = new S_Register;
-    s_register->state = ret;
-    this->SendData(client.client_fd, (char*)s_register, sizeof(S_Register));
+    std::string send_string;
+    CF::C_Register c_register;
+    c_register.ParseFromString(client.received_string);
+    int ret = Database::Instance().PlayerRegister(c_register.name(), c_register.password_md5());
+    CF::S_Register s_register = CF::S_Register();
+    s_register.set_state(ret);
+    s_register.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_REGISTER);
 }
 
 /******************************************
@@ -267,28 +279,32 @@ void MainServer::ProcessRegister(MainClient& client)
  *****************************************/
 void MainServer::ProcessHallRoom(MainClient& client)
 {
-    C_HallRoom *c_hall_room = (C_HallRoom*)client.received_data;
-    S_HallRoom *s_hall_room = new S_HallRoom;
+    std::string send_string;
+    CF::C_HallRoom c_hall_room;
+    c_hall_room.ParseFromString(client.received_string);
+    CF::S_HallRoom s_hall_room;
     std::map<std::string, Room>::iterator it;
     int i;
-    for(it=this->lobby.rooms.begin(), i=0; i<c_hall_room->page*MAX_ROOM_NUMBER_IN_PAGE; i++, it++){
+    for(it=this->lobby.rooms.begin(), i=0; i<c_hall_room.page()*MAX_ROOM_NUMBER_IN_PAGE; i++, it++){
         ;
     }
     i=0;
     while(1){
-        if(i == MAX_ROOM_NUMBER_IN_PAGE || (i+c_hall_room->page*MAX_ROOM_NUMBER_IN_PAGE) == this->lobby.rooms.size()){
+        if(i == MAX_ROOM_NUMBER_IN_PAGE || (i+c_hall_room.page()*MAX_ROOM_NUMBER_IN_PAGE) == this->lobby.rooms.size()){
             break;
         }
-        s_hall_room->room_info[i].player_number = it->second.player_num;
-        strcpy(s_hall_room->room_info[i].room_name, it->second.room_name.c_str());
-        strcpy(s_hall_room->room_info[i].room_no, it->second.room_no.c_str());
-        s_hall_room->room_info[i].state = it->second.room_state;
+        CF::RoomInfo *room_info = s_hall_room.add_room_info();
+        room_info->set_player_number(it->second.player_num);
+        room_info->set_room_name(it->second.room_name);
+        room_info->set_room_no(it->second.room_no);
+        room_info->set_state(it->second.room_state);
         i++;
         it++;
     }
-    s_hall_room->total_room_num = this->lobby.rooms.size();
-    s_hall_room->page_room_num = i;
-    this->SendData(client.client_fd, (char*)s_hall_room, sizeof(S_HallRoom));
+    s_hall_room.set_total_room_num(this->lobby.rooms.size());
+    s_hall_room.set_page_room_num(i);
+    s_hall_room.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_HALL_ROOM);
 }
 
 /******************************************
@@ -299,34 +315,32 @@ void MainServer::ProcessHallRoom(MainClient& client)
  *****************************************/
 void MainServer::ProcessFriend(MainClient& client)
 {
+    std::string send_string;
     // Get Friend Info
     std::vector<std::string> online_friends_name = this->client_pool.GetOnlineFriendName(client);
     std::vector<std::string> friends_name = this->client_pool.GetFriendName(client);
-    S_Friend *s_friend = new S_Friend;
-    s_friend->friend_info = new FriendInfo[friends_name.size()];
+    CF::S_Friend s_friend;
     for(int i=0; i<friends_name.size(); i++){
-        strcpy(s_friend->friend_info[i].player_name, friends_name[i].c_str());
-        s_friend->friend_info[i].state = PLAYER_OFFLINE;
+        CF::FriendInfo *friend_info = s_friend.add_friend_info();
+        friend_info->set_player_name(friends_name[i]);
+        friend_info->set_state(PLAYER_OFFLINE);
         for(int j=0; j<online_friends_name.size(); j++){
             if(online_friends_name[j] == friends_name[i]){
-                s_friend->friend_info[i].state = PLAYER_ONLINE;
+                friend_info->set_state(PLAYER_ONLINE);
             }        
         }  
     }
-    // Build data
-    char* new_data = new char[sizeof(S_Friend)+friends_name.size()*sizeof(FriendInfo)];
-    memcpy(new_data, s_friend, sizeof(S_Friend));
-    memcpy(new_data+sizeof(S_Friend), s_friend->friend_info, friends_name.size()*sizeof(FriendInfo));
-    delete[] s_friend->friend_info;
-    delete s_friend;
-    // Send data and delete in type of delete[]
-    this->SendData(client.client_fd, new_data, sizeof(S_Friend)+friends_name.size()*sizeof(FriendInfo), 1);
+    s_friend.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_FRIEND);
     // Send Other Add Friend
     std::vector<std::string> wait_friends_names = Database::Instance().QueryWaitFriendName(client.player.player_id);
     for(int i=0; i<wait_friends_names.size(); i++){
-        S_OtherAddFriend *s_other_add_friend = new S_OtherAddFriend;
-        strcpy(s_other_add_friend->friend_info.friend_name, wait_friends_names[i].c_str());
-        this->SendData(client.client_fd, (char*)s_other_add_friend, sizeof(S_OtherAddFriend));
+        CF::S_OtherAddFriend s_other_add_friend;
+        CF::AddFriendInfo add_friend_info;
+        add_friend_info.set_friend_name(wait_friends_names[i]);
+        s_other_add_friend.set_allocated_friend_info(&add_friend_info);
+        s_friend.SerializeToString(&send_string);
+        this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_OTHER_ADD_FRIEND);
     }
 }
 
@@ -338,24 +352,32 @@ void MainServer::ProcessFriend(MainClient& client)
  *****************************************/
 void MainServer::ProcessEnterRoom(MainClient& client)
 {
-    C_EnterRoom *c_enter_room = (C_EnterRoom*)client.received_data;
+    std::string send_string;
+    CF::C_EnterRoom c_enter_room;
+    c_enter_room.ParseFromString(client.received_string);
     int a;
-    int seat_no = this->lobby.rooms[std::string(c_enter_room->room_no)].EnterRoom(&client);
+    int seat_no = this->lobby.rooms[c_enter_room.room_no()].EnterRoom(&client);
     if(seat_no != NO_AVAILABLE_SEAT){  // if success, tell others in room
         for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
-            if(this->lobby.rooms[std::string(c_enter_room->room_no)].clients[i]){
-                S_UpdateRoom *s_update_room = new S_UpdateRoom;
-                s_update_room->seat_info.empty = SEAT_OCCUPIED;
-                s_update_room->seat_info.seat_no = seat_no;
-                this->FillPlayerInfo(s_update_room->seat_info.player_info, client.player);
-                this->SendData(this->lobby.rooms[std::string(c_enter_room->room_no)].clients[i]->client_fd, (char*)s_update_room, sizeof(S_UpdateRoom));
+            if(this->lobby.rooms[c_enter_room.room_no()].clients[i]){
+                CF::S_UpdateRoom s_update_room;
+                CF::SeatInfo seat_info;
+                seat_info.set_empty(SEAT_OCCUPIED);
+                seat_info.set_seat_no(seat_no);
+                CF::PlayerInfo player_info;
+                this->FillPlayerInfo(player_info, client.player);
+                seat_info.set_allocated_player_info(&player_info);
+                s_update_room.set_allocated_seat_info(&seat_info);
+                s_update_room.SerializeToString(&send_string);
+                this->SendData(this->lobby.rooms[c_enter_room.room_no()].clients[i]->client_fd, send_string.c_str(), send_string.length(), S_UPDATE_ROOM);
             }
         }
     }
-    S_EnterRoom *s_enter_room = new S_EnterRoom;
-    s_enter_room->state = (seat_no != NO_AVAILABLE_SEAT) ? 1 : 0;
-    s_enter_room->seat_no = seat_no;
-    this->SendData(client.client_fd, (char*)s_enter_room, sizeof(S_EnterRoom));
+    CF::S_EnterRoom s_enter_room;
+    s_enter_room.set_state((seat_no != NO_AVAILABLE_SEAT) ? 1 : 0);
+    s_enter_room.set_seat_no(seat_no);
+    s_enter_room.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_ENTER_ROOM);
 }
 
 /******************************************
@@ -366,20 +388,26 @@ void MainServer::ProcessEnterRoom(MainClient& client)
  *****************************************/
 void MainServer::ProcessRoomInfo(MainClient& client)
 {
-    C_RoomInfo *c_room_info = (C_RoomInfo*)client.received_data;
-    Room room = this->lobby.rooms[std::string(c_room_info->room_no)];
-    S_RoomInfo *s_room_info = new S_RoomInfo;
+    std::string send_string;
+    CF::C_RoomInfo c_room_info;
+    c_room_info.ParseFromString(client.received_string);
+    Room room = this->lobby.rooms[c_room_info.room_no()];
+    CF::S_RoomInfo s_room_info;
     for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
+        CF::SeatInfo *seat_info = s_room_info.add_seat_info();
         if(!room.clients[i]){
-            s_room_info->seat_info[i].empty = SEAT_EMPTY;
+            seat_info->set_empty(SEAT_EMPTY);
         }
         else{
-            s_room_info->seat_info[i].empty = SEAT_OCCUPIED;
-            s_room_info->seat_info[i].seat_no = i;
-            this->FillPlayerInfo(s_room_info->seat_info[i].player_info, room.clients[i]->player);
+            seat_info->set_empty(SEAT_OCCUPIED);
+            seat_info->set_seat_no(i);
+            CF::PlayerInfo player_info;
+            this->FillPlayerInfo(player_info, room.clients[i]->player);
+            seat_info->set_allocated_player_info(&player_info);
         }
     }
-    this->SendData(client.client_fd, (char*)s_room_info, sizeof(S_RoomInfo));
+    s_room_info.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_ROOM_INFO);
 }
 
 /******************************************
@@ -390,22 +418,29 @@ void MainServer::ProcessRoomInfo(MainClient& client)
  *****************************************/
 void MainServer::ProcessModChar(MainClient& client)
 {
-    C_ModChar *c_mod_char = (C_ModChar*)client.received_data;
+    std::string send_string;
+    CF::C_ModChar c_mod_char;
+    c_mod_char.ParseFromString(client.received_string);
     // change character type
-    client.player.character_type = c_mod_char->char_type;
+    client.player.character_type = c_mod_char.char_type();
     // tell others in room
     for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
         if(this->lobby.rooms[client.player.room_no].clients[i]){
-            S_UpdateRoom *s_update_room = new S_UpdateRoom;
-            s_update_room->seat_info.empty = SEAT_OCCUPIED;
-            s_update_room->seat_info.seat_no = client.player.seat_no;
-            this->FillPlayerInfo(s_update_room->seat_info.player_info, client.player);
-            this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, (char*)s_update_room, sizeof(S_UpdateRoom));
+            CF::S_UpdateRoom s_update_room;
+            CF::SeatInfo seat_info;
+            seat_info.set_empty(SEAT_OCCUPIED);
+            seat_info.set_seat_no(client.player.seat_no);\
+            CF::PlayerInfo player_info;
+            this->FillPlayerInfo(player_info, client.player);
+            seat_info.set_allocated_player_info(&player_info);
+            s_update_room.SerializeToString(&send_string);
+            this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, send_string.c_str(), send_string.length(), S_UPDATE_ROOM);
         }
     }
-    S_ModChar *s_mod_char = new S_ModChar;
-    s_mod_char->state = 1;
-    this->SendData(client.client_fd, (char*)s_mod_char, sizeof(S_ModChar));
+    CF::S_ModChar s_mod_char;
+    s_mod_char.set_state(1);
+    s_mod_char.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_MODIFY_CHAR);
 }
 
 /******************************************
@@ -416,21 +451,27 @@ void MainServer::ProcessModChar(MainClient& client)
  *****************************************/
 void MainServer::ProcessReady(MainClient& client)
 {
+    std::string send_string;
     // change ready state
     client.player.ready = PLAYER_READY;
     // tell others in room
     for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
         if(this->lobby.rooms[client.player.room_no].clients[i]){
-            S_UpdateRoom *s_update_room = new S_UpdateRoom;
-            s_update_room->seat_info.empty = SEAT_OCCUPIED;
-            s_update_room->seat_info.seat_no = client.player.seat_no;
-            this->FillPlayerInfo(s_update_room->seat_info.player_info, client.player);
-            this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, (char*)s_update_room, sizeof(S_UpdateRoom));
+            CF::S_UpdateRoom s_update_room;
+            CF::SeatInfo seat_info;
+            seat_info.set_empty(SEAT_OCCUPIED);
+            seat_info.set_seat_no(client.player.seat_no);\
+            CF::PlayerInfo player_info;
+            this->FillPlayerInfo(player_info, client.player);
+            seat_info.set_allocated_player_info(&player_info);
+            s_update_room.SerializeToString(&send_string);
+            this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, send_string.c_str(), send_string.length(), S_UPDATE_ROOM);
         }
     }
-    S_Ready *s_ready = new S_Ready;
-    s_ready->state = 1;
-    this->SendData(client.client_fd, (char*)s_ready, sizeof(S_Ready));
+    CF::S_Ready s_ready;
+    s_ready.set_state(1);
+    s_ready.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_READY);
 }
 
 /******************************************
@@ -441,21 +482,27 @@ void MainServer::ProcessReady(MainClient& client)
  *****************************************/
 void MainServer::ProcessCancelReady(MainClient& client)
 {
+    std::string send_string;
     // change ready state
     client.player.ready = PLAYER_NO_READY;
     // tell others in room
     for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
         if(this->lobby.rooms[client.player.room_no].clients[i]){
-            S_UpdateRoom *s_update_room = new S_UpdateRoom;
-            s_update_room->seat_info.empty = SEAT_OCCUPIED;
-            s_update_room->seat_info.seat_no = client.player.seat_no;
-            this->FillPlayerInfo(s_update_room->seat_info.player_info, client.player);
-            this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, (char*)s_update_room, sizeof(S_UpdateRoom));
+            CF::S_UpdateRoom s_update_room;
+            CF::SeatInfo seat_info;
+            seat_info.set_empty(SEAT_OCCUPIED);
+            seat_info.set_seat_no(client.player.seat_no);\
+            CF::PlayerInfo player_info;
+            this->FillPlayerInfo(player_info, client.player);
+            seat_info.set_allocated_player_info(&player_info);
+            s_update_room.SerializeToString(&send_string);
+            this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, send_string.c_str(), send_string.length(), S_UPDATE_ROOM);
         }
     }
-    S_CancelReady *s_cancel_ready = new S_CancelReady;
-    s_cancel_ready->state = 1;
-    this->SendData(client.client_fd, (char*)s_cancel_ready, sizeof(S_CancelReady));
+    CF::S_CancelReady s_cancel_ready;
+    s_cancel_ready.set_state(1);
+    s_cancel_ready.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_CANCEL_READY);
 }
 
 /******************************************
@@ -466,25 +513,27 @@ void MainServer::ProcessCancelReady(MainClient& client)
  *****************************************/
 void MainServer::ProcessStartGame(MainClient& client)
 {
+    std::string send_string;
     // Check all ready
     if(this->lobby.rooms[client.player.room_no].CheckAllReady()){
         // Execute GameServer to process game
                     /* do something */
         // tell all players in room
-        S_StartGame *s_start_game = new S_StartGame;
-        s_start_game->state = GAME_START;
+        CF::S_StartGame s_start_game;
+        s_start_game.set_state(GAME_START);
         Room room = this->lobby.rooms[client.player.room_no];
+        s_start_game.SerializeToString(&send_string);
         for(int i=0; i<MAX_PLAYER_NUM_IN_ROOM; i++){
             if(room.clients[i]){
-                this->SendData(room.clients[i]->client_fd, (char*)s_start_game, sizeof(S_StartGame), 2);
+                this->SendData(room.clients[i]->client_fd, send_string.c_str(), send_string.length(), S_START_GAME);
             }
         }
-        delete s_start_game;
     }
     else{
-        S_StartGame *s_start_game = new S_StartGame;
-        s_start_game->state = GAME_NO_START;
-        this->SendData(client.client_fd, (char*)s_start_game, sizeof(S_StartGame));
+        CF::S_StartGame s_start_game;
+        s_start_game.set_state(GAME_NO_START);
+        s_start_game.SerializeToString(&send_string);
+        this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_START_GAME);
     }
 
 }
@@ -497,22 +546,26 @@ void MainServer::ProcessStartGame(MainClient& client)
  *****************************************/
 void MainServer::ProcessExitLogin(MainClient& client)
 {
+    std::string send_string;
     // Tell other friends
     std::vector<std::string> online_friends_name = this->client_pool.GetOnlineFriendName(client);
-    S_FriendUpdate *s_friend_update = new S_FriendUpdate;
+    CF::S_FriendUpdate s_friend_update;
+    CF::FriendInfo friend_info;
     for(int i=0; i<online_friends_name.size(); i++){
-        strcpy(s_friend_update->friend_info.player_name, client.player.player_name.c_str());
-        s_friend_update->friend_info.state = PLAYER_OFFLINE;
-        this->SendData(this->client_pool.name_fd_map[online_friends_name[i]], (char*)s_friend_update, sizeof(S_FriendUpdate), 2);
+        friend_info.set_player_name(client.player.player_name);
+        friend_info.set_state(PLAYER_OFFLINE);
+        s_friend_update.set_allocated_friend_info(&friend_info);
+        s_friend_update.SerializeToString(&send_string);
+        this->SendData(this->client_pool.name_fd_map[online_friends_name[i]], send_string.c_str(), send_string.length(), S_FRIEND_UPDATE);
     }
-    delete s_friend_update;
     // Set client state
     client.client_state = CLIENT_NO_LOGIN;
     // Reset player object
     client.player = Player();
-    S_ExitLogin *s_exit_login = new S_ExitLogin;
-    s_exit_login->state = 1;
-    this->SendData(client.client_fd, (char*)s_exit_login, sizeof(S_ExitLogin));
+    CF::S_ExitLogin s_exit_login;
+    s_exit_login.set_state(1);
+    s_exit_login.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_EXIT_LOGIN);
 }
 
 /******************************************
@@ -523,6 +576,7 @@ void MainServer::ProcessExitLogin(MainClient& client)
  *****************************************/
 void MainServer::ProcessQuit(MainClient& client)
 {
+    std::string send_string;
     // if in room
     if(client.player.player_state == Player::IN_ROOM){
         this->ProcessExitRoom(client);
@@ -537,9 +591,10 @@ void MainServer::ProcessQuit(MainClient& client)
     int fd = client.client_fd;
     this->client_pool.name_fd_map.erase(client.player.player_name);
     this->client_pool.client_pool.erase(client.client_fd);
-    S_Quit *s_quit = new S_Quit;
-    s_quit->state = 1;
-    this->SendData(fd, (char*)s_quit, sizeof(S_Quit));
+    CF::S_Quit s_quit;
+    s_quit.set_state(1);
+    s_quit.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_QUIT);
 }
 
 /******************************************
@@ -550,14 +605,18 @@ void MainServer::ProcessQuit(MainClient& client)
  *****************************************/
 void MainServer::ProcessExitRoom(MainClient& client)
 {
+    std::string send_string;
     // Tell others
     for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
         if(this->lobby.rooms[client.player.room_no].clients[i]){
             if(this->lobby.rooms[client.player.room_no].clients[i] != &client){
-                S_UpdateRoom *s_update_room = new S_UpdateRoom;
-                s_update_room->seat_info.empty = SEAT_EMPTY;
-                s_update_room->seat_info.seat_no = client.player.seat_no;
-                this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, (char*)s_update_room, sizeof(S_UpdateRoom));
+                CF::S_UpdateRoom s_update_room;
+                CF::SeatInfo seat_info;
+                seat_info.set_empty(SEAT_EMPTY);
+                seat_info.set_seat_no(client.player.seat_no);
+                s_update_room.set_allocated_seat_info(&seat_info);
+                s_update_room.SerializeToString(&send_string);
+                this->SendData(this->lobby.rooms[client.player.room_no].clients[i]->client_fd, send_string.c_str(), send_string.length(), S_UPDATE_ROOM);
             }   
         }
     }
@@ -565,9 +624,10 @@ void MainServer::ProcessExitRoom(MainClient& client)
     this->lobby.rooms[client.player.room_no].ExitRoom(&client);
     // Set player info
     client.player.ExitRoom();
-    S_ExitRoom *s_exit_room = new S_ExitRoom;
-    s_exit_room->state = 1;
-    this->SendData(client.client_fd, (char*)s_exit_room, sizeof(S_ExitRoom));
+    CF::S_ExitRoom s_exit_room;
+    s_exit_room.set_state(1);
+    s_exit_room.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_EXIT_ROOM);
 }
 
 /******************************************
@@ -578,11 +638,15 @@ void MainServer::ProcessExitRoom(MainClient& client)
  *****************************************/
 void MainServer::ProcessCreateRoom(MainClient& client)
 {
-    C_CreateRoom *c_create_room = (C_CreateRoom*)client.received_data;
-    this->lobby.CreateRoom(std::string(c_create_room->room_name));
-    S_CreateRoom *s_create_room = new S_CreateRoom;
-    s_create_room->state = 1;
-    this->SendData(client.client_fd, (char*)s_create_room, sizeof(S_CreateRoom));
+    std::string send_string;
+    CF::C_CreateRoom c_create_room;
+    c_create_room.ParseFromString(client.received_string);
+    this->lobby.CreateRoom(c_create_room.room_name());
+
+    CF::S_CreateRoom s_create_room;
+    s_create_room.set_state(1);
+    s_create_room.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_CREATE_ROOM);
 }
 
 /******************************************
@@ -593,24 +657,31 @@ void MainServer::ProcessCreateRoom(MainClient& client)
  *****************************************/
 void MainServer::ProcessAddFriend(MainClient& client)
 {
-    C_AddFriend *c_add_friend = (C_AddFriend*)client.received_data;
-    S_AddFriend *s_add_friend = new S_AddFriend;
+    std::string send_string;
+    CF::C_AddFriend c_add_friend;
+    c_add_friend.ParseFromString(client.received_string);
+
+    CF::S_AddFriend s_add_friend;
     // Check username exist
-    if(Database::Instance().CheckUserName(c_add_friend->friend_name)){
+    if(Database::Instance().CheckUserName(c_add_friend.friend_name())){
         // Insert into database
-        Database::Instance().InsertWaitFriend(client.player.player_id, Database::Instance().GetUserId(c_add_friend->friend_name));
+        Database::Instance().InsertWaitFriend(client.player.player_id, Database::Instance().GetUserId(c_add_friend.friend_name()));
         // if online, send
-        if(this->client_pool.CheckOnline(c_add_friend->friend_name)){
-            S_OtherAddFriend *s_other_add_friend = new S_OtherAddFriend;
-            strcpy(s_other_add_friend->friend_info.friend_name, client.player.player_name.c_str());
-            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_add_friend->friend_name]].client_fd, (char*)s_other_add_friend, sizeof(S_OtherAddFriend));
+        if(this->client_pool.CheckOnline(c_add_friend.friend_name())){
+            CF::S_OtherAddFriend s_other_add_friend;
+            CF::AddFriendInfo add_friend_info;
+            add_friend_info.set_friend_name(client.player.player_name);
+            s_other_add_friend.set_allocated_friend_info(&add_friend_info);
+            s_other_add_friend.SerializeToString(&send_string);
+            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_add_friend.friend_name()]].client_fd, send_string.c_str(), send_string.length(), S_OTHER_ADD_FRIEND);
         }
-        s_add_friend->state = SEND_FRIEND_OK;
+        s_add_friend.set_state(SEND_FRIEND_OK);
     }
     else{
-        s_add_friend->state = SEND_FRIEND_FAIL;
+        s_add_friend.set_state(SEND_FRIEND_FAIL);
     }
-    this->SendData(client.client_fd, (char*)s_add_friend, sizeof(S_AddFriend));
+    s_add_friend.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_ADD_FRIEND);
 }
 
 /******************************************
@@ -621,32 +692,60 @@ void MainServer::ProcessAddFriend(MainClient& client)
  *****************************************/
 void MainServer::ProcessReplyFriend(MainClient& client)
 {
-    C_ReplyFriend *c_reply_friend = (C_ReplyFriend*)client.received_data;
-    S_AddFriend *s_add_friend = new S_AddFriend;
-    if(c_reply_friend->state == REPLY_FRIEND_OK){
-        Database::Instance().InsertFriend(Database::Instance().GetUserId(c_reply_friend->friend_name), client.player.player_id);
-        Database::Instance().DeleteWaitFriend(Database::Instance().GetUserId(c_reply_friend->friend_name), client.player.player_id);
+    std::string send_string;
+
+    CF::C_ReplyFriend c_reply_friend;
+    c_reply_friend.ParseFromString(client.received_string);
+
+    CF::S_AddFriend s_add_friend;
+    bool friend_online=false;
+    if(c_reply_friend.state() == REPLY_FRIEND_OK){
+        Database::Instance().InsertFriend(Database::Instance().GetUserId(c_reply_friend.friend_name()), client.player.player_id);
+        Database::Instance().DeleteWaitFriend(Database::Instance().GetUserId(c_reply_friend.friend_name()), client.player.player_id);
         // if online, send
-        if(this->client_pool.CheckOnline(c_reply_friend->friend_name)){
-            s_add_friend->state = REPLY_FRIEND_OK;
-            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend->friend_name]].client_fd, (char*)s_add_friend, sizeof(S_AddFriend), 2);
-            S_FriendUpdate *s_friend_update = new S_FriendUpdate;
-            strcpy(s_friend_update->friend_info.player_name, client.player.player_name.c_str());
-            s_friend_update->friend_info.state = PLAYER_ONLINE;
-            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend->friend_name]].client_fd, (char*)s_friend_update, sizeof(S_FriendUpdate));
+        if(this->client_pool.CheckOnline(c_reply_friend.friend_name())){
+            // Set flag true
+            friend_online = true;
+            s_add_friend.set_state(REPLY_FRIEND_OK);
+            s_add_friend.SerializeToString(&send_string);
+            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend.friend_name()]].client_fd, send_string.c_str(), send_string.length(), S_ADD_FRIEND);
+            CF::S_FriendUpdate s_friend_update;
+            CF::FriendInfo friend_info;
+            friend_info.set_player_name(client.player.player_name);
+            friend_info.set_state(PLAYER_ONLINE);
+            s_friend_update.set_allocated_friend_info(&friend_info);
+            s_add_friend.SerializeToString(&send_string);
+            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend.friend_name()]].client_fd, send_string.c_str(), send_string.length(), S_FRIEND_UPDATE);
         }
-        s_add_friend->state = SEND_FRIEND_OK;
+        s_add_friend.set_state(SEND_FRIEND_OK);
     }
     else{
-        Database::Instance().DeleteWaitFriend(Database::Instance().GetUserId(c_reply_friend->friend_name), client.player.player_id);
+        Database::Instance().DeleteWaitFriend(Database::Instance().GetUserId(c_reply_friend.friend_name()), client.player.player_id);
         // if online, send
-        if(this->client_pool.CheckOnline(c_reply_friend->friend_name)){
-            s_add_friend->state = REPLY_FRIEND_FAIL;
-            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend->friend_name]].client_fd, (char*)s_add_friend, sizeof(S_AddFriend), 2);
+        if(this->client_pool.CheckOnline(c_reply_friend.friend_name())){
+            s_add_friend.set_state(REPLY_FRIEND_FAIL);
+            s_add_friend.SerializeToString(&send_string);
+            this->SendData(this->client_pool.client_pool[this->client_pool.name_fd_map[c_reply_friend.friend_name()]].client_fd, send_string.c_str(), send_string.length(), S_ADD_FRIEND);
         }
-        s_add_friend->state = SEND_FRIEND_OK;
+        s_add_friend.set_state(SEND_FRIEND_OK);
     }
-    this->SendData(client.client_fd, (char*)s_add_friend, sizeof(S_AddFriend));
+    s_add_friend.SerializeToString(&send_string);
+    this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_ADD_FRIEND);
+    // Send friend online info
+    if(c_reply_friend.state() == REPLY_FRIEND_OK){
+        CF::S_FriendUpdate s_friend_update;
+        CF::FriendInfo friend_info;
+        friend_info.set_player_name(c_reply_friend.friend_name());
+        if(friend_online){
+            friend_info.set_state(PLAYER_ONLINE);
+        }
+        else{
+            friend_info.set_state(PLAYER_OFFLINE);
+        }
+        s_friend_update.set_allocated_friend_info(&friend_info);
+        s_add_friend.SerializeToString(&send_string);
+        this->SendData(client.client_fd, send_string.c_str(), send_string.length(), S_FRIEND_UPDATE);
+    }
 }
 
 /******************************************
@@ -655,16 +754,16 @@ void MainServer::ProcessReplyFriend(MainClient& client)
  * client: client
  * Return: None
  *****************************************/
-void MainServer::FillPlayerInfo(PlayerInfo& player_info,const Player& player)
+void MainServer::FillPlayerInfo(CF::PlayerInfo& player_info,const Player& player)
 {
-    strcpy(player_info.player_name, player.player_name.c_str());
-    player_info.char_type = player.character_type;
-    player_info.ready = player.ready;
+    player_info.set_player_name(player.player_name);
+    player_info.set_char_type(player.character_type);
+    player_info.set_ready(player.ready);
     if(this->lobby.rooms[player.room_no].room_owner == player.seat_no){
-        player_info.owner = PLAYER_READY;
+        player_info.set_owner(PLAYER_READY);
     }
     else{
-        player_info.owner = PLAYER_NO_READY;
+        player_info.set_owner(PLAYER_NO_READY);
     }
 }
 

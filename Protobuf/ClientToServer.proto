@@ -1,0 +1,108 @@
+syntax = "proto3";
+package ChampionFist;
+
+enum ClientCommandType{
+    C_EMPTY = 0;
+    C_LOGIN = 1;
+    C_REGISTER = 2;
+    C_HALL_ROOM = 3;
+    C_FRIEND = 4;
+    C_ENTER_ROOM = 5;
+    C_ROOM_INFO = 6;
+    C_MODIFY_CHAR = 7;
+    C_READY = 8;
+    C_CANCEL_READY = 9;
+    C_START_GAME = 10;
+    C_EXIT_LOGIN = 11;
+    C_QUIT = 12;
+    C_EXIT_ROOM = 13;
+    C_CREATE_ROOM = 14;
+    C_ADD_FRIEND = 15;
+    C_REPLY_FRIEND = 16;
+}
+
+/* Login info from client to server */
+message C_Login{
+    string name = 1;                            // player name
+    string password_md5 = 2;                    // password in md5
+};
+
+/* Register info from client to server */
+message C_Register{
+    string name = 1;                            // player name
+    string password_md5 = 2;                    // password in md5
+};
+
+/* Apply to get hall room info from client to server */
+message C_HallRoom{
+    int32 page = 1;                             // page of rooms
+};
+
+/* Apply to get hall room info from client to server */
+// message C_Friend{
+     
+// };
+
+/* Apply to enter room info from client to server */
+message C_EnterRoom{
+    string room_no = 1;                          // room no
+};
+
+/* Apply to get room info from client to server */
+message C_RoomInfo{
+    string room_no = 1;                          // room no
+};
+
+/*
+ * Function: Apply to modify stringacter info from client to server
+ * Info:
+ */
+message C_ModChar{
+    int32 char_type = 1;                      // room no
+};
+
+/* Apply to get ready from client to server */
+// message C_Ready{
+     
+// };
+
+/* Apply to cancel ready from client to server */
+// message C_CancelReady{
+     
+// };
+
+/* Apply to start game from client to server */
+// message C_StartGame{
+     
+// };
+
+/* Apply to exit login from client to server */
+// message C_ExitLogin{
+     
+// };
+
+/* Apply to quit game from client to server */
+// message C_Quit{
+     
+// };
+
+/* Apply to exit room from client to server */
+// message C_ExitRoom{
+     
+// };
+
+/* Apply to create room from client to server */
+message C_CreateRoom{
+    string room_name = 1;                               // room name
+};
+
+/* Apply to add friend */
+message C_AddFriend{
+    string friend_name = 1;                             // room name
+};
+
+/* Reply to add friend */
+message C_ReplyFriend{
+    string friend_name = 1;                             // room name
+    int32 state = 2;                                    // state of the reply
+};
