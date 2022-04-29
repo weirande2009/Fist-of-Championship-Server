@@ -47,18 +47,6 @@ struct C_RegisterDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_RegisterDefaultTypeInternal _C_Register_default_instance_;
-PROTOBUF_CONSTEXPR C_HallRoom::C_HallRoom(
-    ::_pbi::ConstantInitialized)
-  : page_(0){}
-struct C_HallRoomDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR C_HallRoomDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~C_HallRoomDefaultTypeInternal() {}
-  union {
-    C_HallRoom _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_HallRoomDefaultTypeInternal _C_HallRoom_default_instance_;
 PROTOBUF_CONSTEXPR C_EnterRoom::C_EnterRoom(
     ::_pbi::ConstantInitialized)
   : room_no_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}){}
@@ -133,7 +121,7 @@ struct C_ReplyFriendDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 C_ReplyFriendDefaultTypeInternal _C_ReplyFriend_default_instance_;
 }  // namespace ChampionFist
-static ::_pb::Metadata file_level_metadata_ClientToServer_2eproto[9];
+static ::_pb::Metadata file_level_metadata_ClientToServer_2eproto[8];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_ClientToServer_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_ClientToServer_2eproto = nullptr;
 
@@ -154,13 +142,6 @@ const uint32_t TableStruct_ClientToServer_2eproto::offsets[] PROTOBUF_SECTION_VA
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::ChampionFist::C_Register, name_),
   PROTOBUF_FIELD_OFFSET(::ChampionFist::C_Register, password_md5_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ChampionFist::C_HallRoom, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ChampionFist::C_HallRoom, page_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::ChampionFist::C_EnterRoom, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -208,19 +189,17 @@ const uint32_t TableStruct_ClientToServer_2eproto::offsets[] PROTOBUF_SECTION_VA
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::ChampionFist::C_Login)},
   { 8, -1, -1, sizeof(::ChampionFist::C_Register)},
-  { 16, -1, -1, sizeof(::ChampionFist::C_HallRoom)},
-  { 23, -1, -1, sizeof(::ChampionFist::C_EnterRoom)},
-  { 30, -1, -1, sizeof(::ChampionFist::C_RoomInfo)},
-  { 37, -1, -1, sizeof(::ChampionFist::C_ModChar)},
-  { 44, -1, -1, sizeof(::ChampionFist::C_CreateRoom)},
-  { 51, -1, -1, sizeof(::ChampionFist::C_AddFriend)},
-  { 58, -1, -1, sizeof(::ChampionFist::C_ReplyFriend)},
+  { 16, -1, -1, sizeof(::ChampionFist::C_EnterRoom)},
+  { 23, -1, -1, sizeof(::ChampionFist::C_RoomInfo)},
+  { 30, -1, -1, sizeof(::ChampionFist::C_ModChar)},
+  { 37, -1, -1, sizeof(::ChampionFist::C_CreateRoom)},
+  { 44, -1, -1, sizeof(::ChampionFist::C_AddFriend)},
+  { 51, -1, -1, sizeof(::ChampionFist::C_ReplyFriend)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::ChampionFist::_C_Login_default_instance_._instance,
   &::ChampionFist::_C_Register_default_instance_._instance,
-  &::ChampionFist::_C_HallRoom_default_instance_._instance,
   &::ChampionFist::_C_EnterRoom_default_instance_._instance,
   &::ChampionFist::_C_RoomInfo_default_instance_._instance,
   &::ChampionFist::_C_ModChar_default_instance_._instance,
@@ -233,27 +212,26 @@ const char descriptor_table_protodef_ClientToServer_2eproto[] PROTOBUF_SECTION_V
   "\n\024ClientToServer.proto\022\014ChampionFist\"-\n\007"
   "C_Login\022\014\n\004name\030\001 \001(\t\022\024\n\014password_md5\030\002 "
   "\001(\t\"0\n\nC_Register\022\014\n\004name\030\001 \001(\t\022\024\n\014passw"
-  "ord_md5\030\002 \001(\t\"\032\n\nC_HallRoom\022\014\n\004page\030\001 \001("
-  "\005\"\036\n\013C_EnterRoom\022\017\n\007room_no\030\001 \001(\t\"\035\n\nC_R"
-  "oomInfo\022\017\n\007room_no\030\001 \001(\t\"\036\n\tC_ModChar\022\021\n"
-  "\tchar_type\030\001 \001(\005\"!\n\014C_CreateRoom\022\021\n\troom"
-  "_name\030\001 \001(\t\"\"\n\013C_AddFriend\022\023\n\013friend_nam"
-  "e\030\001 \001(\t\"3\n\rC_ReplyFriend\022\023\n\013friend_name\030"
-  "\001 \001(\t\022\r\n\005state\030\002 \001(\005*\255\002\n\021ClientCommandTy"
-  "pe\022\013\n\007C_EMPTY\020\000\022\013\n\007C_LOGIN\020\001\022\016\n\nC_REGIST"
-  "ER\020\002\022\017\n\013C_HALL_ROOM\020\003\022\014\n\010C_FRIEND\020\004\022\020\n\014C"
-  "_ENTER_ROOM\020\005\022\017\n\013C_ROOM_INFO\020\006\022\021\n\rC_MODI"
-  "FY_CHAR\020\007\022\013\n\007C_READY\020\010\022\022\n\016C_CANCEL_READY"
-  "\020\t\022\020\n\014C_START_GAME\020\n\022\020\n\014C_EXIT_LOGIN\020\013\022\n"
-  "\n\006C_QUIT\020\014\022\017\n\013C_EXIT_ROOM\020\r\022\021\n\rC_CREATE_"
-  "ROOM\020\016\022\020\n\014C_ADD_FRIEND\020\017\022\022\n\016C_REPLY_FRIE"
-  "ND\020\020b\006proto3"
+  "ord_md5\030\002 \001(\t\"\036\n\013C_EnterRoom\022\017\n\007room_no\030"
+  "\001 \001(\t\"\035\n\nC_RoomInfo\022\017\n\007room_no\030\001 \001(\t\"\036\n\t"
+  "C_ModChar\022\021\n\tchar_type\030\001 \001(\005\"!\n\014C_Create"
+  "Room\022\021\n\troom_name\030\001 \001(\t\"\"\n\013C_AddFriend\022\023"
+  "\n\013friend_name\030\001 \001(\t\"3\n\rC_ReplyFriend\022\023\n\013"
+  "friend_name\030\001 \001(\t\022\r\n\005state\030\002 \001(\005*\255\002\n\021Cli"
+  "entCommandType\022\013\n\007C_EMPTY\020\000\022\013\n\007C_LOGIN\020\001"
+  "\022\016\n\nC_REGISTER\020\002\022\017\n\013C_HALL_ROOM\020\003\022\014\n\010C_F"
+  "RIEND\020\004\022\020\n\014C_ENTER_ROOM\020\005\022\017\n\013C_ROOM_INFO"
+  "\020\006\022\021\n\rC_MODIFY_CHAR\020\007\022\013\n\007C_READY\020\010\022\022\n\016C_"
+  "CANCEL_READY\020\t\022\020\n\014C_START_GAME\020\n\022\020\n\014C_EX"
+  "IT_LOGIN\020\013\022\n\n\006C_QUIT\020\014\022\017\n\013C_EXIT_ROOM\020\r\022"
+  "\021\n\rC_CREATE_ROOM\020\016\022\020\n\014C_ADD_FRIEND\020\017\022\022\n\016"
+  "C_REPLY_FRIEND\020\020b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_ClientToServer_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ClientToServer_2eproto = {
-    false, false, 692, descriptor_table_protodef_ClientToServer_2eproto,
+    false, false, 664, descriptor_table_protodef_ClientToServer_2eproto,
     "ClientToServer.proto",
-    &descriptor_table_ClientToServer_2eproto_once, nullptr, 0, 9,
+    &descriptor_table_ClientToServer_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_ClientToServer_2eproto::offsets,
     file_level_metadata_ClientToServer_2eproto, file_level_enum_descriptors_ClientToServer_2eproto,
     file_level_service_descriptors_ClientToServer_2eproto,
@@ -783,177 +761,6 @@ void C_Register::InternalSwap(C_Register* other) {
 
 // ===================================================================
 
-class C_HallRoom::_Internal {
- public:
-};
-
-C_HallRoom::C_HallRoom(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ChampionFist.C_HallRoom)
-}
-C_HallRoom::C_HallRoom(const C_HallRoom& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  page_ = from.page_;
-  // @@protoc_insertion_point(copy_constructor:ChampionFist.C_HallRoom)
-}
-
-inline void C_HallRoom::SharedCtor() {
-page_ = 0;
-}
-
-C_HallRoom::~C_HallRoom() {
-  // @@protoc_insertion_point(destructor:ChampionFist.C_HallRoom)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void C_HallRoom::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void C_HallRoom::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void C_HallRoom::Clear() {
-// @@protoc_insertion_point(message_clear_start:ChampionFist.C_HallRoom)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  page_ = 0;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* C_HallRoom::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // int32 page = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          page_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* C_HallRoom::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ChampionFist.C_HallRoom)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 page = 1;
-  if (this->_internal_page() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_page(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:ChampionFist.C_HallRoom)
-  return target;
-}
-
-size_t C_HallRoom::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ChampionFist.C_HallRoom)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // int32 page = 1;
-  if (this->_internal_page() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_page());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData C_HallRoom::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    C_HallRoom::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*C_HallRoom::GetClassData() const { return &_class_data_; }
-
-void C_HallRoom::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<C_HallRoom *>(to)->MergeFrom(
-      static_cast<const C_HallRoom &>(from));
-}
-
-
-void C_HallRoom::MergeFrom(const C_HallRoom& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ChampionFist.C_HallRoom)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_page() != 0) {
-    _internal_set_page(from._internal_page());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void C_HallRoom::CopyFrom(const C_HallRoom& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ChampionFist.C_HallRoom)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool C_HallRoom::IsInitialized() const {
-  return true;
-}
-
-void C_HallRoom::InternalSwap(C_HallRoom* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(page_, other->page_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata C_HallRoom::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_ClientToServer_2eproto_getter, &descriptor_table_ClientToServer_2eproto_once,
-      file_level_metadata_ClientToServer_2eproto[2]);
-}
-
-// ===================================================================
-
 class C_EnterRoom::_Internal {
  public:
 };
@@ -1144,7 +951,7 @@ void C_EnterRoom::InternalSwap(C_EnterRoom* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_EnterRoom::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ClientToServer_2eproto_getter, &descriptor_table_ClientToServer_2eproto_once,
-      file_level_metadata_ClientToServer_2eproto[3]);
+      file_level_metadata_ClientToServer_2eproto[2]);
 }
 
 // ===================================================================
@@ -1339,7 +1146,7 @@ void C_RoomInfo::InternalSwap(C_RoomInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_RoomInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ClientToServer_2eproto_getter, &descriptor_table_ClientToServer_2eproto_once,
-      file_level_metadata_ClientToServer_2eproto[4]);
+      file_level_metadata_ClientToServer_2eproto[3]);
 }
 
 // ===================================================================
@@ -1510,7 +1317,7 @@ void C_ModChar::InternalSwap(C_ModChar* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_ModChar::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ClientToServer_2eproto_getter, &descriptor_table_ClientToServer_2eproto_once,
-      file_level_metadata_ClientToServer_2eproto[5]);
+      file_level_metadata_ClientToServer_2eproto[4]);
 }
 
 // ===================================================================
@@ -1705,7 +1512,7 @@ void C_CreateRoom::InternalSwap(C_CreateRoom* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_CreateRoom::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ClientToServer_2eproto_getter, &descriptor_table_ClientToServer_2eproto_once,
-      file_level_metadata_ClientToServer_2eproto[6]);
+      file_level_metadata_ClientToServer_2eproto[5]);
 }
 
 // ===================================================================
@@ -1900,7 +1707,7 @@ void C_AddFriend::InternalSwap(C_AddFriend* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_AddFriend::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ClientToServer_2eproto_getter, &descriptor_table_ClientToServer_2eproto_once,
-      file_level_metadata_ClientToServer_2eproto[7]);
+      file_level_metadata_ClientToServer_2eproto[6]);
 }
 
 // ===================================================================
@@ -2121,7 +1928,7 @@ void C_ReplyFriend::InternalSwap(C_ReplyFriend* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata C_ReplyFriend::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ClientToServer_2eproto_getter, &descriptor_table_ClientToServer_2eproto_once,
-      file_level_metadata_ClientToServer_2eproto[8]);
+      file_level_metadata_ClientToServer_2eproto[7]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2134,10 +1941,6 @@ Arena::CreateMaybeMessage< ::ChampionFist::C_Login >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::ChampionFist::C_Register*
 Arena::CreateMaybeMessage< ::ChampionFist::C_Register >(Arena* arena) {
   return Arena::CreateMessageInternal< ::ChampionFist::C_Register >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ChampionFist::C_HallRoom*
-Arena::CreateMaybeMessage< ::ChampionFist::C_HallRoom >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ChampionFist::C_HallRoom >(arena);
 }
 template<> PROTOBUF_NOINLINE ::ChampionFist::C_EnterRoom*
 Arena::CreateMaybeMessage< ::ChampionFist::C_EnterRoom >(Arena* arena) {

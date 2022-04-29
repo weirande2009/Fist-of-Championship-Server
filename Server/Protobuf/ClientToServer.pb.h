@@ -55,9 +55,6 @@ extern C_CreateRoomDefaultTypeInternal _C_CreateRoom_default_instance_;
 class C_EnterRoom;
 struct C_EnterRoomDefaultTypeInternal;
 extern C_EnterRoomDefaultTypeInternal _C_EnterRoom_default_instance_;
-class C_HallRoom;
-struct C_HallRoomDefaultTypeInternal;
-extern C_HallRoomDefaultTypeInternal _C_HallRoom_default_instance_;
 class C_Login;
 struct C_LoginDefaultTypeInternal;
 extern C_LoginDefaultTypeInternal _C_Login_default_instance_;
@@ -78,7 +75,6 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::ChampionFist::C_AddFriend* Arena::CreateMaybeMessage<::ChampionFist::C_AddFriend>(Arena*);
 template<> ::ChampionFist::C_CreateRoom* Arena::CreateMaybeMessage<::ChampionFist::C_CreateRoom>(Arena*);
 template<> ::ChampionFist::C_EnterRoom* Arena::CreateMaybeMessage<::ChampionFist::C_EnterRoom>(Arena*);
-template<> ::ChampionFist::C_HallRoom* Arena::CreateMaybeMessage<::ChampionFist::C_HallRoom>(Arena*);
 template<> ::ChampionFist::C_Login* Arena::CreateMaybeMessage<::ChampionFist::C_Login>(Arena*);
 template<> ::ChampionFist::C_ModChar* Arena::CreateMaybeMessage<::ChampionFist::C_ModChar>(Arena*);
 template<> ::ChampionFist::C_Register* Arena::CreateMaybeMessage<::ChampionFist::C_Register>(Arena*);
@@ -457,149 +453,6 @@ class C_Register final :
 };
 // -------------------------------------------------------------------
 
-class C_HallRoom final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChampionFist.C_HallRoom) */ {
- public:
-  inline C_HallRoom() : C_HallRoom(nullptr) {}
-  ~C_HallRoom() override;
-  explicit PROTOBUF_CONSTEXPR C_HallRoom(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  C_HallRoom(const C_HallRoom& from);
-  C_HallRoom(C_HallRoom&& from) noexcept
-    : C_HallRoom() {
-    *this = ::std::move(from);
-  }
-
-  inline C_HallRoom& operator=(const C_HallRoom& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline C_HallRoom& operator=(C_HallRoom&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const C_HallRoom& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const C_HallRoom* internal_default_instance() {
-    return reinterpret_cast<const C_HallRoom*>(
-               &_C_HallRoom_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(C_HallRoom& a, C_HallRoom& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(C_HallRoom* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(C_HallRoom* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  C_HallRoom* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<C_HallRoom>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const C_HallRoom& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const C_HallRoom& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(C_HallRoom* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ChampionFist.C_HallRoom";
-  }
-  protected:
-  explicit C_HallRoom(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPageFieldNumber = 1,
-  };
-  // int32 page = 1;
-  void clear_page();
-  int32_t page() const;
-  void set_page(int32_t value);
-  private:
-  int32_t _internal_page() const;
-  void _internal_set_page(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:ChampionFist.C_HallRoom)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  int32_t page_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_ClientToServer_2eproto;
-};
-// -------------------------------------------------------------------
-
 class C_EnterRoom final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChampionFist.C_EnterRoom) */ {
  public:
@@ -648,7 +501,7 @@ class C_EnterRoom final :
                &_C_EnterRoom_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
   friend void swap(C_EnterRoom& a, C_EnterRoom& b) {
     a.Swap(&b);
@@ -796,7 +649,7 @@ class C_RoomInfo final :
                &_C_RoomInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    3;
 
   friend void swap(C_RoomInfo& a, C_RoomInfo& b) {
     a.Swap(&b);
@@ -944,7 +797,7 @@ class C_ModChar final :
                &_C_ModChar_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    4;
 
   friend void swap(C_ModChar& a, C_ModChar& b) {
     a.Swap(&b);
@@ -1087,7 +940,7 @@ class C_CreateRoom final :
                &_C_CreateRoom_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    5;
 
   friend void swap(C_CreateRoom& a, C_CreateRoom& b) {
     a.Swap(&b);
@@ -1235,7 +1088,7 @@ class C_AddFriend final :
                &_C_AddFriend_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    6;
 
   friend void swap(C_AddFriend& a, C_AddFriend& b) {
     a.Swap(&b);
@@ -1383,7 +1236,7 @@ class C_ReplyFriend final :
                &_C_ReplyFriend_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    7;
 
   friend void swap(C_ReplyFriend& a, C_ReplyFriend& b) {
     a.Swap(&b);
@@ -1709,30 +1562,6 @@ inline void C_Register::set_allocated_password_md5(std::string* password_md5) {
 
 // -------------------------------------------------------------------
 
-// C_HallRoom
-
-// int32 page = 1;
-inline void C_HallRoom::clear_page() {
-  page_ = 0;
-}
-inline int32_t C_HallRoom::_internal_page() const {
-  return page_;
-}
-inline int32_t C_HallRoom::page() const {
-  // @@protoc_insertion_point(field_get:ChampionFist.C_HallRoom.page)
-  return _internal_page();
-}
-inline void C_HallRoom::_internal_set_page(int32_t value) {
-  
-  page_ = value;
-}
-inline void C_HallRoom::set_page(int32_t value) {
-  _internal_set_page(value);
-  // @@protoc_insertion_point(field_set:ChampionFist.C_HallRoom.page)
-}
-
-// -------------------------------------------------------------------
-
 // C_EnterRoom
 
 // string room_no = 1;
@@ -2048,8 +1877,6 @@ inline void C_ReplyFriend::set_state(int32_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

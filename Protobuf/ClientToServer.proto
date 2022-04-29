@@ -34,9 +34,9 @@ message C_Register{
 };
 
 /* Apply to get hall room info from client to server */
-message C_HallRoom{
-    int32 page = 1;                             // page of rooms
-};
+// message C_HallRoom{
+//     int32 page = 1;                             // page of rooms
+// };
 
 /* Apply to get hall room info from client to server */
 // message C_Friend{

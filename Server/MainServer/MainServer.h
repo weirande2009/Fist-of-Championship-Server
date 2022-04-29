@@ -9,7 +9,6 @@
 #include "../Protobuf/ClientToServer.pb.h"
 #include "../Protobuf/ServerToClient.pb.h"
 
-
 class MainServer: public Server
 {
 // Variables

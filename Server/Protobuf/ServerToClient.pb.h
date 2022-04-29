@@ -596,6 +596,7 @@ class RoomInfo final :
     kRoomNoFieldNumber = 3,
     kPlayerNumberFieldNumber = 1,
     kStateFieldNumber = 4,
+    kRoomIndexFieldNumber = 5,
   };
   // string room_name = 2;
   void clear_room_name();
@@ -643,6 +644,15 @@ class RoomInfo final :
   void _internal_set_state(int32_t value);
   public:
 
+  // int32 room_index = 5;
+  void clear_room_index();
+  int32_t room_index() const;
+  void set_room_index(int32_t value);
+  private:
+  int32_t _internal_room_index() const;
+  void _internal_set_room_index(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:ChampionFist.RoomInfo)
  private:
   class _Internal;
@@ -654,6 +664,7 @@ class RoomInfo final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_no_;
   int32_t player_number_;
   int32_t state_;
+  int32_t room_index_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ServerToClient_2eproto;
 };
@@ -3891,6 +3902,26 @@ inline void RoomInfo::_internal_set_state(int32_t value) {
 inline void RoomInfo::set_state(int32_t value) {
   _internal_set_state(value);
   // @@protoc_insertion_point(field_set:ChampionFist.RoomInfo.state)
+}
+
+// int32 room_index = 5;
+inline void RoomInfo::clear_room_index() {
+  room_index_ = 0;
+}
+inline int32_t RoomInfo::_internal_room_index() const {
+  return room_index_;
+}
+inline int32_t RoomInfo::room_index() const {
+  // @@protoc_insertion_point(field_get:ChampionFist.RoomInfo.room_index)
+  return _internal_room_index();
+}
+inline void RoomInfo::_internal_set_room_index(int32_t value) {
+  
+  room_index_ = value;
+}
+inline void RoomInfo::set_room_index(int32_t value) {
+  _internal_set_room_index(value);
+  // @@protoc_insertion_point(field_set:ChampionFist.RoomInfo.room_index)
 }
 
 // -------------------------------------------------------------------

@@ -41,6 +41,7 @@ message S_Register{
     string room_name = 2;                           // room name
     string room_no = 3;                             // room number
     int32 state = 4;                                // room state
+    int32 room_index = 5;                           // room index in a page
 };
 
 /*
@@ -49,7 +50,7 @@ message S_Register{
 message S_HallRoom{
     int32 total_room_num = 1;
     int32 page_room_num = 2;
-    repeated RoomInfo room_info = 3;                         // room info
+    repeated RoomInfo room_info = 3;                // room info
 };
 
 /*

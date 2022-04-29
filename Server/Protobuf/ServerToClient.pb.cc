@@ -50,7 +50,8 @@ PROTOBUF_CONSTEXPR RoomInfo::RoomInfo(
   : room_name_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , room_no_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , player_number_(0)
-  , state_(0){}
+  , state_(0)
+  , room_index_(0){}
 struct RoomInfoDefaultTypeInternal {
   PROTOBUF_CONSTEXPR RoomInfoDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -339,6 +340,7 @@ const uint32_t TableStruct_ServerToClient_2eproto::offsets[] PROTOBUF_SECTION_VA
   PROTOBUF_FIELD_OFFSET(::ChampionFist::RoomInfo, room_name_),
   PROTOBUF_FIELD_OFFSET(::ChampionFist::RoomInfo, room_no_),
   PROTOBUF_FIELD_OFFSET(::ChampionFist::RoomInfo, state_),
+  PROTOBUF_FIELD_OFFSET(::ChampionFist::RoomInfo, room_index_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::ChampionFist::S_HallRoom, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -493,26 +495,26 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 0, -1, -1, sizeof(::ChampionFist::S_Login)},
   { 7, -1, -1, sizeof(::ChampionFist::S_Register)},
   { 14, -1, -1, sizeof(::ChampionFist::RoomInfo)},
-  { 24, -1, -1, sizeof(::ChampionFist::S_HallRoom)},
-  { 33, -1, -1, sizeof(::ChampionFist::FriendInfo)},
-  { 41, -1, -1, sizeof(::ChampionFist::S_Friend)},
-  { 48, -1, -1, sizeof(::ChampionFist::S_FriendUpdate)},
-  { 55, -1, -1, sizeof(::ChampionFist::S_EnterRoom)},
-  { 63, -1, -1, sizeof(::ChampionFist::PlayerInfo)},
-  { 73, -1, -1, sizeof(::ChampionFist::SeatInfo)},
-  { 82, -1, -1, sizeof(::ChampionFist::S_RoomInfo)},
-  { 89, -1, -1, sizeof(::ChampionFist::S_ExitRoom)},
-  { 96, -1, -1, sizeof(::ChampionFist::S_UpdateRoom)},
-  { 103, -1, -1, sizeof(::ChampionFist::S_ModChar)},
-  { 110, -1, -1, sizeof(::ChampionFist::S_Ready)},
-  { 117, -1, -1, sizeof(::ChampionFist::S_CancelReady)},
-  { 124, -1, -1, sizeof(::ChampionFist::S_StartGame)},
-  { 131, -1, -1, sizeof(::ChampionFist::S_ExitLogin)},
-  { 138, -1, -1, sizeof(::ChampionFist::S_Quit)},
-  { 145, -1, -1, sizeof(::ChampionFist::S_AddFriend)},
-  { 152, -1, -1, sizeof(::ChampionFist::AddFriendInfo)},
-  { 159, -1, -1, sizeof(::ChampionFist::S_OtherAddFriend)},
-  { 166, -1, -1, sizeof(::ChampionFist::S_CreateRoom)},
+  { 25, -1, -1, sizeof(::ChampionFist::S_HallRoom)},
+  { 34, -1, -1, sizeof(::ChampionFist::FriendInfo)},
+  { 42, -1, -1, sizeof(::ChampionFist::S_Friend)},
+  { 49, -1, -1, sizeof(::ChampionFist::S_FriendUpdate)},
+  { 56, -1, -1, sizeof(::ChampionFist::S_EnterRoom)},
+  { 64, -1, -1, sizeof(::ChampionFist::PlayerInfo)},
+  { 74, -1, -1, sizeof(::ChampionFist::SeatInfo)},
+  { 83, -1, -1, sizeof(::ChampionFist::S_RoomInfo)},
+  { 90, -1, -1, sizeof(::ChampionFist::S_ExitRoom)},
+  { 97, -1, -1, sizeof(::ChampionFist::S_UpdateRoom)},
+  { 104, -1, -1, sizeof(::ChampionFist::S_ModChar)},
+  { 111, -1, -1, sizeof(::ChampionFist::S_Ready)},
+  { 118, -1, -1, sizeof(::ChampionFist::S_CancelReady)},
+  { 125, -1, -1, sizeof(::ChampionFist::S_StartGame)},
+  { 132, -1, -1, sizeof(::ChampionFist::S_ExitLogin)},
+  { 139, -1, -1, sizeof(::ChampionFist::S_Quit)},
+  { 146, -1, -1, sizeof(::ChampionFist::S_AddFriend)},
+  { 153, -1, -1, sizeof(::ChampionFist::AddFriendInfo)},
+  { 160, -1, -1, sizeof(::ChampionFist::S_OtherAddFriend)},
+  { 167, -1, -1, sizeof(::ChampionFist::S_CreateRoom)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -544,46 +546,47 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_ServerToClient_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\024ServerToClient.proto\022\014ChampionFist\"\030\n\007"
   "S_Login\022\r\n\005state\030\001 \001(\005\"\033\n\nS_Register\022\r\n\005"
-  "state\030\001 \001(\005\"T\n\010RoomInfo\022\025\n\rplayer_number"
+  "state\030\001 \001(\005\"h\n\010RoomInfo\022\025\n\rplayer_number"
   "\030\001 \001(\005\022\021\n\troom_name\030\002 \001(\t\022\017\n\007room_no\030\003 \001"
-  "(\t\022\r\n\005state\030\004 \001(\005\"f\n\nS_HallRoom\022\026\n\016total"
-  "_room_num\030\001 \001(\005\022\025\n\rpage_room_num\030\002 \001(\005\022)"
-  "\n\troom_info\030\003 \003(\0132\026.ChampionFist.RoomInf"
-  "o\"0\n\nFriendInfo\022\023\n\013player_name\030\001 \001(\t\022\r\n\005"
-  "state\030\002 \001(\005\"9\n\010S_Friend\022-\n\013friend_info\030\001"
-  " \003(\0132\030.ChampionFist.FriendInfo\"\?\n\016S_Frie"
-  "ndUpdate\022-\n\013friend_info\030\001 \001(\0132\030.Champion"
-  "Fist.FriendInfo\"-\n\013S_EnterRoom\022\017\n\007seat_n"
-  "o\030\001 \001(\005\022\r\n\005state\030\002 \001(\005\"R\n\nPlayerInfo\022\023\n\013"
-  "player_name\030\001 \001(\t\022\021\n\tchar_type\030\002 \001(\005\022\r\n\005"
-  "ready\030\003 \001(\005\022\r\n\005owner\030\004 \001(\005\"Y\n\010SeatInfo\022\r"
-  "\n\005empty\030\001 \001(\005\022\017\n\007seat_no\030\002 \001(\005\022-\n\013player"
-  "_info\030\003 \001(\0132\030.ChampionFist.PlayerInfo\"7\n"
-  "\nS_RoomInfo\022)\n\tseat_info\030\001 \003(\0132\026.Champio"
-  "nFist.SeatInfo\"\033\n\nS_ExitRoom\022\r\n\005state\030\001 "
-  "\001(\005\"9\n\014S_UpdateRoom\022)\n\tseat_info\030\001 \001(\0132\026"
-  ".ChampionFist.SeatInfo\"\032\n\tS_ModChar\022\r\n\005s"
-  "tate\030\001 \001(\005\"\030\n\007S_Ready\022\r\n\005state\030\001 \001(\005\"\036\n\r"
-  "S_CancelReady\022\r\n\005state\030\001 \001(\005\"\034\n\013S_StartG"
-  "ame\022\r\n\005state\030\001 \001(\005\"\034\n\013S_ExitLogin\022\r\n\005sta"
-  "te\030\001 \001(\005\"\027\n\006S_Quit\022\r\n\005state\030\001 \001(\005\"\034\n\013S_A"
-  "ddFriend\022\r\n\005state\030\001 \001(\005\"$\n\rAddFriendInfo"
-  "\022\023\n\013friend_name\030\001 \001(\t\"D\n\020S_OtherAddFrien"
-  "d\0220\n\013friend_info\030\001 \001(\0132\033.ChampionFist.Ad"
-  "dFriendInfo\"\035\n\014S_CreateRoom\022\r\n\005state\030\001 \001"
-  "(\005*\331\002\n\021ServerCommandType\022\013\n\007S_EMPTY\020\000\022\013\n"
-  "\007S_LOGIN\020\001\022\016\n\nS_REGISTER\020\002\022\017\n\013S_HALL_ROO"
-  "M\020\003\022\014\n\010S_FRIEND\020\004\022\023\n\017S_FRIEND_UPDATE\020\005\022\020"
-  "\n\014S_ENTER_ROOM\020\006\022\017\n\013S_ROOM_INFO\020\007\022\017\n\013S_E"
-  "XIT_ROOM\020\010\022\021\n\rS_UPDATE_ROOM\020\t\022\021\n\rS_MODIF"
-  "Y_CHAR\020\n\022\013\n\007S_READY\020\013\022\022\n\016S_CANCEL_READY\020"
-  "\014\022\020\n\014S_START_GAME\020\r\022\020\n\014S_EXIT_LOGIN\020\016\022\n\n"
-  "\006S_QUIT\020\017\022\020\n\014S_ADD_FRIEND\020\020\022\026\n\022S_OTHER_A"
-  "DD_FRIEND\020\021\022\021\n\rS_CREATE_ROOM\020\022b\006proto3"
+  "(\t\022\r\n\005state\030\004 \001(\005\022\022\n\nroom_index\030\005 \001(\005\"f\n"
+  "\nS_HallRoom\022\026\n\016total_room_num\030\001 \001(\005\022\025\n\rp"
+  "age_room_num\030\002 \001(\005\022)\n\troom_info\030\003 \003(\0132\026."
+  "ChampionFist.RoomInfo\"0\n\nFriendInfo\022\023\n\013p"
+  "layer_name\030\001 \001(\t\022\r\n\005state\030\002 \001(\005\"9\n\010S_Fri"
+  "end\022-\n\013friend_info\030\001 \003(\0132\030.ChampionFist."
+  "FriendInfo\"\?\n\016S_FriendUpdate\022-\n\013friend_i"
+  "nfo\030\001 \001(\0132\030.ChampionFist.FriendInfo\"-\n\013S"
+  "_EnterRoom\022\017\n\007seat_no\030\001 \001(\005\022\r\n\005state\030\002 \001"
+  "(\005\"R\n\nPlayerInfo\022\023\n\013player_name\030\001 \001(\t\022\021\n"
+  "\tchar_type\030\002 \001(\005\022\r\n\005ready\030\003 \001(\005\022\r\n\005owner"
+  "\030\004 \001(\005\"Y\n\010SeatInfo\022\r\n\005empty\030\001 \001(\005\022\017\n\007sea"
+  "t_no\030\002 \001(\005\022-\n\013player_info\030\003 \001(\0132\030.Champi"
+  "onFist.PlayerInfo\"7\n\nS_RoomInfo\022)\n\tseat_"
+  "info\030\001 \003(\0132\026.ChampionFist.SeatInfo\"\033\n\nS_"
+  "ExitRoom\022\r\n\005state\030\001 \001(\005\"9\n\014S_UpdateRoom\022"
+  ")\n\tseat_info\030\001 \001(\0132\026.ChampionFist.SeatIn"
+  "fo\"\032\n\tS_ModChar\022\r\n\005state\030\001 \001(\005\"\030\n\007S_Read"
+  "y\022\r\n\005state\030\001 \001(\005\"\036\n\rS_CancelReady\022\r\n\005sta"
+  "te\030\001 \001(\005\"\034\n\013S_StartGame\022\r\n\005state\030\001 \001(\005\"\034"
+  "\n\013S_ExitLogin\022\r\n\005state\030\001 \001(\005\"\027\n\006S_Quit\022\r"
+  "\n\005state\030\001 \001(\005\"\034\n\013S_AddFriend\022\r\n\005state\030\001 "
+  "\001(\005\"$\n\rAddFriendInfo\022\023\n\013friend_name\030\001 \001("
+  "\t\"D\n\020S_OtherAddFriend\0220\n\013friend_info\030\001 \001"
+  "(\0132\033.ChampionFist.AddFriendInfo\"\035\n\014S_Cre"
+  "ateRoom\022\r\n\005state\030\001 \001(\005*\331\002\n\021ServerCommand"
+  "Type\022\013\n\007S_EMPTY\020\000\022\013\n\007S_LOGIN\020\001\022\016\n\nS_REGI"
+  "STER\020\002\022\017\n\013S_HALL_ROOM\020\003\022\014\n\010S_FRIEND\020\004\022\023\n"
+  "\017S_FRIEND_UPDATE\020\005\022\020\n\014S_ENTER_ROOM\020\006\022\017\n\013"
+  "S_ROOM_INFO\020\007\022\017\n\013S_EXIT_ROOM\020\010\022\021\n\rS_UPDA"
+  "TE_ROOM\020\t\022\021\n\rS_MODIFY_CHAR\020\n\022\013\n\007S_READY\020"
+  "\013\022\022\n\016S_CANCEL_READY\020\014\022\020\n\014S_START_GAME\020\r\022"
+  "\020\n\014S_EXIT_LOGIN\020\016\022\n\n\006S_QUIT\020\017\022\020\n\014S_ADD_F"
+  "RIEND\020\020\022\026\n\022S_OTHER_ADD_FRIEND\020\021\022\021\n\rS_CRE"
+  "ATE_ROOM\020\022b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_ServerToClient_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ServerToClient_2eproto = {
-    false, false, 1518, descriptor_table_protodef_ServerToClient_2eproto,
+    false, false, 1538, descriptor_table_protodef_ServerToClient_2eproto,
     "ServerToClient.proto",
     &descriptor_table_ServerToClient_2eproto_once, nullptr, 0, 23,
     schemas, file_default_instances, TableStruct_ServerToClient_2eproto::offsets,
@@ -1003,8 +1006,8 @@ RoomInfo::RoomInfo(const RoomInfo& from)
       GetArenaForAllocation());
   }
   ::memcpy(&player_number_, &from.player_number_,
-    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
-    reinterpret_cast<char*>(&player_number_)) + sizeof(state_));
+    static_cast<size_t>(reinterpret_cast<char*>(&room_index_) -
+    reinterpret_cast<char*>(&player_number_)) + sizeof(room_index_));
   // @@protoc_insertion_point(copy_constructor:ChampionFist.RoomInfo)
 }
 
@@ -1019,8 +1022,8 @@ room_no_.InitDefault();
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&player_number_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&state_) -
-    reinterpret_cast<char*>(&player_number_)) + sizeof(state_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&room_index_) -
+    reinterpret_cast<char*>(&player_number_)) + sizeof(room_index_));
 }
 
 RoomInfo::~RoomInfo() {
@@ -1051,8 +1054,8 @@ void RoomInfo::Clear() {
   room_name_.ClearToEmpty();
   room_no_.ClearToEmpty();
   ::memset(&player_number_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&state_) -
-      reinterpret_cast<char*>(&player_number_)) + sizeof(state_));
+      reinterpret_cast<char*>(&room_index_) -
+      reinterpret_cast<char*>(&player_number_)) + sizeof(room_index_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1094,6 +1097,14 @@ const char* RoomInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           state_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 room_index = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          room_index_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1159,6 +1170,12 @@ uint8_t* RoomInfo::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(4, this->_internal_state(), target);
   }
 
+  // int32 room_index = 5;
+  if (this->_internal_room_index() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(5, this->_internal_room_index(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1199,6 +1216,11 @@ size_t RoomInfo::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_state());
   }
 
+  // int32 room_index = 5;
+  if (this->_internal_room_index() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_room_index());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -1233,6 +1255,9 @@ void RoomInfo::MergeFrom(const RoomInfo& from) {
   if (from._internal_state() != 0) {
     _internal_set_state(from._internal_state());
   }
+  if (from._internal_room_index() != 0) {
+    _internal_set_room_index(from._internal_room_index());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1261,8 +1286,8 @@ void RoomInfo::InternalSwap(RoomInfo* other) {
       &other->room_no_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RoomInfo, state_)
-      + sizeof(RoomInfo::state_)
+      PROTOBUF_FIELD_OFFSET(RoomInfo, room_index_)
+      + sizeof(RoomInfo::room_index_)
       - PROTOBUF_FIELD_OFFSET(RoomInfo, player_number_)>(
           reinterpret_cast<char*>(&player_number_),
           reinterpret_cast<char*>(&other->player_number_));

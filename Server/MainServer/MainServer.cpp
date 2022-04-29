@@ -1,7 +1,5 @@
 #include "MainServer.h"
 
-void TestFunc(MainClient& client);
-
 /******************************************
  * Function: Initialize MainServer
  * Parameters: 2
@@ -170,7 +168,7 @@ void MainServer::ReadData(int fd)
                 // Generate received string
                 client.received_string.assign(client.received_data+PACKAGE_HEAD_LENGTH, package_length-PACKAGE_HEAD_LENGTH);
                 // Start processing
-                (this->*process_function_pool[package_cmd])(client);
+                (this->*process_function_pool[package_cmd-1])(client);
                 // Set data buffer and received length
                 if(package_cmd != C_QUIT){
                     delete[] client.received_data;
@@ -280,17 +278,13 @@ void MainServer::ProcessRegister(MainClient& client)
 void MainServer::ProcessHallRoom(MainClient& client)
 {
     std::string send_string;
-    CF::C_HallRoom c_hall_room;
-    c_hall_room.ParseFromString(client.received_string);
     CF::S_HallRoom s_hall_room;
     std::map<std::string, Room>::iterator it;
     int i;
-    for(it=this->lobby.rooms.begin(), i=0; i<c_hall_room.page()*MAX_ROOM_NUMBER_IN_PAGE; i++, it++){
-        ;
-    }
+    it=this->lobby.rooms.begin();
     i=0;
     while(1){
-        if(i == MAX_ROOM_NUMBER_IN_PAGE || (i+c_hall_room.page()*MAX_ROOM_NUMBER_IN_PAGE) == this->lobby.rooms.size()){
+        if(i == MAX_ROOM_NUMBER_IN_PAGE || i == this->lobby.rooms.size()){
             break;
         }
         CF::RoomInfo *room_info = s_hall_room.add_room_info();
@@ -298,6 +292,7 @@ void MainServer::ProcessHallRoom(MainClient& client)
         room_info->set_room_name(it->second.room_name);
         room_info->set_room_no(it->second.room_no);
         room_info->set_state(it->second.room_state);
+        room_info->set_room_index(i);
         i++;
         it++;
     }
