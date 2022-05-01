@@ -27,8 +27,6 @@ private:
     
 
 public:
-    
-public:
     static Database& Instance();  // get instance of Database
 
 // Functions

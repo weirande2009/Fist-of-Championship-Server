@@ -8,6 +8,7 @@
 #include "Protocols.h"
 #include "ClientToServer.pb.h"
 #include "ServerToClient.pb.h"
+#include "MyLog.h"
 
 class MainServer
 {

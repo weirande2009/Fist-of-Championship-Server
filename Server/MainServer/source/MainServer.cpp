@@ -109,6 +109,8 @@ void MainServer::MainLoop()
                         perror("epoll_ctl: add");    
                         exit(-1);    
                     }   
+                    // Log
+                    MyLog::Instance().LogConnect(conn_sock, remote);
                     // Add new client to pool
                     this->client_pool.AddClient(conn_sock, remote);
                 }    
@@ -153,58 +155,61 @@ void MainServer::ReadData(int fd)
     MainClient* client = this->client_pool.GetClient(fd);
     char* data = new char[client->read_length];
     // read data from client
-    int rlen = recv(fd, data, client->read_length, 0);
-    if(rlen == 0){
-        // client disconnect
-    }
-    else if(rlen < 0){
-        // something wrong and disconnect
-    }
-    else{
-        // store received data
-        if(client->read_length >= rlen){
-            // copy received data
-            memcpy(client->received_data+client->received_length, data, rlen);
-            client->read_length -= rlen;
-            client->received_length += rlen;
-            delete[] data;
+    while(1){
+        int rlen = recv(fd, data, client->read_length, 0);
+        if(rlen == 0){
+            // client disconnect
+        }
+        else if(rlen < 0){
+            // something wrong and disconnect
         }
         else{
-            // something wrong
-        }
-        // judge receive over
-        if(client->read_length == 0){
-            int package_length;
-            memcpy(&package_length, client->received_data+sizeof(int), sizeof(int));
-            int package_cmd;
-            memcpy(&package_cmd, client->received_data, sizeof(int));
-            // if receive all the data needed
-            if(client->received_length == package_length){
-                // Generate received string
-                client->received_string.assign(client->received_data+PACKAGE_HEAD_LENGTH, package_length-PACKAGE_HEAD_LENGTH);
-                // Start processing
-                (this->*process_function_pool[package_cmd-1])(client);
-                // Set data buffer and received length
-                if(package_cmd != ChampionFist::C_QUIT){
-                    delete[] client->received_data;
-                    client->received_data = new char[PACKAGE_HEAD_LENGTH];
-                    client->read_length = PACKAGE_HEAD_LENGTH;
-                    client->received_length = 0;
-                }
-                
-            }
-            else if(client->received_length < package_length){  // finish receiving package head
-                char* new_data = new char[package_length];
-                memcpy(new_data, client->received_data, client->received_length);
-                delete[] client->received_data;
-                client->received_data = new_data;
-                client->read_length = package_length - client->received_length;
+            // store received data
+            if(client->read_length >= rlen){
+                // copy received data
+                memcpy(client->received_data+client->received_length, data, rlen);
+                client->read_length -= rlen;
+                client->received_length += rlen;
+                delete[] data;
             }
             else{
                 // something wrong
             }
+            // judge receive over
+            if(client->read_length == 0){
+                int package_length;
+                memcpy(&package_length, client->received_data+sizeof(int), sizeof(int));
+                int package_cmd;
+                memcpy(&package_cmd, client->received_data, sizeof(int));
+                // if receive all the data needed
+                if(client->received_length == package_length){
+                    // Generate received string
+                    client->received_string.assign(client->received_data+PACKAGE_HEAD_LENGTH, package_length-PACKAGE_HEAD_LENGTH);
+                    // Start processing
+                    (this->*process_function_pool[package_cmd-1])(client);
+                    // Set data buffer and received length
+                    if(package_cmd != ChampionFist::C_QUIT){
+                        delete[] client->received_data;
+                        client->received_data = new char[PACKAGE_HEAD_LENGTH];
+                        client->read_length = PACKAGE_HEAD_LENGTH;
+                        client->received_length = 0;
+                    }
+                    break;
+                }
+                else if(client->received_length < package_length){  // finish receiving package head
+                    char* new_data = new char[package_length];
+                    memcpy(new_data, client->received_data, client->received_length);
+                    delete[] client->received_data;
+                    client->received_data = new_data;
+                    client->read_length = package_length - client->received_length;
+                }
+                else{
+                    // something wrong
+                }
+            }
         }
     }
+    
 }
 
 /******************************************
@@ -260,6 +265,9 @@ void MainServer::ProcessLogin(MainClient* client)
             this->SendData(friends_fd[i], send_string.c_str(), send_string.length(), ChampionFist::S_FRIEND_UPDATE);
         }
     }
+    // Log
+    MyLog::Instance().LogLogin(client->client_fd, c_login.name(), ret);
+    // Send
     ChampionFist::S_Login s_login = ChampionFist::S_Login();
     s_login.set_state(ret);
     s_login.SerializeToString(&send_string);
@@ -278,6 +286,9 @@ void MainServer::ProcessRegister(MainClient* client)
     ChampionFist::C_Register c_register;
     c_register.ParseFromString(client->received_string);
     int ret = Database::Instance().PlayerRegister(c_register.name(), c_register.password_md5());
+    // Log
+    MyLog::Instance().LogRegister(client->client_fd, c_register.name(), ret);
+    // Send
     ChampionFist::S_Register s_register = ChampionFist::S_Register();
     s_register.set_state(ret);
     s_register.SerializeToString(&send_string);
@@ -314,6 +325,9 @@ void MainServer::ProcessHallRoom(MainClient* client)
     s_hall_room.set_total_room_num(this->lobby.rooms.size());
     s_hall_room.set_page_room_num(i);
     s_hall_room.SerializeToString(&send_string);
+    // Log
+    MyLog::Instance().LogHallRoom(client->client_fd, client->player.player_name);
+    // Send
     this->SendData(client->client_fd, send_string.c_str(), send_string.length(), ChampionFist::S_HALL_ROOM);
 }
 
@@ -341,6 +355,9 @@ void MainServer::ProcessFriend(MainClient* client)
         }  
     }
     s_friend.SerializeToString(&send_string);
+    // Log
+    MyLog::Instance().LogFriend(client->client_fd, client->player.player_name);
+    // Send
     this->SendData(client->client_fd, send_string.c_str(), send_string.length(), ChampionFist::S_FRIEND);
     // Send Other Add Friend
     std::vector<std::string> wait_friends_names = Database::Instance().QueryWaitFriendName(client->player.player_id);
@@ -383,6 +400,9 @@ void MainServer::ProcessEnterRoom(MainClient* client)
             }
         }
     }
+    // Log
+    MyLog::Instance().LogEnterRoom(client->client_fd, client->player.player_name, c_enter_room.room_no(), seat_no);
+    // Send
     ChampionFist::S_EnterRoom s_enter_room;
     s_enter_room.set_state((seat_no != NO_AVAILABLE_SEAT) ? 1 : 0);
     s_enter_room.set_seat_no(seat_no);
@@ -417,6 +437,9 @@ void MainServer::ProcessRoomInfo(MainClient* client)
         }
     }
     s_room_info.SerializeToString(&send_string);
+    // Log
+    MyLog::Instance().LogRoomInfo(client->client_fd, client->player.player_name, c_room_info.room_no());
+    // Send
     this->SendData(client->client_fd, send_string.c_str(), send_string.length(), ChampionFist::S_ROOM_INFO);
 }
 
@@ -447,6 +470,9 @@ void MainServer::ProcessModChar(MainClient* client)
             this->SendData(this->lobby.rooms[client->player.room_no].clients[i]->client_fd, send_string.c_str(), send_string.length(), ChampionFist::S_UPDATE_ROOM);
         }
     }
+    // Log
+    MyLog::Instance().LogModifyChar(client->client_fd, client->player.player_name, c_mod_char.char_type());
+    // Send
     ChampionFist::S_ModChar s_mod_char;
     s_mod_char.set_state(1);
     s_mod_char.SerializeToString(&send_string);
@@ -478,6 +504,9 @@ void MainServer::ProcessReady(MainClient* client)
             this->SendData(this->lobby.rooms[client->player.room_no].clients[i]->client_fd, send_string.c_str(), send_string.length(), ChampionFist::S_UPDATE_ROOM);
         }
     }
+    // Log
+    MyLog::Instance().LogReady(client->client_fd, client->player.player_name);
+    // Send
     ChampionFist::S_Ready s_ready;
     s_ready.set_state(1);
     s_ready.SerializeToString(&send_string);
@@ -509,6 +538,9 @@ void MainServer::ProcessCancelReady(MainClient* client)
             this->SendData(this->lobby.rooms[client->player.room_no].clients[i]->client_fd, send_string.c_str(), send_string.length(), ChampionFist::S_UPDATE_ROOM);
         }
     }
+    // Log
+    MyLog::Instance().LogCancelReady(client->client_fd, client->player.player_name);
+    // Send
     ChampionFist::S_CancelReady s_cancel_ready;
     s_cancel_ready.set_state(1);
     s_cancel_ready.SerializeToString(&send_string);
@@ -524,6 +556,8 @@ void MainServer::ProcessCancelReady(MainClient* client)
 void MainServer::ProcessStartGame(MainClient* client)
 {
     std::string send_string;
+    // Log
+    MyLog::Instance().LogStartGame(client->client_fd, client->player.player_name);
     // Check all ready
     if(this->lobby.rooms[client->player.room_no].CheckAllReady()){
         // Execute GameServer to process game
@@ -572,6 +606,9 @@ void MainServer::ProcessExitLogin(MainClient* client)
     client->client_state = CLIENT_NO_LOGIN;
     // Reset player object
     client->player = Player();
+    // Log
+    MyLog::Instance().LogExitLogin(client->client_fd, client->player.player_name);
+    // Send
     ChampionFist::S_ExitLogin s_exit_login;
     s_exit_login.set_state(1);
     s_exit_login.SerializeToString(&send_string);
@@ -604,6 +641,9 @@ void MainServer::ProcessQuit(MainClient* client)
     // delete from name_fd_map
     this->client_pool.name_fd_map.erase(client->player.player_name);
     this->client_pool.client_pool.erase(client->client_fd);
+    // Log
+    MyLog::Instance().LogQuit(client->client_fd, client->player.player_name);
+    // Send
     ChampionFist::S_Quit s_quit;
     s_quit.set_state(1);
     s_quit.SerializeToString(&send_string);
@@ -637,6 +677,9 @@ void MainServer::ProcessExitRoom(MainClient* client)
     this->lobby.rooms[client->player.room_no].ExitRoom(client);
     // Set player info
     client->player.ExitRoom();
+    // Log
+    MyLog::Instance().LogExitRoom(client->client_fd, client->player.player_name);
+    // Send
     ChampionFist::S_ExitRoom s_exit_room;
     s_exit_room.set_state(1);
     s_exit_room.SerializeToString(&send_string);
@@ -655,7 +698,9 @@ void MainServer::ProcessCreateRoom(MainClient* client)
     ChampionFist::C_CreateRoom c_create_room;
     c_create_room.ParseFromString(client->received_string);
     this->lobby.CreateRoom(c_create_room.room_name());
-
+    // Log
+    MyLog::Instance().LogCreateRoom(client->client_fd, client->player.player_name, c_create_room.room_name());
+    // Send
     ChampionFist::S_CreateRoom s_create_room;
     s_create_room.set_state(1);
     s_create_room.SerializeToString(&send_string);
@@ -694,6 +739,9 @@ void MainServer::ProcessAddFriend(MainClient* client)
         s_add_friend.set_state(SEND_FRIEND_FAIL);
     }
     s_add_friend.SerializeToString(&send_string);
+    // Log
+    MyLog::Instance().LogCreateRoom(client->client_fd, client->player.player_name, c_add_friend.friend_name());
+    // Send
     this->SendData(client->client_fd, send_string.c_str(), send_string.length(), ChampionFist::S_ADD_FRIEND);
 }
 
@@ -709,7 +757,8 @@ void MainServer::ProcessReplyFriend(MainClient* client)
 
     ChampionFist::C_ReplyFriend c_reply_friend;
     c_reply_friend.ParseFromString(client->received_string);
-
+    // Log
+    MyLog::Instance().LogCreateRoom(client->client_fd, client->player.player_name, c_reply_friend.friend_name());
     ChampionFist::S_AddFriend s_add_friend;
     bool friend_online=false;
     if(c_reply_friend.state() == REPLY_FRIEND_OK){
