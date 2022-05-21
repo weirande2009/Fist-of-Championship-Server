@@ -64,7 +64,7 @@ void MyLog::Log(std::string content){
  * Parameters: 0
  * Return: None
  *****************************************/
-void MyLog::LogBasic(int fd, std::string username){
+void MyLog::LogBasic(int fd, std::string username, std::string cmd){
     std::ofstream config_file_name(this->log_file_name, std::ios::out | std::ios::app);
     if(!config_file_name){
         std::cout << "Fail to Read Config File!" << std::endl;
@@ -73,7 +73,7 @@ void MyLog::LogBasic(int fd, std::string username){
     std::string content;
     content = this->GetTime() + "\n";
     content += "Client fd: " + std::to_string(fd) + "\n";
-    content += "Command: Register\n";
+    content += "Command: " + cmd + "\n";
     content += "Info: \n";
     content += "UserName: ";
     content += username;
@@ -97,7 +97,7 @@ void MyLog::LogConnect(int fd, struct sockaddr_in remote){
     }
     std::string content;
     content = this->GetTime() + "\n";
-    content = "Client fd: " + std::to_string(fd) + "\n";
+    content += "Client fd: " + std::to_string(fd) + "\n";
     content += "Command: Connect\n";
     content += "Info: \n";
     content += "IP: ";
@@ -171,7 +171,7 @@ void MyLog::LogRegister(int fd, std::string username, int state){
  * Return: None
  *****************************************/
 void MyLog::LogHallRoom(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "HallRoom");
 }
 
 /******************************************
@@ -180,7 +180,7 @@ void MyLog::LogHallRoom(int fd, std::string username){
  * Return: None
  *****************************************/
 void MyLog::LogFriend(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "Friend");
 }
 
 /******************************************
@@ -197,7 +197,7 @@ void MyLog::LogEnterRoom(int fd, std::string username, std::string room_no, int 
     std::string content;
     content = this->GetTime() + "\n";
     content = "Client fd: " + std::to_string(fd) + "\n";
-    content += "Command: Friend\n";
+    content += "Command: EnterRoom\n";
     content += "Info: \n";
     content += "UserName: ";
     content += username;
@@ -227,7 +227,7 @@ void MyLog::LogRoomInfo(int fd, std::string username, std::string room_no){
     std::string content;
     content = this->GetTime() + "\n";
     content = "Client fd: " + std::to_string(fd) + "\n";
-    content += "Command: Friend\n";
+    content += "Command: RoomInfo\n";
     content += "Info: \n";
     content += "UserName: ";
     content += username;
@@ -254,7 +254,7 @@ void MyLog::LogModifyChar(int fd, std::string username, int character){
     std::string content;
     content = this->GetTime() + "\n";
     content = "Client fd: " + std::to_string(fd) + "\n";
-    content += "Command: Friend\n";
+    content += "Command: ModifyChar\n";
     content += "Info: \n";
     content += "UserName: ";
     content += username;
@@ -273,7 +273,7 @@ void MyLog::LogModifyChar(int fd, std::string username, int character){
  * Return: None
  *****************************************/
 void MyLog::LogReady(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "Ready");
 }
 
 /******************************************
@@ -282,7 +282,7 @@ void MyLog::LogReady(int fd, std::string username){
  * Return: None
  *****************************************/
 void MyLog::LogCancelReady(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "CancelReady");
 }
 
 /******************************************
@@ -291,7 +291,7 @@ void MyLog::LogCancelReady(int fd, std::string username){
  * Return: None
  *****************************************/
 void MyLog::LogStartGame(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "StartGame");
 }
 
 /******************************************
@@ -300,7 +300,7 @@ void MyLog::LogStartGame(int fd, std::string username){
  * Return: None
  *****************************************/
 void MyLog::LogExitLogin(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "ExitLogin");
 }
 
 /******************************************
@@ -309,7 +309,7 @@ void MyLog::LogExitLogin(int fd, std::string username){
  * Return: None
  *****************************************/
 void MyLog::LogQuit(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "Quit");
 }
 
 /******************************************
@@ -318,7 +318,7 @@ void MyLog::LogQuit(int fd, std::string username){
  * Return: None
  *****************************************/
 void MyLog::LogExitRoom(int fd, std::string username){
-    this->LogBasic(fd, username);
+    this->LogBasic(fd, username, "ExitRoom");
 }
 
 /******************************************
@@ -335,7 +335,7 @@ void MyLog::LogCreateRoom(int fd, std::string username, std::string room_name){
     std::string content;
     content = this->GetTime() + "\n";
     content = "Client fd: " + std::to_string(fd) + "\n";
-    content += "Command: Friend\n";
+    content += "Command: CreateRoom\n";
     content += "Info: \n";
     content += "UserName: ";
     content += username;
@@ -362,7 +362,7 @@ void MyLog::LogAddFriend(int fd, std::string username, std::string friend_name){
     std::string content;
     content = this->GetTime() + "\n";
     content = "Client fd: " + std::to_string(fd) + "\n";
-    content += "Command: Friend\n";
+    content += "Command: AddFriend\n";
     content += "Info: \n";
     content += "UserName: ";
     content += username;
@@ -389,7 +389,7 @@ void MyLog::LogReplyFriend(int fd, std::string username, std::string friend_name
     std::string content;
     content = this->GetTime() + "\n";
     content = "Client fd: " + std::to_string(fd) + "\n";
-    content += "Command: Friend\n";
+    content += "Command: ReplyFriend\n";
     content += "Info: \n";
     content += "UserName: ";
     content += username;

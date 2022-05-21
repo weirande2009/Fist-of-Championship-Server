@@ -154,3 +154,4788 @@ Info:
 UserName: 123
 State: -1
 
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 27575
+
+05/15/22 11:11:07
+Client fd: 6
+Command: Register
+Info: 
+UserName: 
+
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 31925
+
+05/15/22 13:50:29
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 27576
+
+05/15/22 14:01:26
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 16057
+
+05/15/22 14:03:41
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:10:07
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 51642
+
+05/15/22 14:10:18
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:13:08
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 42171
+
+05/15/22 14:13:14
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:15:26
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 43708
+
+05/15/22 14:15:31
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:16:37
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 701
+
+05/15/22 14:16:41
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:18:02
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 18365
+
+05/15/22 14:18:05
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:31:12
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 26048
+
+05/15/22 14:31:20
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:32:12
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 32192
+
+05/15/22 14:32:15
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:42:25
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 57538
+
+05/15/22 14:42:32
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 14:43:08
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 65218
+
+05/15/22 14:43:11
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 17:42:07
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 12468
+
+05/15/22 17:47:53
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 16566
+
+05/15/22 17:56:21
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 35257
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran
+State: -1
+
+05/15/22 18:44:55
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 59828
+
+Client fd: 7
+Command: Register
+Info: 
+UserName: weiran
+State: -1
+
+05/15/22 21:56:28
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 16570
+
+05/15/22 22:01:30
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 3005
+
+05/15/22 22:02:43
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 52925
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran
+State: -1
+
+05/15/22 22:09:55
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 22:14:34
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 2242
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran
+State: -1
+
+05/15/22 22:16:12
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/15/22 22:16:58
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 48322
+
+05/15/22 22:21:53
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 11445
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran
+State: -1
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran1
+State: -1
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran1
+State: -1
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran1
+State: -1
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran1
+State: -1
+
+05/15/22 22:35:03
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 443
+
+05/16/22 14:02:43
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 23230
+
+05/16/22 14:11:47
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 48575
+
+05/16/22 14:13:54
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 30656
+
+05/16/22 14:16:57
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 16321
+
+05/16/22 14:22:21
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 11458
+
+05/16/22 14:27:16
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 19139
+
+05/16/22 14:37:00
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 48565
+
+05/16/22 16:46:07
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 36797
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran
+State: -1
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 16:56:38
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 45762
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran1
+State: -1
+
+05/16/22 16:58:36
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 10947
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran2
+State: 1
+
+05/16/22 18:07:18
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 29121
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran3
+State: 1
+
+05/16/22 19:08:10
+Client fd: 6
+Command: Connect
+Info: 
+IP: 143.198.112.195
+Port: 498
+
+05/16/22 19:26:01
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 448
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: -1
+
+05/16/22 19:30:38
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 60857
+
+05/16/22 19:34:21
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 11448
+
+05/16/22 19:52:34
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 27316
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:01:42
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 33724
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:02:32
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:02:45
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/16/22 20:06:19
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 8118
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:06:54
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:09:16
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 31415
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:09:45
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:09:52
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/16/22 20:13:42
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 39869
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:14:01
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:15:21
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 52928
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:15:44
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:16:44
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 14019
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:16:57
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:17:08
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/16/22 20:17:16
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 6836
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:17:33
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:17:58
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/16/22 20:18:04
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 29621
+
+Client fd: 8
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:18:17
+Client fd: 8
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:18:26
+Client fd: 8
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/16/22 20:18:31
+Client fd: 9
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 14262
+
+Client fd: 9
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:19:11
+Client fd: 9
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:20:29
+Client fd: 9
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/16/22 20:24:26
+Client fd: 10
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 26302
+
+Client fd: 10
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:24:44
+Client fd: 10
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:25:05
+Client fd: 10
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/16/22 20:36:27
+Client fd: 11
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 38588
+
+Client fd: 11
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:37:01
+Client fd: 11
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:37:03
+Client fd: 11
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 11
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 快来玩
+
+05/16/22 20:46:42
+Client fd: 12
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 51637
+
+Client fd: 12
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/16/22 20:47:15
+Client fd: 12
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/16/22 20:49:02
+Client fd: 12
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 12
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 快来玩
+
+05/20/22 15:14:53
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 11707
+
+05/20/22 15:24:42
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 59580
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran1
+State: 1
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran2
+State: 1
+
+Client fd: 6
+Command: Register
+Info: 
+UserName: weiran3
+State: 1
+
+05/20/22 15:27:10
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/20/22 15:27:18
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 13245
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 15:32:55
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 25022
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 15:33:46
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 15:39:16
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 36543
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 15:39:36
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 15:50:06
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 48835
+
+05/20/22 15:51:49
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 18612
+
+05/20/22 15:52:55
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 38068
+
+05/20/22 15:57:37
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 52150
+
+05/20/22 16:01:23
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 49335
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 16:01:56
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 16:02:50
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/20/22 16:11:58
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 48315
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 16:12:31
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 16:12:32
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/20/22 17:38:34
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 47297
+
+Client fd: 8
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 17:38:54
+Client fd: 8
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 17:38:55
+Client fd: 8
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/20/22 17:39:45
+Client fd: 8
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/20/22 17:39:45
+Client fd: 8
+Command: Quit
+Info: 
+UserName: 
+
+05/20/22 17:39:57
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 46786
+
+Client fd: 8
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 17:40:24
+Client fd: 8
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 17:40:32
+Client fd: 8
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/20/22 17:50:02
+Client fd: 9
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 51381
+
+Client fd: 9
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 17:50:15
+Client fd: 9
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 17:50:19
+Client fd: 9
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/20/22 17:50:38
+Client fd: 9
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 17:55:34
+Client fd: 10
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 36028
+
+Client fd: 10
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 17:56:15
+Client fd: 10
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 17:56:23
+Client fd: 10
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 10
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 快来玩
+
+05/20/22 17:59:00
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 32957
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 17:59:18
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 17:59:20
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 快来玩
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 10
+SeatNo: 0
+
+05/20/22 18:02:06
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/20/22 18:02:07
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/20/22 18:02:07
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/20/22 18:02:18
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 5054
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 18:02:36
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 18:02:37
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 一起玩
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 11
+SeatNo: 0
+
+05/20/22 19:48:21
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 54978
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 19:48:39
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 19:48:48
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 7
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 都来玩
+
+Client fd: 7
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 12
+SeatNo: 0
+
+05/20/22 19:53:08
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 3509
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 19:53:26
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 19:53:45
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 一起玩
+
+05/20/22 19:55:04
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 51637
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 19:55:22
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 19:55:26
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 一起玩
+
+05/20/22 19:56:55
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 20918
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 19:57:15
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 19:57:22
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 一起玩
+
+05/20/22 20:03:12
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 13240
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 20:03:24
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 20:03:26
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 一起玩
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 10
+SeatNo: 0
+
+05/20/22 20:10:39
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 29882
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 20:10:52
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 20:10:56
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: yiqiwan
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 10
+SeatNo: 0
+
+05/20/22 20:13:04
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/20/22 20:13:05
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/20/22 20:13:07
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/20/22 20:13:08
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 6587
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 20:13:12
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 20:13:17
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: doulaiwan
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 11
+SeatNo: 0
+
+05/20/22 20:15:33
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/20/22 20:15:34
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/20/22 20:15:40
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/20/22 20:15:49
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 60860
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 20:16:06
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 20:16:10
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: hhh
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 12
+SeatNo: 0
+
+05/20/22 21:28:41
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 14518
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 21:28:55
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 21:28:58
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 一起玩
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 10
+SeatNo: 0
+
+05/20/22 21:31:52
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 19383
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 21:32:18
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 21:32:31
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran1
+RoomName: 一起玩
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 10
+SeatNo: 0
+
+Client fd: 6
+Command: ModifyChar
+Info: 
+UserName: weiran1
+Character: 6
+
+05/20/22 21:39:27
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 35003
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/20/22 21:39:48
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/20/22 21:40:04
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/20/22 21:40:14
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 44987
+
+05/20/22 21:43:33
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 39868
+
+05/20/22 21:43:36
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 41660
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/20/22 21:44:23
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/20/22 21:44:29
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/20/22 21:44:47
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/20/22 21:44:52
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/20/22 21:48:22
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 11:23:15
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 37309
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:23:37
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:23:43
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:23:52
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 51133
+
+05/21/22 11:26:00
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 26558
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:26:13
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:26:17
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:26:23
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 31422
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 11:26:41
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 11:26:46
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 11:29:01
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 63678
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran3
+State: 1
+
+05/21/22 11:29:09
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran3
+
+05/21/22 11:29:11
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran3
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran3
+RoomName: weiran2
+
+05/21/22 11:30:00
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 11199
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:31:18
+Client fd: 21845
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:31:20
+Client fd: 21845
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:31:21
+Client fd: 21845
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:31:22
+Client fd: 21845
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:31:22
+Client fd: 21845
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:31:59
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 43967
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran3
+State: 1
+
+05/21/22 11:32:08
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran3
+
+05/21/22 11:32:09
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran3
+
+05/21/22 11:32:15
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 51391
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:32:51
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:33:07
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:36:34
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 21441
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran3
+State: 1
+
+05/21/22 11:36:48
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran3
+
+05/21/22 11:36:56
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran3
+
+05/21/22 11:37:03
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 27073
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:37:16
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:37:21
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:45:48
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 52931
+
+05/21/22 11:45:55
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 54467
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran3
+State: 1
+
+05/21/22 11:46:05
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran3
+
+05/21/22 11:46:06
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran3
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:46:24
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:46:29
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:47:57
+Client fd: 7
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 11:47:58
+Client fd: 7
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:47:59
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 26292
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:48:17
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:48:18
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:52:21
+Client fd: 7
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 11:52:22
+Client fd: 7
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:52:23
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 30901
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:53:03
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:53:06
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:54:11
+Client fd: 7
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 11:54:11
+Client fd: 7
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:54:29
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 34998
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:55:10
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:55:37
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 11:55:41
+Client fd: 7
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 11:55:42
+Client fd: 7
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 11:56:17
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 695
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 11:56:32
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 11:56:36
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:11:54
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 53178
+
+Client fd: 8
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:13:26
+Client fd: 8
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:13:29
+Client fd: 8
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:14:28
+Client fd: 8
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 12:14:28
+Client fd: 8
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 12:14:29
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 55227
+
+Client fd: 8
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:14:40
+Client fd: 8
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:14:41
+Client fd: 8
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:15:41
+Client fd: 8
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 12:15:42
+Client fd: 8
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 12:15:43
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 6332
+
+Client fd: 8
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:15:53
+Client fd: 8
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:15:55
+Client fd: 8
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:39:23
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 1217
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:39:35
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:39:36
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:40:02
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 12:40:02
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 12:40:03
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 9409
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:40:35
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:40:37
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:44:17
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 12:44:29
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 12:44:29
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 3778
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:44:41
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:44:43
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:47:09
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 41154
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:47:32
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:47:34
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 12:48:11
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 54210
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran3
+State: 1
+
+05/21/22 12:48:33
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran3
+
+05/21/22 12:48:35
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran3
+
+05/21/22 12:52:56
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 6325
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 12:53:06
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 12:53:07
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 14:15:45
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 37560
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 14:16:03
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 14:16:04
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 6
+Command: CreateRoom
+Info: 
+UserName: weiran2
+RoomName: weiran3
+
+05/21/22 14:21:44
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 14:21:45
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 15:05:05
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 8898
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 15:05:21
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 15:05:21
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 15:20:53
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 21684
+
+05/21/22 15:23:34
+Client fd: 7
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 15:23:34
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 62132
+
+Client fd: 7
+Command: Register
+Info: 
+UserName: weiran4
+State: 1
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran3
+State: 1
+
+05/21/22 15:23:57
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran3
+
+05/21/22 15:24:00
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran3
+
+Client fd: 7
+Command: CreateRoom
+Info: 
+UserName: weiran3
+RoomName: weiran5
+
+Client fd: 7
+Command: CreateRoom
+Info: 
+UserName: weiran3
+RoomName: weiran4
+
+05/21/22 15:24:57
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 20149
+
+Client fd: 8
+Command: Login
+Info: 
+UserName: weiran4
+State: 1
+
+05/21/22 15:25:18
+Client fd: 8
+Command: HallRoom
+Info: 
+UserName: weiran4
+
+05/21/22 15:25:19
+Client fd: 8
+Command: Friend
+Info: 
+UserName: weiran4
+
+Client fd: 8
+Command: CreateRoom
+Info: 
+UserName: weiran4
+RoomName: weiran3
+
+05/21/22 15:42:43
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 15545
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 15:42:53
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 15:42:54
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: ModifyChar
+Info: 
+UserName: weiran1
+Character: 6
+
+05/21/22 15:44:02
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 55481
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 15:44:13
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 15:44:13
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 15:56:43
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 27837
+
+05/21/22 15:56:45
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 28605
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 15:57:01
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 15:57:02
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 15:57:29
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 15:57:33
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran2
+RoomNo: 0
+SeatNo: 0
+
+05/21/22 16:00:51
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran2
+
+05/21/22 16:00:53
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 16:00:54
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 16:00:56
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 25534
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 16:01:07
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 16:01:08
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran2
+RoomNo: 0
+SeatNo: 1
+
+05/21/22 16:15:06
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 30400
+
+05/21/22 16:15:10
+Client fd: 7
+Command: Connect
+Info: 
+IP: 183.136.225.14
+Port: 1831
+
+05/21/22 16:15:47
+Client fd: 6
+Command: Connect
+Info: 
+IP: 183.136.225.14
+Port: 60131
+
+05/21/22 16:16:14
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 16:16:28
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 44736
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 16:16:39
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 16:16:40
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+05/21/22 16:18:20
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 18881
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 16:18:31
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 16:18:32
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 16:39:31
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 38837
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 16:43:27
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 16:43:28
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 7
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 7
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 18:18:02
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 13239
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 18:18:15
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 18:18:17
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+Client fd: 6
+Command: ModifyChar
+Info: 
+UserName: weiran1
+Character: 2
+
+05/21/22 18:19:43
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 18:19:44
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 18:19:46
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 18:19:47
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 23991
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 18:20:02
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 18:20:03
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 18:21:04
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 58807
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 18:21:17
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 18:21:19
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+Client fd: 6
+Command: ModifyChar
+Info: 
+UserName: weiran1
+Character: 1
+
+05/21/22 18:27:41
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 18:27:41
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 18:27:42
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 18:27:56
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 34232
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 18:28:15
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 18:28:15
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:06:23
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 26047
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:06:33
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:06:35
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:08:04
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:08:04
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 19:08:06
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:08:09
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 42175
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:08:22
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:08:24
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:10:26
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 56255
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:10:36
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:10:37
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:13:08
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:13:09
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 19:13:10
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:13:11
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 11200
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:13:26
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:13:27
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:15:55
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 37568
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:16:08
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:16:10
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:17:27
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:17:28
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 19:17:29
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:17:29
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 52928
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:17:38
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:17:38
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:20:24
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:20:30
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 19:20:37
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:20:38
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 17345
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:20:45
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:20:45
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 2
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:21:47
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:21:47
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 19:21:47
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:22:38
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 37057
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:22:44
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:22:44
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 3
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:26:41
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 35266
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:26:47
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:26:47
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:27:34
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:27:34
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 19:27:34
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:27:34
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 45506
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:27:42
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:27:42
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:29:28
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:29:28
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 19:29:28
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:29:28
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 9155
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:29:35
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:29:35
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 19:29:40
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 12227
+
+05/21/22 19:30:40
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 27075
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:31:20
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:31:20
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 19:32:35
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 15284
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 19:32:44
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 19:32:44
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 7
+Command: EnterRoom
+Info: 
+UserName: weiran2
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 7
+Command: RoomInfo
+Info: 
+UserName: weiran2
+RoomNo: 0
+
+05/21/22 19:37:33
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 1205
+
+05/21/22 19:38:18
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 9397
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:38:26
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:38:26
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 19:38:33
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 11445
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 19:38:40
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 19:38:40
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 7
+Command: EnterRoom
+Info: 
+UserName: weiran2
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 7
+Command: RoomInfo
+Info: 
+UserName: weiran2
+RoomNo: 0
+
+05/21/22 19:41:33
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 60597
+
+05/21/22 19:41:57
+Client fd: 6
+Command: Quit
+Info: 
+UserName: 
+
+05/21/22 19:42:03
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 438
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:42:09
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:42:09
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 19:42:14
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 3254
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 19:42:21
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 19:42:21
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 19:47:22
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 57014
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:47:36
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:47:36
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 19:47:43
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 62646
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 19:47:52
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 19:47:52
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 19:51:08
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 61111
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 19:51:15
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 19:51:16
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 19:51:21
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 14008
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 19:51:26
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 19:51:26
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 20:21:35
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 1219
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 20:21:47
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:21:47
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 20:21:51
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 44995
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 20:21:59
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 20:21:59
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 20:22:18
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+Client fd: 7
+Command: EnterRoom
+Info: 
+UserName: weiran2
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 7
+Command: RoomInfo
+Info: 
+UserName: weiran2
+RoomNo: 0
+
+Client fd: 6
+Command: ModifyChar
+Info: 
+UserName: weiran1
+Character: 6
+
+Client fd: 6
+Command: ModifyChar
+Info: 
+UserName: weiran1
+Character: 7
+
+Client fd: 6
+Command: ModifyChar
+Info: 
+UserName: weiran1
+Character: 4
+
+Client fd: 7
+Command: ModifyChar
+Info: 
+UserName: weiran2
+Character: 3
+
+05/21/22 20:25:01
+Client fd: 7
+Command: Ready
+Info: 
+UserName: weiran2
+
+05/21/22 20:25:08
+Client fd: 7
+Command: Ready
+Info: 
+UserName: weiran2
+
+05/21/22 20:25:19
+Client fd: 7
+Command: Ready
+Info: 
+UserName: weiran2
+
+05/21/22 20:25:35
+Client fd: 7
+Command: ExitRoom
+Info: 
+UserName: weiran2
+
+05/21/22 20:25:35
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 20:25:35
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 20:25:50
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:25:51
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:25:51
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 20:27:09
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 20:33:17
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 39605
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 20:33:39
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 44213
+
+05/21/22 20:34:17
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 20:34:45
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 56501
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 20:34:53
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:34:53
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 20:35:23
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 62901
+
+05/21/22 20:36:48
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 18614
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 20:36:56
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:36:56
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 20:37:04
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 21686
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 20:37:10
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 20:37:10
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+Client fd: 7
+Command: EnterRoom
+Info: 
+UserName: weiran2
+RoomNo: 0
+SeatNo: 1
+
+Client fd: 7
+Command: RoomInfo
+Info: 
+UserName: weiran2
+RoomNo: 0
+
+05/21/22 20:37:39
+Client fd: 7
+Command: Ready
+Info: 
+UserName: weiran2
+
+05/21/22 20:37:47
+Client fd: 7
+Command: CancelReady
+Info: 
+UserName: weiran2
+
+05/21/22 20:37:56
+Client fd: 7
+Command: ExitRoom
+Info: 
+UserName: weiran2
+
+05/21/22 20:37:56
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 20:37:56
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 20:38:09
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:38:09
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:38:09
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 20:39:28
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:39:29
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:39:31
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 20:41:40
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:41:40
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 20:43:04
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 20407
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 20:43:19
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:43:19
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 20:51:20
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 37562
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 20:51:50
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:51:50
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 20:52:18
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:53:17
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:53:17
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 20:56:31
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 20:57:52
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 10428
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 20:58:05
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:58:05
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 20:58:18
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:58:18
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:58:18
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 1
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 1
+
+05/21/22 20:59:28
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:59:40
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 20:59:40
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 21:06:14
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 30398
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 21:06:27
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:06:27
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 7
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 2
+SeatNo: 0
+
+Client fd: 7
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 2
+
+05/21/22 21:06:37
+Client fd: 7
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:06:37
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:06:37
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 21:06:47
+Client fd: 8
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 37310
+
+05/21/22 21:08:34
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 54462
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 21:08:40
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:08:40
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 21:09:16
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 59582
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 21:09:30
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 21:09:30
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 21:10:24
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:10:24
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 21:11:44
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 37311
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 21:12:11
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:12:11
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 21:12:27
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 52159
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 21:12:41
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 21:12:41
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 21:13:13
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:13:13
+Client fd: 6
+Command: ExitLogin
+Info: 
+UserName: 
+
+05/21/22 21:15:29
+Client fd: 6
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 35776
+
+Client fd: 6
+Command: Login
+Info: 
+UserName: weiran1
+State: 1
+
+05/21/22 21:15:35
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:15:35
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 0
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 0
+
+05/21/22 21:16:10
+Client fd: 7
+Command: Connect
+Info: 
+IP: 101.93.88.235
+Port: 48064
+
+Client fd: 7
+Command: Login
+Info: 
+UserName: weiran2
+State: 1
+
+05/21/22 21:16:18
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 21:16:18
+Client fd: 7
+Command: Friend
+Info: 
+UserName: weiran2
+
+05/21/22 21:16:31
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+05/21/22 21:16:33
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:16:33
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:16:33
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 21:16:36
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+
+Client fd: 6
+Command: EnterRoom
+Info: 
+UserName: weiran1
+RoomNo: 1
+SeatNo: 0
+
+Client fd: 6
+Command: RoomInfo
+Info: 
+UserName: weiran1
+RoomNo: 1
+
+05/21/22 21:17:33
+Client fd: 6
+Command: ExitRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:17:33
+Client fd: 6
+Command: HallRoom
+Info: 
+UserName: weiran1
+
+05/21/22 21:17:33
+Client fd: 6
+Command: Friend
+Info: 
+UserName: weiran1
+
+05/21/22 21:17:40
+Client fd: 7
+Command: HallRoom
+Info: 
+UserName: weiran2
+

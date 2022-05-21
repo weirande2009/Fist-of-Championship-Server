@@ -18,6 +18,7 @@ public:
     Player player;
     int read_length;                // Length of waiting data
     char* received_data;            // received data
+    int received_data_size;         // received data size
     std::string received_string;    // received string
     int received_length;            // received length
     bool rd_head;                   // whether read head

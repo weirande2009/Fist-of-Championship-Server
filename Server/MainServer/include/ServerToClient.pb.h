@@ -1426,9 +1426,39 @@ class S_EnterRoom final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kRoomNameFieldNumber = 3,
+    kRoomNoFieldNumber = 4,
     kSeatNoFieldNumber = 1,
     kStateFieldNumber = 2,
   };
+  // string room_name = 3;
+  void clear_room_name();
+  const std::string& room_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_room_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_room_name();
+  PROTOBUF_NODISCARD std::string* release_room_name();
+  void set_allocated_room_name(std::string* room_name);
+  private:
+  const std::string& _internal_room_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_room_name(const std::string& value);
+  std::string* _internal_mutable_room_name();
+  public:
+
+  // string room_no = 4;
+  void clear_room_no();
+  const std::string& room_no() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_room_no(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_room_no();
+  PROTOBUF_NODISCARD std::string* release_room_no();
+  void set_allocated_room_no(std::string* room_no);
+  private:
+  const std::string& _internal_room_no() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_room_no(const std::string& value);
+  std::string* _internal_mutable_room_no();
+  public:
+
   // int32 seat_no = 1;
   void clear_seat_no();
   int32_t seat_no() const;
@@ -1454,6 +1484,8 @@ class S_EnterRoom final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_no_;
   int32_t seat_no_;
   int32_t state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -3683,8 +3715,38 @@ class S_CreateRoom final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kRoomNameFieldNumber = 2,
+    kRoomNoFieldNumber = 3,
     kStateFieldNumber = 1,
   };
+  // string room_name = 2;
+  void clear_room_name();
+  const std::string& room_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_room_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_room_name();
+  PROTOBUF_NODISCARD std::string* release_room_name();
+  void set_allocated_room_name(std::string* room_name);
+  private:
+  const std::string& _internal_room_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_room_name(const std::string& value);
+  std::string* _internal_mutable_room_name();
+  public:
+
+  // string room_no = 3;
+  void clear_room_no();
+  const std::string& room_no() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_room_no(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_room_no();
+  PROTOBUF_NODISCARD std::string* release_room_no();
+  void set_allocated_room_no(std::string* room_no);
+  private:
+  const std::string& _internal_room_no() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_room_no(const std::string& value);
+  std::string* _internal_mutable_room_no();
+  public:
+
   // int32 state = 1;
   void clear_state();
   int32_t state() const;
@@ -3701,6 +3763,8 @@ class S_CreateRoom final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr room_no_;
   int32_t state_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ServerToClient_2eproto;
@@ -4262,6 +4326,106 @@ inline void S_EnterRoom::_internal_set_state(int32_t value) {
 inline void S_EnterRoom::set_state(int32_t value) {
   _internal_set_state(value);
   // @@protoc_insertion_point(field_set:ChampionFist.S_EnterRoom.state)
+}
+
+// string room_name = 3;
+inline void S_EnterRoom::clear_room_name() {
+  room_name_.ClearToEmpty();
+}
+inline const std::string& S_EnterRoom::room_name() const {
+  // @@protoc_insertion_point(field_get:ChampionFist.S_EnterRoom.room_name)
+  return _internal_room_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void S_EnterRoom::set_room_name(ArgT0&& arg0, ArgT... args) {
+ 
+ room_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ChampionFist.S_EnterRoom.room_name)
+}
+inline std::string* S_EnterRoom::mutable_room_name() {
+  std::string* _s = _internal_mutable_room_name();
+  // @@protoc_insertion_point(field_mutable:ChampionFist.S_EnterRoom.room_name)
+  return _s;
+}
+inline const std::string& S_EnterRoom::_internal_room_name() const {
+  return room_name_.Get();
+}
+inline void S_EnterRoom::_internal_set_room_name(const std::string& value) {
+  
+  room_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S_EnterRoom::_internal_mutable_room_name() {
+  
+  return room_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* S_EnterRoom::release_room_name() {
+  // @@protoc_insertion_point(field_release:ChampionFist.S_EnterRoom.room_name)
+  return room_name_.Release();
+}
+inline void S_EnterRoom::set_allocated_room_name(std::string* room_name) {
+  if (room_name != nullptr) {
+    
+  } else {
+    
+  }
+  room_name_.SetAllocated(room_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (room_name_.IsDefault()) {
+    room_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ChampionFist.S_EnterRoom.room_name)
+}
+
+// string room_no = 4;
+inline void S_EnterRoom::clear_room_no() {
+  room_no_.ClearToEmpty();
+}
+inline const std::string& S_EnterRoom::room_no() const {
+  // @@protoc_insertion_point(field_get:ChampionFist.S_EnterRoom.room_no)
+  return _internal_room_no();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void S_EnterRoom::set_room_no(ArgT0&& arg0, ArgT... args) {
+ 
+ room_no_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ChampionFist.S_EnterRoom.room_no)
+}
+inline std::string* S_EnterRoom::mutable_room_no() {
+  std::string* _s = _internal_mutable_room_no();
+  // @@protoc_insertion_point(field_mutable:ChampionFist.S_EnterRoom.room_no)
+  return _s;
+}
+inline const std::string& S_EnterRoom::_internal_room_no() const {
+  return room_no_.Get();
+}
+inline void S_EnterRoom::_internal_set_room_no(const std::string& value) {
+  
+  room_no_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S_EnterRoom::_internal_mutable_room_no() {
+  
+  return room_no_.Mutable(GetArenaForAllocation());
+}
+inline std::string* S_EnterRoom::release_room_no() {
+  // @@protoc_insertion_point(field_release:ChampionFist.S_EnterRoom.room_no)
+  return room_no_.Release();
+}
+inline void S_EnterRoom::set_allocated_room_no(std::string* room_no) {
+  if (room_no != nullptr) {
+    
+  } else {
+    
+  }
+  room_no_.SetAllocated(room_no, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (room_no_.IsDefault()) {
+    room_no_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ChampionFist.S_EnterRoom.room_no)
 }
 
 // -------------------------------------------------------------------
@@ -5012,6 +5176,106 @@ inline void S_CreateRoom::_internal_set_state(int32_t value) {
 inline void S_CreateRoom::set_state(int32_t value) {
   _internal_set_state(value);
   // @@protoc_insertion_point(field_set:ChampionFist.S_CreateRoom.state)
+}
+
+// string room_name = 2;
+inline void S_CreateRoom::clear_room_name() {
+  room_name_.ClearToEmpty();
+}
+inline const std::string& S_CreateRoom::room_name() const {
+  // @@protoc_insertion_point(field_get:ChampionFist.S_CreateRoom.room_name)
+  return _internal_room_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void S_CreateRoom::set_room_name(ArgT0&& arg0, ArgT... args) {
+ 
+ room_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ChampionFist.S_CreateRoom.room_name)
+}
+inline std::string* S_CreateRoom::mutable_room_name() {
+  std::string* _s = _internal_mutable_room_name();
+  // @@protoc_insertion_point(field_mutable:ChampionFist.S_CreateRoom.room_name)
+  return _s;
+}
+inline const std::string& S_CreateRoom::_internal_room_name() const {
+  return room_name_.Get();
+}
+inline void S_CreateRoom::_internal_set_room_name(const std::string& value) {
+  
+  room_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S_CreateRoom::_internal_mutable_room_name() {
+  
+  return room_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* S_CreateRoom::release_room_name() {
+  // @@protoc_insertion_point(field_release:ChampionFist.S_CreateRoom.room_name)
+  return room_name_.Release();
+}
+inline void S_CreateRoom::set_allocated_room_name(std::string* room_name) {
+  if (room_name != nullptr) {
+    
+  } else {
+    
+  }
+  room_name_.SetAllocated(room_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (room_name_.IsDefault()) {
+    room_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ChampionFist.S_CreateRoom.room_name)
+}
+
+// string room_no = 3;
+inline void S_CreateRoom::clear_room_no() {
+  room_no_.ClearToEmpty();
+}
+inline const std::string& S_CreateRoom::room_no() const {
+  // @@protoc_insertion_point(field_get:ChampionFist.S_CreateRoom.room_no)
+  return _internal_room_no();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void S_CreateRoom::set_room_no(ArgT0&& arg0, ArgT... args) {
+ 
+ room_no_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ChampionFist.S_CreateRoom.room_no)
+}
+inline std::string* S_CreateRoom::mutable_room_no() {
+  std::string* _s = _internal_mutable_room_no();
+  // @@protoc_insertion_point(field_mutable:ChampionFist.S_CreateRoom.room_no)
+  return _s;
+}
+inline const std::string& S_CreateRoom::_internal_room_no() const {
+  return room_no_.Get();
+}
+inline void S_CreateRoom::_internal_set_room_no(const std::string& value) {
+  
+  room_no_.Set(value, GetArenaForAllocation());
+}
+inline std::string* S_CreateRoom::_internal_mutable_room_no() {
+  
+  return room_no_.Mutable(GetArenaForAllocation());
+}
+inline std::string* S_CreateRoom::release_room_no() {
+  // @@protoc_insertion_point(field_release:ChampionFist.S_CreateRoom.room_no)
+  return room_no_.Release();
+}
+inline void S_CreateRoom::set_allocated_room_no(std::string* room_no) {
+  if (room_no != nullptr) {
+    
+  } else {
+    
+  }
+  room_no_.SetAllocated(room_no, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (room_no_.IsDefault()) {
+    room_no_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ChampionFist.S_CreateRoom.room_no)
 }
 
 #ifdef __GNUC__

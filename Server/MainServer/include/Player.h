@@ -12,6 +12,7 @@ private:
     
 public:
     enum PlayerState{
+        NOT_LOGIN = 0,          // not login
         IN_HALL = 1,            // in the hall
         IN_ROOM = 2,            // in the room
         IN_GAME = 3             // in the game
@@ -30,6 +31,8 @@ private:
 public:
     Player();
     ~Player();
+    void ResetRoomInfo();
+    void ResetPlayerInfo();
     void ExitRoom();
 
 };

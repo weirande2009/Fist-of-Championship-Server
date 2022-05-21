@@ -83,6 +83,8 @@ message S_FriendUpdate{
 message S_EnterRoom{
     int32 seat_no = 1;                              // seat no in the room
     int32 state = 2;                                // state of entering
+    string room_name = 3;                           // room name
+    string room_no = 4;                             // room no
 };
 
 /*
@@ -208,4 +210,6 @@ message S_OtherAddFriend{
  */
 message S_CreateRoom{
     int32 state = 1;                                // friend info
+    string room_name = 2;                           // room name
+    string room_no = 3;                             // room no
 };

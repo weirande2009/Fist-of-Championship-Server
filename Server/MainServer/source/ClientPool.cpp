@@ -25,13 +25,13 @@ ClientPool::~ClientPool(){
  *****************************************/
 int ClientPool::AddClient(int fd, sockaddr_in socket_addr){
     // Instantiate a MainClient object
-    MainClient main_client = MainClient(fd, socket_addr);
+    MainClient *main_client = new MainClient(fd, socket_addr);
     // Set client no
-    main_client.SetClientNo(this->clients.size());
+    main_client->SetClientNo(this->clients.size());
     // Add client to clients
     this->clients.push_back(main_client);
     // Add client to the pool
-    this->client_pool[fd] = &(this->clients[this->clients.size()-1]);
+    this->client_pool[fd] = main_client;
     return 0;
 }
 

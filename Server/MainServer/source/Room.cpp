@@ -18,11 +18,12 @@ Room::Room(){
 Room::Room(std::string _room_no, std::string _room_name){
     this->room_no = _room_no;
     this->room_name = _room_name;
+    this->player_num = 0;
     for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
         this->clients[i] = NULL;
     }
-    room_owner = -1;
-    room_state = ROOM_NOT_IN_GAME;
+    this->room_owner = -1;
+    this->room_state = ROOM_NOT_IN_GAME;
 }
 
 /******************************************
@@ -131,7 +132,7 @@ bool Room::CheckEmpty(){
  *****************************************/
 int Room::Find(MainClient* client){
     for(int i=0; i<SEAT_NUM_IN_ROOM; i++){
-        if(!(this->clients[i] == client)){
+        if(this->clients[i] == client){
             return i;
         }
     }

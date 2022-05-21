@@ -60,11 +60,6 @@ void Database::ReadConfig(){
     config_file_name >> dbname_line;
     colon_pos = dbname_line.find(":");
     this->database_name = dbname_line.substr(colon_pos+1, dbname_line.size()-colon_pos-1);
-
-    std::cout << this->host_name << std::endl;
-    std::cout << this->user << std::endl;
-    std::cout << this->password << std::endl;
-    std::cout << this->database_name << std::endl;
 }
 
 /******************************************
@@ -83,6 +78,9 @@ void Database::ConnectMysql(){
     this->connection = mysql_real_connect(this->connection, this->host_name.c_str(), this->user.c_str(), this->password.c_str(), this->database_name.c_str(), this->port, nullptr, 0);
     if (!this->connection) {
         std::cout << "MySql Connect error!" << std::endl;
+    }
+    else{
+        std::cout << "Connect Database Successfully!" << std::endl;
     }
 }
 
@@ -103,7 +101,7 @@ Database& Database::Instance()
  *****************************************/
 int Database::ExecuteSql(std::string sql)
 {
-    if(mysql_query(this->connection, "select * from Users")){
+    if(mysql_query(this->connection, sql.c_str())){
 		std::cout << "Query Error:" << mysql_error(connection) << std::endl;
         return -1;
 	}
@@ -122,15 +120,15 @@ int Database::PlayerLogin(std::string user_name, std::string password_md5)
     // Check user name and password are matched
     std::string sql = "select ";
     sql += this->user_table.username+","+this->user_table.passwd+" ";
-    sql += "where "+this->user_table.username+"=\'"+user_name+"\' ";
-    sql += "from "+this->user_table.table+";\n";
+    sql += "from "+this->user_table.table+" ";
+    sql += "where "+this->user_table.username+"=\'"+user_name+"\';\n";
     // Execute
     int ret = this->ExecuteSql(sql);
     if(ret == EXE_ERROR){
         return EXE_ERROR;
     }
     
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         int num_fields = mysql_num_fields(result);   // Get field number
@@ -175,14 +173,14 @@ int Database::PlayerRegister(std::string user_name, std::string password_md5)
     // Check whether already has the user_name
     std::string sql = "select ";
     sql += this->user_table.username+" ";
-    sql += "where "+this->user_table.username+"=\'"+user_name+"\' ";
-    sql += "from "+this->user_table.table+";\n";
+    sql += "from "+this->user_table.table+" ";
+    sql += "where "+this->user_table.username+"=\'"+user_name+"\';\n";
     // Execute
     int ret = this->ExecuteSql(sql);
     if(ret == EXE_ERROR){
         return EXE_ERROR;
     }
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
        int num_fields = mysql_num_fields(result);   // Get field number
@@ -209,9 +207,10 @@ int Database::PlayerRegister(std::string user_name, std::string password_md5)
         mysql_free_result(this->result);
         return EXE_ERROR;
     }
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
+        printf("sql error: %s\n", mysql_error(connection));
         mysql_free_result(this->result);
         return REGISTER_FAIL;
     }
@@ -254,14 +253,16 @@ std::string Database::GenerateNewUserId()
     sql += "from "+this->user_table.table+";\n";
     // Execute
     int ret = this->ExecuteSql(sql);
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result){ // if return something
-       int user_number = mysql_num_rows(result);       // Get row number
+       user_number = mysql_num_rows(result);       // Get row number
     }
     mysql_free_result(this->result);
     // Generate user id
     std::string prefix = "";
-    prefix += (PLAYER_ID_LENGTH-std::to_string(user_number).length())*'0';
+    for(int i=0; i<PLAYER_ID_LENGTH-std::to_string(user_number).length(); i++){
+        prefix += "0";
+    }
     std::string new_userid = prefix + std::to_string(user_number);
     return new_userid;
 }
@@ -277,11 +278,11 @@ std::string Database::GetUserId(std::string user_name)
     // Check whether already has the user_name
     std::string sql = "select ";
     sql += this->user_table.userid+" ";
-    sql += "where "+this->user_table.username+"=\'"+user_name+"\' ";
-    sql += "from "+this->user_table.table+";\n";
+    sql += "from "+this->user_table.table+" ";
+    sql += "where "+this->user_table.username+"=\'"+user_name+"\';\n";
     // Execute
     int ret = this->ExecuteSql(sql);
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         int num_fields = mysql_num_fields(result);   // Get field number
@@ -310,11 +311,12 @@ std::string Database::GetUserName(std::string user_id)
     // Check whether already has the user_name
     std::string sql = "select ";
     sql += this->user_table.username+" ";
-    sql += "where "+this->user_table.userid+"=\'"+user_id+"\' ";
-    sql += "from "+this->user_table.table+";\n";
+    sql += "from "+this->user_table.table+" ";
+    sql += "where "+this->user_table.userid+"=\'"+user_id+"\';\n";
+    
     // Execute
     int ret = this->ExecuteSql(sql);
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         int num_fields = mysql_num_fields(result);   // Get field number
@@ -343,14 +345,15 @@ int Database::CheckUserName(std::string user_name)
     // Check whether already has the user_name
     std::string sql = "select ";
     sql += this->user_table.username+" ";
-    sql += "where "+this->user_table.username+"=\'"+user_name+"\' ";
-    sql += "from "+this->user_table.table+";\n";
+    sql += "from "+this->user_table.table+" ";
+    sql += "where "+this->user_table.username+"=\'"+user_name+"\';\n";
+    
     // Execute
     int ret = this->ExecuteSql(sql);
     if(ret == EXE_ERROR){
         return EXE_ERROR;
     }
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         int num_fields = mysql_num_fields(result);   // Get field number
@@ -382,12 +385,13 @@ std::vector<std::string> Database::QueryFriendName(std::string user_id)
     // Find all friend ids
     std::vector<std::string> friends_ids;
     std::string sql = "select ";
-    sql += this->friends_table.user1_id+" ,"+this->friends_table.user2_id+" ";
-    sql += "where "+this->friends_table.user1_id+"=\'"+user_id+"\' or "+this->friends_table.user2_id+"=\'"+user_id+"\' ";
-    sql += "from "+this->friends_table.table+";\n";
+    sql += this->friends_table.user1_id+", "+this->friends_table.user2_id+" ";
+    sql += "from "+this->friends_table.table+" ";
+    sql += "where "+this->friends_table.user1_id+"=\'"+user_id+"\' or "+this->friends_table.user2_id+"=\'"+user_id+"\';\n";
+    
     // Execute
     int ret = this->ExecuteSql(sql);
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         int num_fields = mysql_num_fields(result);   // Get field number
@@ -413,8 +417,8 @@ std::vector<std::string> Database::QueryFriendName(std::string user_id)
     mysql_free_result(this->result);
     // Change id to name
     std::vector<std::string> friends_names;
-    for(int i=0; i<friends_names.size(); i++){
-        friends_names.push_back(this->GetUserName(friends_names[i]));
+    for(int i=0; i<friends_ids.size(); i++){
+        friends_names.push_back(this->GetUserName(friends_ids[i]));
     }
     return friends_names;
 }
@@ -439,7 +443,7 @@ int Database::InsertFriend(std::string user1_id, std::string user2_id)
         mysql_free_result(this->result);
         return EXE_ERROR;
     }
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         mysql_free_result(this->result);
@@ -481,11 +485,12 @@ std::vector<std::string> Database::QueryWaitFriendName(std::string user_id)
     std::vector<std::string> friends_ids;
     std::string sql = "select ";
     sql += this->wait_friends_table.user1_id+" ";
-    sql += "where "+this->friends_table.user2_id+"=\'"+user_id+"\' ";
-    sql += "from "+this->friends_table.table+";\n";
+    sql += "from "+this->wait_friends_table.table+" ";
+    sql += "where "+this->wait_friends_table.user2_id+"=\'"+user_id+"\';\n";
+    
     // Execute
     int ret = this->ExecuteSql(sql);
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         int num_fields = mysql_num_fields(result);   // Get field number
@@ -506,8 +511,8 @@ std::vector<std::string> Database::QueryWaitFriendName(std::string user_id)
     mysql_free_result(this->result);
     // Change id to name
     std::vector<std::string> friends_names;
-    for(int i=0; i<friends_names.size(); i++){
-        friends_names.push_back(this->GetUserName(friends_names[i]));
+    for(int i=0; i<friends_ids.size(); i++){
+        friends_names.push_back(this->GetUserName(friends_ids[i]));
     }
     return friends_names;
     
@@ -533,7 +538,7 @@ int Database::InsertWaitFriend(std::string user1_id, std::string user2_id)
         mysql_free_result(this->result);
         return EXE_ERROR;
     }
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         mysql_free_result(this->result);
@@ -574,6 +579,7 @@ int Database::DeleteWaitFriend(std::string user1_id, std::string user2_id)
 {
     // Delete Friends
     std::string sql = "delete from ";
+    sql += this->wait_friends_table.table + " ";
     sql += "where "+this->wait_friends_table.user1_id+"=\'"+user1_id+"\' and "+this->wait_friends_table.user1_id+"=\'"+user1_id+"\';";
     // Execute
     int ret = this->ExecuteSql(sql);
@@ -581,7 +587,7 @@ int Database::DeleteWaitFriend(std::string user1_id, std::string user2_id)
         mysql_free_result(this->result);
         return EXE_ERROR;
     }
-    this->result = mysql_use_result(connection); // Get results
+    this->result = mysql_store_result(connection); // Get results
 	if (this->result)  // if return something
     {
         mysql_free_result(this->result);

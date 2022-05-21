@@ -20,7 +20,7 @@ public:
     std::string GetTime();
     static MyLog& Instance();  // get instance of Database
     void Log(std::string content);
-    void LogBasic(int fd, std::string username);
+    void LogBasic(int fd, std::string username, std::string cmd);
     void LogConnect(int fd, struct sockaddr_in remote);
     void LogLogin(int fd, std::string username, int state);
     void LogRegister(int fd, std::string username, int state);

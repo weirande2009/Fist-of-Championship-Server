@@ -20,7 +20,7 @@ private:
 public:
     Lobby();
     ~Lobby();
-    void CreateRoom(std::string room_name);
+    std::string CreateRoom(std::string room_name);
     void RemoveRoom(std::string room_no);
 
 };

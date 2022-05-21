@@ -48,6 +48,7 @@
 #define SEAT_NUM_IN_ROOM 8          // Seat number in a room
 #define SEAT_EMPTY -1               // State of seat empty
 #define SEAT_OCCUPIED 1             // State of sear occupied
+#define ENTER_ROOM_OK 1             // State of enter room ok
 #define NO_AVAILABLE_SEAT -1        // State of full room
 #define ROOM_EMPTY -1               // State of empty room
 #define EXIT_ROOM_OK 1              // State of exit room ok
@@ -62,8 +63,10 @@
 #define PLAYER_OFFLINE 2            // State of player offline
 #define PLAYER_READY 1              // State of player ready
 #define PLAYER_NO_READY 0           // State of player no ready
+#define ROOM_OWNER 1                // State of room owner
+#define ROOM_NOT_OWNER -1           // State of 
 /* Network */
-#define LENGTH_MD5 128              // Length of md5 code
+#define LENGTH_MD5 16              // Length of md5 code
 #define PACKAGE_HEAD_LENGTH 8       // Length of package head
 #define S_CMD_NUM 18                // Server command number
 #define C_CMD_NUM 14                // Client command number
