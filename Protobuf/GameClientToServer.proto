@@ -1,0 +1,35 @@
+syntax = "proto3";
+package ChampionFist;
+
+enum ClientCommandType{
+    C_EMPTY = 0;
+    C_CONNECT = 1;
+    C_LOAD = 2;
+    C_EXIT = 3;
+    C_OPERATION = 4;
+    C_START = 5;
+    C_END = 6;
+}
+
+message C_Connect{
+    string name = 1;                      // player name
+    int32 seat_no = 2;                    // seat no
+};
+
+// message C_Load{
+    
+// };
+
+// message C_Exit{
+    
+// };
+
+// message C_Operation{
+
+// };
+
+// message C_End{
+    
+// }
+
+
