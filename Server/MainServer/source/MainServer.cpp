@@ -584,8 +584,15 @@ void MainServer::ProcessStartGame(MainClient* client)
     MyLog::Instance().LogStartGame(client->client_fd, client->player.player_name);
     // Check all ready
     if(this->lobby.rooms[client->player.room_no].CheckAllReady()){
+        // Set room info
+        this->lobby.rooms[client->player.room_no].room_state = GAME_START;
         // Execute GameServer to process game
-                    /* do something */
+        system("cd /home/wr/Fist-of-Championship/Server/GameServer");
+        std::string cmd_str = "./main ";
+        cmd_str += this->lobby.rooms[client->player.room_no].player_num;
+        cmd_str += " ";
+        cmd_str += game_server_controller.GetNewPort();
+        system(cmd_str.c_str());
         // tell all players in room
         ChampionFist::S_StartGame s_start_game;
         s_start_game.set_state(GAME_START);

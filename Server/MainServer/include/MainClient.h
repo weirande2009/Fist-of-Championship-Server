@@ -23,6 +23,7 @@ public:
     int received_length;            // received length
     bool rd_head;                   // whether read head
     int client_state;               // client state
+    bool is_game_client;            // whether is game client
 
 // Functions
 private:

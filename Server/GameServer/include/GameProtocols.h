@@ -6,7 +6,12 @@
 /* Server */
 #define CLIENT_NUMBER 8                     // Client Number
 #define PACKAGE_HEAD_LENGTH 8
-
+#define TCP 1
+#define UDP 2
+/* Game */
+#define PLAYER_DEAD 1
+#define GAME_OVER 2
+#define FRAME_INTERVAL 66666
 
 
 /* Structures of various functions */
@@ -16,7 +21,7 @@ struct PackageHead{
     int length;
 };
 
-#pragma pack(1);
+#pragma pack(1)
 struct PlayerOperation{
     unsigned char operations;               // Various click operation
     int mouse_pos_x;                        // x of mouse position
@@ -26,7 +31,7 @@ struct PlayerOperation{
     unsigned char middle_level_weapon;      // middle level weapon
     unsigned char high_level_weapon;        // high level weapon
 };
-#pragma pack();
+#pragma pack()
 
 
 #endif

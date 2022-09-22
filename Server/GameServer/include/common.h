@@ -7,6 +7,7 @@
 #include <fstream>
 #include <thread>
 #include <mutex>
+#include <csignal>
 
 //c相关
 #include <stdio.h>

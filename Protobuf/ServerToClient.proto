@@ -162,6 +162,7 @@ message S_CancelReady{
  */
 message S_StartGame{
     int32 state = 1;                                // state of starting game
+    int32 port =2;                                  // port of game server
 };
 
 /*

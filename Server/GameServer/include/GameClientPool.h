@@ -10,8 +10,6 @@ private:
     
 public:
     std::vector<GameClient*> clients;               // Contain real client
-    std::map<int, GameClient*> client_pool;         // A map of fd and client index in client_pool
-    std::map<std::string, int> name_fd_map;         // A map of fd and user name
 
     int total_player_number;
 
@@ -22,15 +20,15 @@ public:
     GameClientPool();
     GameClientPool(int total_player_number);
     ~GameClientPool();
-    int AddClient(int fd, sockaddr_in socket_addr);
-    GameClient* GetClient(int fd);
+    GameClient* AddClient(sockaddr_in socket_addr);
+    GameClient* GetClient(sockaddr_in socket_addr);
+    bool ClientEqual(const sockaddr_in &socket_addr_1,const sockaddr_in &socket_addr_2);
+    
 
+    bool CheckAllConnect();
     bool CheckAllLoad();
-    bool CheckAllStart();
-    bool CheckAllEnd();
     bool CheckAllQuit();
-
-
+    bool CheckAllGameOver();
 };
 
 

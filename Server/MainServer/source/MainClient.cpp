@@ -26,6 +26,7 @@ MainClient::MainClient(int fd, sockaddr_in socket_addr){
     this->rd_head = true;
     this->client_state = CLIENT_NO_LOGIN;
     this->player = Player();
+    this->is_game_client = false;
 }
 
 /******************************************

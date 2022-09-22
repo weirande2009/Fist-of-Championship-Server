@@ -5,31 +5,27 @@
 #include "GameClient.h"
 #include "GameClientPool.h"
 #include "GameProtocols.h"
-#include "GameClientToServer.pb.h"
-#include "GameServerToClient.pb.h"
+#include "GameProtobuf.pb.h"
 #include "MyLog.h"
 
 class GameServer
 {
 // Variables
 private:
-    // constant
-    const int EPOLL_EVENT_NUM = 1024;
-
     // variables
-    int server_fd;                      // Server's handle
     std::string server_ip;              // Server's IP
-    int server_port;                    // Server's port
+    int server_udp_fd;                  // Server's udp handle
+    int server_udp_port;                // Server's udp port
     int server_wait_num = 32;
-    int epoll_fd;
-    struct epoll_event epoll_ev;
-    struct epoll_event* epoll_events;
     std::vector<void(GameServer::*)(GameClient*)> process_function_pool; 
     GameClientPool client_pool;         // Client pool
     int total_player_number;            // Total player number in this game
+    
 
     // multiple thread variables
-    char* player_operations;            // players' operations
+    std::vector<ChampionFistGame::OperationFrame> player_operation_vector;
+    std::vector<std::vector<ChampionFistGame::OperationFrame>> all_operation_frames;
+    int sync_frame_id;
     std::thread my_thread;              // thread for send operation to players
     std::mutex operation_mutex;         // mutex for operation
     int frame_rate;                     // frame rate
@@ -45,21 +41,25 @@ private:
 
 public:
     GameServer();
-    GameServer(std::string _ip, int _port, int _total_player_number);
+    GameServer(std::string _ip, int _udp_port, int _total_player_number);
     ~GameServer();
     void Start();  // Start listening and wait for connecting
     void MainLoop();  // Main listening loop
     void ProcessData(char* data, int length);  // Process data received from clients
     void SendData(int fd, const char* data, int length, int cmd);  // Send data to clients
-    void ReadData(int fd);  // Send data to clients
-    void SendOperation();   // Send Operations to players
+    void ReadData();            // Send data to clients
+    void SendLogicFrame();      // Send Operations to players
 
+    // Process
     void ProcessConnect(GameClient *client);
     void ProcessLoad(GameClient *client);
     void ProcessExit(GameClient *client);
-    void ProcessOperation(GameClient *client);
-    void ProcessStart(GameClient *client);
-    void ProcessEnd(GameClient *client);
+    void ProcessPlayerFrame(GameClient *client);
+    void ProcessDelay(GameClient *client);
+    void ProcessGameOver(GameClient *client);
+
+    void ClearPlayerOperation();
+    void ExitServer();
 
 };
 

@@ -1,8 +1,7 @@
 #ifndef GamePLAYER_H
 #define GamePLAYER_H
 #include "common.h"
-#include "Protocols.h"
-#include "Database.h"
+#include "GameProtocols.h"
 
 class GamePlayer
 {
@@ -18,14 +17,14 @@ public:
     };
     std::string player_name;    // player name
     std::string player_id;      // player id
+    int sync_frame_id;          // synchronic frame id
     int player_state;           // player state
     int character_type;         // character type
     int seat_no;                // seat_no
     bool connected;             // Whether connect
     bool load;                  // Whether load
-    bool begin;                 // Whether begin
-    bool end;                   // Whether end
-    bool quit;                  // Whether quit
+    bool game_over;
+
 
 // Functions
 private:

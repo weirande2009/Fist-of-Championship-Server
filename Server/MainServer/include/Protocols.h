@@ -70,7 +70,6 @@
 #define PACKAGE_HEAD_LENGTH 8       // Length of package head
 #define S_CMD_NUM 18                // Server command number
 #define C_CMD_NUM 14                // Client command number
-// #define ChampionFist CF
 /* Client */
 #define CLIENT_NO_LOGIN 0            // Client no login
 #define CLIENT_LOGIN 1               // Client login
@@ -83,6 +82,9 @@
 #define GAME_START 1                // State of game start
 #define GAME_NO_START 0             // State of game no start
 #define GAME_OVER 2                 // State of game over
+#define GAME_SERVER_PORT_DOWN 10000 // Down of game server port
+#define GAME_SERVER_PORT_UP 12000   // Up of game server port
+#define GAME_SERVER_PORT_NUM 2000   // Number of game server port
 /* Database */
 #define EXE_ERROR -4                // SQL Execute error
 #define INSERT_OK 1                 // State of insert ok

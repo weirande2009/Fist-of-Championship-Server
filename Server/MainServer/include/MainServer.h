@@ -9,6 +9,7 @@
 #include "ClientToServer.pb.h"
 #include "ServerToClient.pb.h"
 #include "MyLog.h"
+#include "GameServerPortController.h"
 
 class MainServer
 {
@@ -28,7 +29,8 @@ private:
     ClientPool client_pool;
     Lobby lobby;
     std::vector<void(MainServer::*)(MainClient*)> process_function_pool; 
-    
+    GameServerPortController game_server_controller;
+
 
 public:
 

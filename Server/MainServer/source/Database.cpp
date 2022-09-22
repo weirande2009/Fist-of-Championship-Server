@@ -129,10 +129,10 @@ int Database::PlayerLogin(std::string user_name, std::string password_md5)
     }
     
     this->result = mysql_store_result(connection); // Get results
-	if (this->result)  // if return something
+	if (this->result)  // if return something which is not 0
     {
-        int num_fields = mysql_num_fields(result);   // Get field number
-        int num_rows = mysql_num_rows(result);       // Get row number
+        int num_fields = mysql_num_fields(result);   // Get field number 几个字段
+        int num_rows = mysql_num_rows(result);       // Get row number 几行
         if(num_rows == 0){
            mysql_free_result(result);
            return LOGIN_FAIL;
@@ -143,6 +143,7 @@ int Database::PlayerLogin(std::string user_name, std::string password_md5)
             this->row = mysql_fetch_row(result);
             if(!this->row) 
                 break;
+            // Compare password
             if(!memcmp(this->row[1], password_md5.c_str(), LENGTH_MD5)){
                 mysql_free_result(this->result);
                 return LOGIN_SUCCESS;

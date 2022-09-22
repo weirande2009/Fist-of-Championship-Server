@@ -30,18 +30,16 @@ GameClientPool::~GameClientPool(){
 /******************************************
  * Function: Add client to client pool
  * Parameters: 0
- * Return: None
+ * Return: the new client point
  *****************************************/
-int GameClientPool::AddClient(int fd, sockaddr_in socket_addr){
+GameClient* GameClientPool::AddClient(sockaddr_in socket_addr){
     // Instantiate a MainClient object
-    GameClient *game_client = new GameClient(fd, socket_addr);
+    GameClient *game_client = new GameClient(socket_addr);
     // Set client no
-    game_client->SetClientNo(this->clients.size());
+    game_client->no = this->clients.size();
     // Add client to clients
     this->clients.push_back(game_client);
-    // Add client to the pool
-    this->client_pool[fd] = game_client;
-    return 0;
+    return game_client;
 }
 
 /******************************************
@@ -49,8 +47,52 @@ int GameClientPool::AddClient(int fd, sockaddr_in socket_addr){
  * Parameters: 0
  * Return: None
  *****************************************/
-GameClient* GameClientPool::GetClient(int fd){
-    return this->client_pool[fd];
+GameClient* GameClientPool::GetClient(sockaddr_in socket_addr){
+    bool flag = true;
+    for(int i=0; i<clients.size(); i++){
+        if(this->ClientEqual(clients[i]->socket_addr, socket_addr)){
+            flag = false;
+            return clients[i];
+        }
+    }
+    // If there is no, create a new client and return
+    GameClient* newClient;
+    if(flag){
+        newClient = this->AddClient(socket_addr);
+    }
+    return newClient;
+}
+
+/******************************************
+ * Function: Check whether the two clients are the same
+ * Parameters: 0
+ * Return: None
+ *****************************************/
+bool GameClientPool::ClientEqual(const sockaddr_in &socket_addr_1,const sockaddr_in &socket_addr_2){
+    if(!strcmp(inet_ntoa(socket_addr_1.sin_addr), inet_ntoa(socket_addr_2.sin_addr))){
+        if(socket_addr_1.sin_port == socket_addr_2.sin_port){
+            return true;
+        }
+    }
+    return false;
+}
+
+/******************************************
+ * Function: Check all player connected
+ * Parameters: 0
+ * Return: None
+ *****************************************/
+bool GameClientPool::CheckAllConnect()
+{
+    if(clients.size() != this->total_player_number){  // All players should connect
+        return false;
+    }
+    for(int i=0; i<clients.size(); i++){
+        if(!clients[i]->player.connected){
+            return false;
+        }
+    }
+    return true;
 }
 
 /******************************************
@@ -72,42 +114,6 @@ bool GameClientPool::CheckAllLoad()
 }
 
 /******************************************
- * Function: Check all player start
- * Parameters: 0
- * Return: None
- *****************************************/
-bool GameClientPool::CheckAllStart()
-{
-    if(clients.size() != this->total_player_number){  // All players should connect
-        return false;
-    }
-    for(int i=0; i<clients.size(); i++){
-        if(!clients[i]->player.begin){
-            return false;
-        }
-    }
-    return true;
-}
-
-/******************************************
- * Function: Check all player end
- * Parameters: 0
- * Return: None
- *****************************************/
-bool GameClientPool::CheckAllEnd()
-{
-    if(clients.size() != this->total_player_number){  // All players should connect
-        return false;
-    }
-    for(int i=0; i<clients.size(); i++){
-        if(!clients[i]->player.end){
-            return false;
-        }
-    }
-    return true;
-}
-
-/******************************************
  * Function: Check all player quit
  * Parameters: 0
  * Return: None
@@ -118,7 +124,25 @@ bool GameClientPool::CheckAllQuit()
         return false;
     }
     for(int i=0; i<clients.size(); i++){
-        if(!clients[i]->player.quit){
+        if(clients[i]->player.player_state != GamePlayer::EXIT){
+            return false;
+        }
+    }
+    return true;
+}
+
+/******************************************
+ * Function: Check all player game over
+ * Parameters: 0
+ * Return: None
+ *****************************************/
+bool GameClientPool::CheckAllGameOver()
+{
+    if(clients.size() != this->total_player_number){  // All players should connect
+        return false;
+    }
+    for(int i=0; i<clients.size(); i++){
+        if(!clients[i]->player.game_over){
             return false;
         }
     }

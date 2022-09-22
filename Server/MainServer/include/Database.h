@@ -5,6 +5,7 @@
 #include "Protocols.h"
 #include "Tables.h"
 
+
 class Database
 {
 // Variables
@@ -15,7 +16,7 @@ private:
     struct WaitFriendsTable wait_friends_table;
 
     MYSQL *connection;                 // Mysql object
-    MYSQL_RES *result;
+    MYSQL_RES* result;
 	MYSQL_ROW row;
     
     std::string user;           // user id
