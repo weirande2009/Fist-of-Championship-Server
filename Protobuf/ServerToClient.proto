@@ -1,0 +1,216 @@
+syntax = "proto3";
+package ChampionFist;
+
+enum ServerCommandType{
+    S_EMPTY = 0;
+    S_LOGIN = 1;
+    S_REGISTER = 2;
+    S_HALL_ROOM = 3;
+    S_FRIEND = 4;
+    S_FRIEND_UPDATE = 5;
+    S_ENTER_ROOM = 6;
+    S_ROOM_INFO = 7;
+    S_EXIT_ROOM = 8;
+    S_UPDATE_ROOM = 9;
+    S_MODIFY_CHAR = 10;
+    S_READY = 11;
+    S_CANCEL_READY = 12;
+    S_START_GAME = 13;
+    S_EXIT_LOGIN = 14;
+    S_QUIT = 15;
+    S_ADD_FRIEND = 16;
+    S_OTHER_ADD_FRIEND = 17;
+    S_CREATE_ROOM = 18;
+}
+
+/* Login info from server to client */
+message S_Login{
+    int32 state = 1;                    // state
+}
+
+/* Register info from server to client */
+message S_Register{
+    int32 state = 1;                    // state
+}
+
+/*
+ * Function: Room info in the hall
+ */
+ message RoomInfo{
+    int32 player_number = 1;                        // player number in the room
+    string room_name = 2;                           // room name
+    string room_no = 3;                             // room number
+    int32 state = 4;                                // room state
+    int32 room_index = 5;                           // room index in a page
+};
+
+/*
+ * Function: Hall info
+ */
+message S_HallRoom{
+    int32 total_room_num = 1;
+    int32 page_room_num = 2;
+    repeated RoomInfo room_info = 3;                // room info
+};
+
+/*
+ * Function: Friend info in the hall
+ */
+message FriendInfo{
+    string player_name = 1;                         // room name
+    int32 state = 2;                                // online or offline
+};
+
+/*
+ * Function: Friend info from server to client
+ */
+message S_Friend{
+    repeated FriendInfo friend_info = 1;            // friends info
+};
+
+/*
+ * Function: Friend updated info from server to client
+ * Info:
+ */
+message S_FriendUpdate{
+    FriendInfo friend_info = 1;                     // friend info
+};
+
+/*
+ * Function: Enter room state from server to client
+ * Info:
+ */
+message S_EnterRoom{
+    int32 seat_no = 1;                              // seat no in the room
+    int32 state = 2;                                // state of entering
+    string room_name = 3;                           // room name
+    string room_no = 4;                             // room no
+};
+
+/*
+ * Function: Player info in a seat
+ * Info:
+ */
+message PlayerInfo{
+    string player_name = 1;                         // player_name
+    int32 char_type = 2;                          // stringacter type
+    int32 ready = 3;                                // whether ready
+    int32 owner = 4;                                // room owner
+};
+
+/*
+ * Function: Seat info in a room
+ * Info:
+ */
+message SeatInfo{
+    int32 empty = 1;                                // whether the seat is empty
+    int32 seat_no = 2;                              // seat no
+    PlayerInfo player_info = 3;                     // player info
+};
+
+/*
+ * Function: Room info from server to client
+ * Info:
+ */
+message S_RoomInfo{
+    repeated SeatInfo seat_info = 1;                // seats info in the room
+};
+
+/*
+ * Function: Exit room info from server to client
+ * Info:
+ */
+message S_ExitRoom{
+    int32 state = 1;                                // state of exiting
+};
+
+/*
+ * Function: Others update room info from server to client
+ * Info:
+ */
+message S_UpdateRoom{
+    SeatInfo seat_info = 1;                         // state of seat
+};
+
+/*
+ * Function: Modify stringacter type from server to client
+ * Info:
+ */
+message S_ModChar{ 
+    int32 state = 1;                                // state of modifying new stringacter type
+};
+
+/*
+ * Function: Get Ready info from server to client
+ * Info:
+ */
+message S_Ready{
+    int32 state = 1;                                // state of ready      
+};
+
+/*
+ * Function: Cancel ready from server to client
+ * Info:
+ */
+message S_CancelReady{
+    int32 state = 1;                                // state of cancel ready
+};
+
+/*
+ * Function: Start game info from server to client
+ * Info:
+ */
+message S_StartGame{
+    int32 state = 1;                                // state of starting game
+    int32 port =2;                                  // port of game server
+};
+
+/*
+ * Function: Exit login info from server to client
+ * Info:
+ */
+message S_ExitLogin{
+    int32 state = 1;                                // state of exiting login
+};
+
+/*
+ * Function: Exit login info from server to client
+ * Info:
+ */
+message S_Quit{
+    int32 state = 1;                                // state of quiting
+};
+
+/*
+ * Function: Add friend info from server to client
+ * Info:
+ */
+message S_AddFriend{
+    int32 state = 1;                                // state of adding
+};
+
+/*
+ * Function: Add friend info from server to client
+ * Info:
+ */
+message AddFriendInfo{
+    string friend_name = 1;                         // friend name
+};
+
+/*
+ * Function: Others add friend info from server to client
+ * Info:
+ */
+message S_OtherAddFriend{
+    AddFriendInfo friend_info = 1;                  // friend info
+};
+
+/*
+ * Function: Create room info from server to client
+ * Info:
+ */
+message S_CreateRoom{
+    int32 state = 1;                                // friend info
+    string room_name = 2;                           // room name
+    string room_no = 3;                             // room no
+};

@@ -1,0 +1,108 @@
+syntax = "proto3";
+package ChampionFistGame;
+
+enum ServerCommandType{
+    S_EMPTY = 0;
+    S_CONNECT = 1;
+    S_INITIALIZE = 2;
+    S_LOAD = 3;
+    S_EXIT = 4;
+    S_OTHER_EXIT = 5;
+    S_LOGIC_FRAME = 6;
+    S_DELAY = 7;
+    S_START = 8;
+}
+
+message GamePlayerInfo{
+    string name = 1;                        // player name
+    int32 seat_no = 2;                      // seat no
+    int32 champion_no = 3;                  // champion no
+}
+
+// message S_Connect{
+// }
+
+message S_Initialize{
+    int32 seat_no = 1;                                  // your seat no
+    int32 random_seed = 2;                              // random seed
+    repeated GamePlayerInfo game_players_info = 3;      // game player info
+}
+
+// message S_Load{
+// }
+
+// message S_Exit{
+// }
+
+message S_OtherExit{
+    int32 seat_no = 1;                  // seat no
+}
+
+message OperationFrame{
+    bool click_q = 1;
+    bool click_w = 2;
+    bool click_e = 3;
+    bool click_r = 4;
+    bool click_property = 5;
+    bool click_mouse = 6;
+    bool change_weapon = 7;
+    bool change_armor = 8;
+    int32 mouse_pos_x = 9;
+    int32 mouse_pos_y = 10;
+    int32 armor_no = 11;
+    int32 low_weapon_no = 12;
+    int32 middle_weapon_no = 13;
+    int32 high_weapon_no = 14;
+}
+
+// message AllPlayerOperation{
+//     repeated OperationFrame operations = 1;
+// }
+
+message UnsyncFrame{
+    int32 frame_id = 1;
+    repeated OperationFrame all_players_opt = 2;
+}
+
+message S_LogicFrame{
+    int32 frame_id = 1;                 // frame id
+    repeated UnsyncFrame unsync_frames = 2;
+}
+
+// message S_Delay{
+// }
+
+// message S_Start{
+// }
+
+
+enum ClientCommandType{
+    C_EMPTY = 0;
+    C_CONNECT = 1;
+    C_LOAD = 2;
+    C_EXIT = 3;
+    C_PLAYER_FRAME = 4;
+    C_DELAY = 5;
+    C_GAMEOVER = 6;
+}
+         
+message C_Connect{
+    string name = 1;                        // player name
+    int32 seat_no = 2;                      // seat no
+    int32 champion_no = 3;                  // champion no
+};
+
+// message C_Load{
+// }
+
+// message C_Exit{
+// }
+
+message C_PlayerFrame{
+    int32 frame_id = 1;
+    OperationFrame player_opt_frame = 2;
+}
+
+// message C_Delay{
+// }
+
