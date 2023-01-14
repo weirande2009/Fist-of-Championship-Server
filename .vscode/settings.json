@@ -46,5 +46,8 @@
         "utility": "cpp",
         "string": "cpp",
         "csignal": "cpp"
-    }
+    },
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "wr"
+    ]
 }
