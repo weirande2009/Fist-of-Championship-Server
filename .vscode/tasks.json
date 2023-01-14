@@ -10,7 +10,7 @@
                 "${file}",
                 "${fileDirname}/source/*",
                 "-lprotobuf",
-                "-lmysqlclient",
+                // "-lmysqlclient",
                 "-lpthread",
                 "-I",
                 "${fileDirname}/include/",
