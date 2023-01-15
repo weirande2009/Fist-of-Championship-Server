@@ -1,0 +1,11 @@
+syntax = "proto3";
+package ChampionFist;
+
+enum ClientCommandType{
+    C_PARTICIPATE = 0;
+}
+
+message C_Participate{
+    string name = 1;                            // player name
+    int32 hero_no = 2;                          // hero no.
+};
