@@ -1,4 +1,4 @@
-#include "MainServerController.h"
+#include "server/MainServerController.h"
 
 int main(){
     MainServerController main_server_controller = MainServerController();

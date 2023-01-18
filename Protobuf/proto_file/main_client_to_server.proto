@@ -1,5 +1,5 @@
 syntax = "proto3";
-package ChampionFist;
+package NewChampionFist;
 
 enum ClientCommandType{
     C_PARTICIPATE = 0;

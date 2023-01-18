@@ -176,7 +176,7 @@ void MainServer::ReadData(int fd)
                     // Generate received string
                     client->received_string.assign(client->received_data+PACKAGE_HEAD_LENGTH, package_length-PACKAGE_HEAD_LENGTH);
                     // Start processing
-                    (this->*process_function_pool[package_cmd-1])(client);
+                    (this->*process_function_pool[package_cmd])(client);
                     // Set data buffer and received length
                     client->read_length = PACKAGE_HEAD_LENGTH;
                     client->received_length = 0;
@@ -259,16 +259,16 @@ void MainServer::StartGame(std::vector<int> gamers){
     int port = game_server_port_controller.GetNewPort();
     // start the game server
     std::string execute_path = "/root/weiran/Fist-of-Championship/Server/GameServer/main";
-    std::string command = execute_path+" "+std::to_string(gamers.size())+" "+std::to_string(port);
+    std::string command = execute_path+" "+std::to_string(gamers.size())+" "+std::to_string(port)+"&";
     system(command.c_str());
     // tell gamers to start the game
-    ChampionFist::S_Start s_start;
+    ChampionFistMain::S_Start s_start;
     s_start.set_game_server_ip(GAME_SERVER_IP);
     s_start.set_game_server_port(port);
     std::string send_string;
     s_start.SerializeToString(&send_string);
     for(int fd: gamers){
-        this->SendData(fd, send_string.c_str(), send_string.length(), ChampionFist::S_START);
+        this->SendData(fd, send_string.c_str(), send_string.length(), ChampionFistMain::S_START+1);
     }
 }
 
@@ -286,24 +286,24 @@ std::vector<int> MainServer::GeneratePlayList(){
     gettimeofday(&current_time, NULL);
     for(auto& info: waiting_players){
         int interval = ComputeInterval(info.second.start_time, current_time);
-        if(interval > 60*10e3){
+        if(interval > 60*10e2){
             more_than_60.push_back(info.first);
         }
-        if(interval > 5*10e3){
+        if(interval > 5*10e2){
             more_than_5.push_back(info.first);
         }
-        if(interval > 2*10e3){
+        if(interval > 2*10e2){
             more_than_2.push_back(info.first);
         }
     }
     std::vector<int> play_list;
-    if(more_than_2.size() > 4){
+    if(more_than_2.size() >= 4){
         play_list.insert(play_list.begin(), more_than_2.begin(), more_than_2.begin()+4);
     }
-    else if(more_than_5.size() > 3){
+    else if(more_than_5.size() >= 3){
         play_list.insert(play_list.begin(), more_than_5.begin(), more_than_5.begin()+3);
     }
-    else if(more_than_60.size() > 2){
+    else if(more_than_60.size() >= 2){
         play_list.insert(play_list.begin(), more_than_60.begin(), more_than_60.begin()+2);
     }
     return play_list;
@@ -319,7 +319,7 @@ std::vector<int> MainServer::GeneratePlayList(){
 void MainServer::ProcessParticipate(MainClient* client)
 {
     std::string send_string;
-    ChampionFist::C_Participate c_participate;
+    ChampionFistMain::C_Participate c_participate;
     c_participate.ParseFromString(client->received_string);
     // add to waiting lists
     {
@@ -328,6 +328,7 @@ void MainServer::ProcessParticipate(MainClient* client)
         gettimeofday(&wait_info.start_time, NULL);
         wait_info.client = client;
         waiting_players[client->client_fd] = wait_info;
+        game_starter_condition_variable.notify_one();
     }
 }
 

@@ -1,0 +1,27 @@
+syntax = "proto3";
+package ChampionFistMain;
+
+enum ServerCommandType{
+    S_START = 0;
+}
+
+message S_Start{
+    string game_server_ip = 1;                          // room name
+    int32 game_server_port = 2;                         // player number in the room
+};
+
+enum ClientCommandType{
+    C_PARTICIPATE = 0;
+    C_GAME_SERVER = 1;
+}
+
+message C_Participate{
+    string name = 1;                            // player name
+    int32 hero_no = 2;                          // hero no.
+};
+
+message C_Game_Server{
+    int32 cmd = 1;                              // sub-command
+    string data = 2;                            // data
+}
+

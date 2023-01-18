@@ -97,7 +97,7 @@
 #define REPLY_FRIEND_OK 2           // State of replying from friend ok
 #define REPLY_FRIEND_FAIL -2        // State of replying from friend fail
 
-const char* GAME_SERVER_IP = "108.61.142.36";
+#define GAME_SERVER_IP "108.61.142.36"
 
 /* Structures of various functions */
 

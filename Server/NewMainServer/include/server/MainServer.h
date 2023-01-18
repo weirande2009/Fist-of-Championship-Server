@@ -6,8 +6,7 @@
 #include "utilities/MyLog.h"
 #include "utilities/Protocols.h"
 #include "utilities/GameServerPortController.h"
-#include "protobuf/main_client_to_server.pb.h"
-#include "protobuf/main_server_to_client.pb.h"
+#include "protobuf/MainProtobuf.pb.h"
 #include "server/ClientPool.h"
 #include "game/Lobby.h"
 

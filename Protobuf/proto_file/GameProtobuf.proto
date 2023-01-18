@@ -2,15 +2,14 @@ syntax = "proto3";
 package ChampionFistGame;
 
 enum ServerCommandType{
-    S_EMPTY = 0;
-    S_CONNECT = 1;
-    S_INITIALIZE = 2;
-    S_LOAD = 3;
-    S_EXIT = 4;
-    S_OTHER_EXIT = 5;
-    S_LOGIC_FRAME = 6;
-    S_DELAY = 7;
-    S_START = 8;
+    S_CONNECT = 0;
+    S_INITIALIZE = 1;
+    S_LOAD = 2;
+    S_EXIT = 3;
+    S_OTHER_EXIT = 4;
+    S_LOGIC_FRAME = 5;
+    S_DELAY = 6;
+    S_START = 7;
 }
 
 message GamePlayerInfo{
@@ -77,13 +76,12 @@ message S_LogicFrame{
 
 
 enum ClientCommandType{
-    C_EMPTY = 0;
-    C_CONNECT = 1;
-    C_LOAD = 2;
-    C_EXIT = 3;
-    C_PLAYER_FRAME = 4;
-    C_DELAY = 5;
-    C_GAMEOVER = 6;
+    C_CONNECT = 0;
+    C_LOAD = 1;
+    C_EXIT = 2;
+    C_PLAYER_FRAME = 3;
+    C_DELAY = 4;
+    C_GAMEOVER = 5;
 }
          
 message C_Connect{
