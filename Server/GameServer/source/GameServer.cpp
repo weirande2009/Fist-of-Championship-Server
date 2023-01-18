@@ -119,8 +119,8 @@ void GameServer::ReadData()
         int rlen = recvfrom(this->server_udp_fd, buf, buf_size, 0, (struct sockaddr*)&client_addr, &sin_size);
         // Get client
         GameClient* client = this->client_pool.GetClient(client_addr);
-        std::cout << MyLog::Instance().GetTime() << std::endl;
-        std::cout << "Receive Length: " << rlen << " From " << client->no << std::endl;
+        // std::cout << MyLog::Instance().GetTime() << std::endl;
+        // std::cout << "Receive Length: " << rlen << " From " << client->no << std::endl;
         if(rlen == 0){
             // client disconnect
             this->ProcessExit(client);
@@ -135,10 +135,10 @@ void GameServer::ReadData()
             }
             int package_cmd;
             memcpy(&package_cmd, buf, sizeof(int));
-            std::cout << "package_cmd: " << package_cmd << std::endl;
+            // std::cout << "package_cmd: " << package_cmd << std::endl;
             int package_length;
             memcpy(&package_length, buf+sizeof(int), sizeof(int));
-            std::cout << "package_length: " << package_length << std::endl;
+            // std::cout << "package_length: " << package_length << std::endl;
 
             // if receive all the data needed
             if(rlen == package_length){
@@ -156,7 +156,8 @@ void GameServer::ReadData()
         }
         //std::cout << std::endl;
     }
-    
+    // wait for thread to end
+    this->my_thread.join();
 }
 
 /******************************************
@@ -189,8 +190,8 @@ void GameServer::SendData(int no, const char* data, int length, int cmd)
     }
     this->client_pool.clients[no]->send_mutex.unlock();
     delete[] sent_data;
-    std::cout << MyLog::Instance().GetTime() << std::endl;
-    std::cout << "Send Length: " << len << std::endl << std::endl;
+    // std::cout << MyLog::Instance().GetTime() << std::endl;
+    // std::cout << "Send Length: " << len << std::endl << std::endl;
 }
 
 /******************************************
