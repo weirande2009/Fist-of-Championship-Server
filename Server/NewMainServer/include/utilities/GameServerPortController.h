@@ -18,6 +18,7 @@ public:
 
 // Functions
 private:
+    std::mutex port_pool_mutex;
 
 public:
     GameServerPortController();

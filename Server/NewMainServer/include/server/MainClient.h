@@ -7,7 +7,6 @@ class MainClient
 {
 // Variables
 private:
-    int client_no;
     std::string client_ip;          // Server's IP
     int client_port;                // Server's port
 
@@ -28,7 +27,6 @@ public:
     MainClient();
     MainClient(int fd, sockaddr_in socket_addr);
     ~MainClient();
-    void SetClientNo(int no);
-    int GetClientNo();
+    int GetFd();
 
 };

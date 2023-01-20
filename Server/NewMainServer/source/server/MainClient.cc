@@ -37,20 +37,11 @@ MainClient::~MainClient(){
 }
 
 /******************************************
- * Function: Set number in ClientPool
- * Parameters: 1
- * no: client no in ClientPool
+ * Function: Get fd of the client
+ * Parameters: 0
  * Return: None
  *****************************************/
-void MainClient::SetClientNo(int no){
-    this->client_no = no;
+int MainClient::GetFd(){
+    return client_fd;
 }
 
-/******************************************
- * Function: Get number in ClientPool
- * Parameters: 0
- * Return: Client no
- *****************************************/
-int MainClient::GetClientNo(){
-    return this->client_no;
-}

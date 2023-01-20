@@ -33,7 +33,7 @@ OBJ = $(GAME_OBJ) $(PROTOBUF_OBJ) $(SERVER_OBJ) $(UTILITIES_OBJ) $(MAIN_OBJ)
 
 TARGET = main
 
-CFLAGS = -g -Wall -fdiagnostics-color=always -I${DIR_INC} -L/usr/local/lib/ $(LIBS) -std=c++17
+CFLAGS = -Wall -fdiagnostics-color=always -I${DIR_INC} -L/usr/local/lib/ $(LIBS) -std=c++17
 
 all:$(TARGET)
 

@@ -27,6 +27,9 @@ void CopyOperation(ChampionFistGame::OperationFrame* des, ChampionFistGame::Oper
 GameServer::GameServer(std::string _ip, int _udp_port, int _total_player_number)
 {
     // Set basic info
+    this->main_server_ip = "108.61.142.36";
+    this->main_server_port = 12345;
+    this->main_server_fd = init_client(this->main_server_ip, this->main_server_port);
     this->total_player_number = _total_player_number;
     this->server_ip = _ip;
     this->server_udp_port = _udp_port;
@@ -156,8 +159,6 @@ void GameServer::ReadData()
         }
         //std::cout << std::endl;
     }
-    // wait for thread to end
-    this->my_thread.join();
 }
 
 /******************************************
@@ -192,6 +193,27 @@ void GameServer::SendData(int no, const char* data, int length, int cmd)
     delete[] sent_data;
     // std::cout << MyLog::Instance().GetTime() << std::endl;
     // std::cout << "Send Length: " << len << std::endl << std::endl;
+}
+
+/******************************************
+ * Function: Send data to specific handle
+ * Parameters: 4
+ * fd: handle number
+ * data: data from Protobuf
+ * length: Protobuf data length
+ * cmd: command no.
+ * Return: None
+ *****************************************/
+void GameServer::SendDataToMain(int fd, const char* data, int length, int cmd)
+{
+    PackageHead package_head;
+    package_head.cmd = cmd;
+    package_head.length = length+8;
+    char* sent_data = new char[package_head.length];
+    memcpy(sent_data, (const char*)&package_head, sizeof(PackageHead));
+    memcpy(sent_data+sizeof(PackageHead), data, length);
+    int len = send(fd, sent_data, package_head.length, 0);
+    delete[] sent_data;
 }
 
 /******************************************
@@ -455,6 +477,18 @@ void GameServer::ExitServer()
         delete client_pool.clients[i];
     }
     this->operation_mutex.unlock();
+    // tell main server
+    std::string send_string;
+    ChampionFistMain::C_Game_Server c_game_server;
+    c_game_server.set_cmd(ChampionFistServer::C_OVER);
+    std::string c_over_string;
+    ChampionFistServer::C_Over c_over;
+    c_over.set_port(server_udp_port);
+    c_over.SerializeToString(&c_over_string);
+    c_game_server.set_data(c_over_string);
+    c_game_server.SerializeToString(&send_string);
+    SendDataToMain(this->main_server_fd, send_string.c_str(), send_string.length(), ChampionFistMain::C_GAME_SERVER);
+    std::cout << "Game Server Exit (" << this->server_udp_port << ")" << std::endl;
 }
 
 

@@ -27,14 +27,19 @@ MainServer::MainServer(std::string _ip, int _port)
         exit(EXIT_FAILURE);    
     }    
     // Set Client Pool
-    this->client_pool = ClientPool();
+    this->client_pool = std::make_unique<ClientPool>();
     // Set Lobby
     this->lobby = Lobby();
     // Set process function pool
     this->process_function_pool.push_back(&MainServer::ProcessParticipate);
+    this->process_function_pool.push_back(&MainServer::ProcessGameServer);
     // Set game start thread
     this->game_starter_stop = false;
     this->game_starter = std::make_unique<std::thread>(&MainServer::WaitGameStart, this);
+    // Set game start thread
+    this->send_package_stop = false;
+    this->send_package_thread = std::make_unique<std::thread>(&MainServer::PackageSender, this);
+    this->send_package_thread->detach();
 }
 
 /******************************************
@@ -100,7 +105,7 @@ void MainServer::MainLoop()
                     // Log
                     MyLog::Instance().LogConnect(conn_sock, remote);
                     // Add new client to pool
-                    this->client_pool.AddClient(conn_sock, remote);
+                    this->client_pool->AddClient(conn_sock, remote);
                 }    
                 if (conn_sock == -1) {    
                     if (errno != EAGAIN && errno != ECONNABORTED && errno != EPROTO && errno != EINTR)     
@@ -140,7 +145,7 @@ void MainServer::SetNonBlocking(int fd)
 void MainServer::ReadData(int fd)
 {
     // Get client object
-    MainClient* client = this->client_pool.GetClient(fd);
+    MainClient* client = this->client_pool->GetClient(fd);
     // read data from client
     while(1){
         int rlen = recv(fd, client->received_data+client->received_length, client->read_length, 0);
@@ -224,6 +229,53 @@ void MainServer::SendData(int fd, const char* data, int length, int cmd)
 }
 
 /******************************************
+ * Function: Send packages to clients
+ * Parameters: 1
+ * package: the sending package
+ * Return: None
+ *****************************************/
+void MainServer::SendAPackage(int fd, const char* data, int length, int cmd){
+    auto package = std::make_unique<SendPackage>();
+    package->fd = fd;
+    package->data = data;
+    package->length = length;
+    package->cmd = cmd;
+    {
+        std::unique_lock<std::mutex> lock(send_package_mutex);
+        send_packages.push(std::move(package));
+        send_package_condition_variable.notify_one();
+    }
+}
+
+
+/******************************************
+ * Function: Send packages to clients
+ * Parameters: 0
+ * Return: None
+ *****************************************/
+void MainServer::PackageSender(){
+    while (true) {
+        {
+            std::unique_lock<std::mutex> lock(send_package_mutex);
+            if(send_packages.empty()){  // if empty, wait until there is a package
+                send_package_condition_variable.wait(lock, [this]() { 
+                    return send_package_stop || !send_packages.empty(); 
+                });
+            }
+            if (send_package_stop) {
+                return;
+            }
+            // Here store the fd of the selected gamer
+            while(!send_packages.empty()){
+                auto& package = send_packages.front();
+                SendData(package->fd, package->data.c_str(), package->length, package->cmd);
+                send_packages.pop();
+            }
+        }
+    }
+}
+
+/******************************************
  * Function: Function for game start thread
  * Parameters: 0
  * Return: None
@@ -250,7 +302,9 @@ void MainServer::WaitGameStart(){
         // remove play list from waiting
         for(int fd: play_list){
             waiting_players.erase(fd);
-        }        
+        }
+        // sleep
+        usleep(50000);
     }
 }
 
@@ -268,7 +322,7 @@ void MainServer::StartGame(std::vector<int> gamers){
     std::string send_string;
     s_start.SerializeToString(&send_string);
     for(int fd: gamers){
-        this->SendData(fd, send_string.c_str(), send_string.length(), ChampionFistMain::S_START+1);
+        this->SendAPackage(fd, send_string.c_str(), send_string.length(), ChampionFistMain::S_START+1);
     }
 }
 
@@ -332,8 +386,29 @@ void MainServer::ProcessParticipate(MainClient* client)
     }
 }
 
+/******************************************
+ * Function: Process Game Server
+ * Parameters: 1
+ * client: client
+ * Return: None
+ *****************************************/
+void MainServer::ProcessGameServer(MainClient* client)
+{
+    std::string send_string;
+    ChampionFistMain::C_Game_Server c_game_server;
+    c_game_server.ParseFromString(client->received_string);
+    if(c_game_server.cmd() == ChampionFistServer::C_ESTABLISH){
+
+    }
+    else if(c_game_server.cmd() == ChampionFistServer::C_OVER){
+        ChampionFistServer::C_Over c_over;
+        c_over.ParseFromString(c_game_server.data());
+        game_server_port_controller.ReleasePort(c_over.port());
+    }
+}
+
 void MainServer::RemoveClient(int fd){
-    client_pool.RemoveClient(fd);
+    client_pool->RemoveClient(fd);
     {
         std::unique_lock<std::mutex> lock(waiting_player_mutex);
         waiting_players.erase(fd);

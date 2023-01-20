@@ -11,6 +11,7 @@
 #include <condition_variable>
 #include <memory>
 #include <ctime>
+#include <queue>
 
 // c
 #include <stdio.h>

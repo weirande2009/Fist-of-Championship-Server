@@ -1,3 +1,16 @@
 10000
 当前绑定的网卡为本地所有网卡
 Start Listening
+MySql Connect error!
+当前绑定的网卡为本地所有网卡
+bind error: Address already in use
+epoll_ctl: listen_sock: Bad file descriptor
+MySql Connect error!
+当前绑定的网卡为本地所有网卡
+Start Listening
+01/20/23 04:25:31
+Receive Length: 0
+
+01/20/23 04:25:31
+Receive Length: -1
+

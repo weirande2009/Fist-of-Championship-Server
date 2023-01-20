@@ -24,14 +24,8 @@ ClientPool::~ClientPool(){
  * Return: None
  *****************************************/
 int ClientPool::AddClient(int fd, sockaddr_in socket_addr){
-    // Instantiate a MainClient object
-    MainClient *main_client = new MainClient(fd, socket_addr);
-    // Set client no
-    main_client->SetClientNo(this->clients.size());
-    // Add client to clients
-    this->clients.push_back(main_client);
     // Add client to the pool
-    this->client_pool[fd] = main_client;
+    this->client_pool[fd] = std::make_unique<MainClient>(fd, socket_addr);
     return 0;
 }
 
@@ -41,15 +35,13 @@ int ClientPool::AddClient(int fd, sockaddr_in socket_addr){
  * Return: None
  *****************************************/
 MainClient* ClientPool::GetClient(int fd){
-    return this->client_pool[fd];
+    return this->client_pool[fd].get();
 }
 
 void ClientPool::RemoveClient(int fd){
     MainClient* client = GetClient(fd);
     if(client != nullptr){
         client_pool.erase(fd);
-        clients.erase(clients.begin()+client->GetClientNo());
         close(fd);
-        delete client;
     }
 }

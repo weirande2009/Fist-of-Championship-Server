@@ -27,11 +27,14 @@ GameServerPortController::~GameServerPortController(){
  * Return: RoomNo
  *****************************************/
 int GameServerPortController::GetNewPort(){
-    // Get a new port
-    for(int i=0; i<GAME_SERVER_PORT_NUM; i++){
-        if(!port_used[i]){
-            port_used[i] = true;
-            return port_pool[i];
+    {
+        std::unique_lock<std::mutex> lock(port_pool_mutex);
+        // Get a new port
+        for(int i=0; i<GAME_SERVER_PORT_NUM; i++){
+            if(!port_used[i]){
+                port_used[i] = true;
+                return port_pool[i];
+            }
         }
     }
     return -1;
@@ -43,7 +46,10 @@ int GameServerPortController::GetNewPort(){
  * Return: None
  *****************************************/
 void GameServerPortController::ReleasePort(int port){
-    port_used[port-GAME_SERVER_PORT_DOWN] = false;
+    {
+        std::unique_lock<std::mutex> lock(port_pool_mutex);
+        port_used[port-GAME_SERVER_PORT_DOWN] = false;
+    }
 }
 
 

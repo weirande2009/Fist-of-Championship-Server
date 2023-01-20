@@ -6,6 +6,8 @@
 #include "GameClientPool.h"
 #include "GameProtocols.h"
 #include "GameProtobuf.pb.h"
+#include "ServerProtobuf.pb.h"
+#include "MainProtobuf.pb.h"
 #include "MyLog.h"
 
 class GameServer
@@ -13,6 +15,9 @@ class GameServer
 // Variables
 private:
     // variables
+    int main_server_fd;
+    std::string main_server_ip;
+    int main_server_port;
     std::string server_ip;              // Server's IP
     int server_udp_fd;                  // Server's udp handle
     int server_udp_port;                // Server's udp port
@@ -48,6 +53,7 @@ public:
     void ProcessData(char* data, int length);  // Process data received from clients
     void SendData(int fd, const char* data, int length, int cmd);  // Send data to clients
     void ReadData();            // Send data to clients
+    void SendDataToMain(int fd, const char* data, int length, int cmd);
     void SendLogicFrame();      // Send Operations to players
 
     // Process

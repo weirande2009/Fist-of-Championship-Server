@@ -35,4 +35,5 @@ Room::~Room(){
  *****************************************/
 int Room::EnterRoom(MainClient* client){
     clients.push_back(client);
+    return 0;
 }

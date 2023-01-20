@@ -9,8 +9,7 @@ class ClientPool
 private:
     
 public:
-    std::vector<MainClient*> clients;            // Contain real client
-    std::map<int, MainClient*> client_pool;      // A map of fd and client index in client_pool
+    std::map<int, std::unique_ptr<MainClient>> client_pool;      // A map of fd and client index in client_pool
 
 // Functions
 private:

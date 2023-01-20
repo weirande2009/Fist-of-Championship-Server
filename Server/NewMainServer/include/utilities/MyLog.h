@@ -6,7 +6,7 @@ class MyLog{
     // Variables
 private:
     static MyLog instance;       // single instance
-    std::string log_file_name = "/home/wr/Fist-of-Championship/Server/MainServer/Log/mylog.txt";     // Log file
+    std::string log_file_name = "/root/weiran/Fist-of-Championship/Server/NewMainServer/Log/mylog.txt";     // Log file
 
 
 public:

@@ -1,5 +1,5 @@
 syntax = "proto3";
-package ChampionFistGame;
+package ChampionFistServer;
 
 enum ServerCommandType{
     S_ESTABLISH = 0;
@@ -12,5 +12,9 @@ enum ClientCommandType{
 
 message C_Establish{
     int32 pid = 1;                                      // process id of the game server
+}
+
+message C_Over{
+    int32 port = 1;                                     // port of the game server
 }
 

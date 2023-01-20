@@ -47,22 +47,26 @@ struct TableStruct_ServerProtobuf_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ServerProtobuf_2eproto;
-namespace ChampionFistGame {
+namespace ChampionFistServer {
 class C_Establish;
 class C_EstablishDefaultTypeInternal;
 extern C_EstablishDefaultTypeInternal _C_Establish_default_instance_;
-}  // namespace ChampionFistGame
+class C_Over;
+class C_OverDefaultTypeInternal;
+extern C_OverDefaultTypeInternal _C_Over_default_instance_;
+}  // namespace ChampionFistServer
 PROTOBUF_NAMESPACE_OPEN
-template<> ::ChampionFistGame::C_Establish* Arena::CreateMaybeMessage<::ChampionFistGame::C_Establish>(Arena*);
+template<> ::ChampionFistServer::C_Establish* Arena::CreateMaybeMessage<::ChampionFistServer::C_Establish>(Arena*);
+template<> ::ChampionFistServer::C_Over* Arena::CreateMaybeMessage<::ChampionFistServer::C_Over>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
-namespace ChampionFistGame {
+namespace ChampionFistServer {
 
 enum ServerCommandType : int {
   S_ESTABLISH = 0,
@@ -116,7 +120,7 @@ inline bool ClientCommandType_Parse(
 // ===================================================================
 
 class C_Establish PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChampionFistGame.C_Establish) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChampionFistServer.C_Establish) */ {
  public:
   inline C_Establish() : C_Establish(nullptr) {}
   virtual ~C_Establish();
@@ -204,7 +208,7 @@ class C_Establish PROTOBUF_FINAL :
   void InternalSwap(C_Establish* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ChampionFistGame.C_Establish";
+    return "ChampionFistServer.C_Establish";
   }
   protected:
   explicit C_Establish(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -238,7 +242,7 @@ class C_Establish PROTOBUF_FINAL :
   void _internal_set_pid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ChampionFistGame.C_Establish)
+  // @@protoc_insertion_point(class_scope:ChampionFistServer.C_Establish)
  private:
   class _Internal;
 
@@ -246,6 +250,142 @@ class C_Establish PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::int32 pid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_ServerProtobuf_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_Over PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChampionFistServer.C_Over) */ {
+ public:
+  inline C_Over() : C_Over(nullptr) {}
+  virtual ~C_Over();
+
+  C_Over(const C_Over& from);
+  C_Over(C_Over&& from) noexcept
+    : C_Over() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Over& operator=(const C_Over& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Over& operator=(C_Over&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const C_Over& default_instance();
+
+  static inline const C_Over* internal_default_instance() {
+    return reinterpret_cast<const C_Over*>(
+               &_C_Over_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(C_Over& a, C_Over& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Over* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Over* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline C_Over* New() const final {
+    return CreateMaybeMessage<C_Over>(nullptr);
+  }
+
+  C_Over* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<C_Over>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const C_Over& from);
+  void MergeFrom(const C_Over& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Over* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "ChampionFistServer.C_Over";
+  }
+  protected:
+  explicit C_Over(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_ServerProtobuf_2eproto);
+    return ::descriptor_table_ServerProtobuf_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPortFieldNumber = 1,
+  };
+  // int32 port = 1;
+  void clear_port();
+  ::PROTOBUF_NAMESPACE_ID::int32 port() const;
+  void set_port(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_port() const;
+  void _internal_set_port(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:ChampionFistServer.C_Over)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 port_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ServerProtobuf_2eproto;
 };
@@ -268,7 +408,7 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 C_Establish::_internal_pid() const {
   return pid_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 C_Establish::pid() const {
-  // @@protoc_insertion_point(field_get:ChampionFistGame.C_Establish.pid)
+  // @@protoc_insertion_point(field_get:ChampionFistServer.C_Establish.pid)
   return _internal_pid();
 }
 inline void C_Establish::_internal_set_pid(::PROTOBUF_NAMESPACE_ID::int32 value) {
@@ -277,28 +417,54 @@ inline void C_Establish::_internal_set_pid(::PROTOBUF_NAMESPACE_ID::int32 value)
 }
 inline void C_Establish::set_pid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_pid(value);
-  // @@protoc_insertion_point(field_set:ChampionFistGame.C_Establish.pid)
+  // @@protoc_insertion_point(field_set:ChampionFistServer.C_Establish.pid)
+}
+
+// -------------------------------------------------------------------
+
+// C_Over
+
+// int32 port = 1;
+inline void C_Over::clear_port() {
+  port_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 C_Over::_internal_port() const {
+  return port_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 C_Over::port() const {
+  // @@protoc_insertion_point(field_get:ChampionFistServer.C_Over.port)
+  return _internal_port();
+}
+inline void C_Over::_internal_set_port(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  port_ = value;
+}
+inline void C_Over::set_port(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_port(value);
+  // @@protoc_insertion_point(field_set:ChampionFistServer.C_Over.port)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace ChampionFistGame
+}  // namespace ChampionFistServer
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::ChampionFistGame::ServerCommandType> : ::std::true_type {};
+template <> struct is_proto_enum< ::ChampionFistServer::ServerCommandType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::ChampionFistGame::ServerCommandType>() {
-  return ::ChampionFistGame::ServerCommandType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::ChampionFistServer::ServerCommandType>() {
+  return ::ChampionFistServer::ServerCommandType_descriptor();
 }
-template <> struct is_proto_enum< ::ChampionFistGame::ClientCommandType> : ::std::true_type {};
+template <> struct is_proto_enum< ::ChampionFistServer::ClientCommandType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::ChampionFistGame::ClientCommandType>() {
-  return ::ChampionFistGame::ClientCommandType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::ChampionFistServer::ClientCommandType>() {
+  return ::ChampionFistServer::ClientCommandType_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

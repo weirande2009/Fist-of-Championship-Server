@@ -7,12 +7,20 @@
 #include "utilities/Protocols.h"
 #include "utilities/GameServerPortController.h"
 #include "protobuf/MainProtobuf.pb.h"
+#include "protobuf/ServerProtobuf.pb.h"
 #include "server/ClientPool.h"
 #include "game/Lobby.h"
 
 struct WaitInfo{
     struct timeval start_time;
     MainClient* client;
+};
+
+struct SendPackage{
+    int fd;
+    std::string data;
+    int length;
+    int cmd;
 };
 
 class MainServer
@@ -30,7 +38,7 @@ private:
     int epoll_fd;
     struct epoll_event epoll_ev;
     struct epoll_event* epoll_events;
-    ClientPool client_pool;
+    std::unique_ptr<ClientPool> client_pool;
     Lobby lobby;
     std::vector<void(MainServer::*)(MainClient*)> process_function_pool; 
     GameServerPortController game_server_port_controller;
@@ -41,6 +49,12 @@ private:
     std::unique_ptr<std::thread> game_starter;
     std::condition_variable game_starter_condition_variable;
 
+    std::queue<std::unique_ptr<SendPackage>> send_packages;
+    std::mutex send_package_mutex;
+    std::atomic<bool> send_package_stop;
+    std::unique_ptr<std::thread> send_package_thread;
+    std::condition_variable send_package_condition_variable;
+
 public:
 
 
@@ -49,7 +63,6 @@ private:
     void SetNonBlocking(int fd);  // Set handle to be non-blocking
 
 public:
-    MainServer();
     MainServer(std::string _ip, int _port);
     ~MainServer();
     void Start();  // Start listening and wait for connecting
@@ -59,11 +72,16 @@ public:
 
     /* Various functions for processing received data */
     void ProcessParticipate(MainClient* client);
+    void ProcessGameServer(MainClient* client);
 
     /* Game Starter */
     void WaitGameStart();
     void StartGame(std::vector<int> gamers);
     std::vector<int> GeneratePlayList();
+
+    /* Package Sender */
+    void PackageSender();
+    void SendAPackage(int fd, const char* data, int length, int cmd);
 
     /* Utilities */
     void RemoveClient(int fd);

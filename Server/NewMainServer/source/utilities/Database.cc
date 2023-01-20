@@ -159,7 +159,7 @@ int Database::PlayerLogin(std::string user_name, std::string password_md5)
         mysql_free_result(this->result);
         return LOGIN_FAIL;
     }
-
+    return 0;
 }
 
 /******************************************

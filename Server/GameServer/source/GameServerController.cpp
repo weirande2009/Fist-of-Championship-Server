@@ -20,10 +20,13 @@ GameServerController::~GameServerController()
 
 void GameServerController::Start()
 {
-    while(1){
-        game_server = new GameServer(this->ip, this->port, this->total_player_number);
-        game_server->Start();   
-        delete game_server;
-    }
+    // while(1){
+    //     game_server = new GameServer(this->ip, this->port, this->total_player_number);
+    //     game_server->Start();   
+    //     delete game_server;
+    // }
+    game_server = new GameServer(this->ip, this->port, this->total_player_number);
+    game_server->Start();   
+    delete game_server;
 }
 
